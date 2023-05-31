@@ -4,13 +4,13 @@ CREATE TABLE street_art (
   image BLOB NOT NULL,
   x FLOAT NOT NUlL,
   y FLOAT NOT NULL,
-  isValid BOOLEAN
+  is_valid BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE gallery (
   id_user int(11) NOT NULL,
   id_street_art int(11) NOT NULL,
-  date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   image BLOB NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

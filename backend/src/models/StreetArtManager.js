@@ -2,17 +2,17 @@ const AbstractManager = require("./AbstractManager");
 
 class StreetArtManager extends AbstractManager {
   constructor() {
-    super({ table: "streetArt" });
+    super({ table: "street_art" });
   }
 
   insert(streetArt) {
     return this.database.query(
-      `insert into ${this.table} (name, image, x, y, isValid, score) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name, image, longitude, latitude, is_valid, score) values (?, ?, ?, ?, ?, ?)`,
       [
         streetArt.name,
         streetArt.image,
-        streetArt.x,
-        streetArt.y,
+        streetArt.longitude,
+        streetArt.latitude,
         streetArt.isValid,
         streetArt.score,
       ]
@@ -21,12 +21,12 @@ class StreetArtManager extends AbstractManager {
 
   update(streetArt) {
     return this.database.query(
-      `update ${this.table} set name = ?, image = ?, x= ?, y= ?, isValid= ?, score= ? where id = ?`,
+      `update ${this.table} set name = ?, image = ?, longitude= ?, latitude= ?, is_valid= ?, score= ? where id = ?`,
       [
         streetArt.name,
         streetArt.image,
-        streetArt.x,
-        streetArt.y,
+        streetArt.longitude,
+        streetArt.latitude,
         streetArt.isValid,
         streetArt.score,
         streetArt.id,

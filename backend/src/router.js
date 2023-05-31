@@ -12,10 +12,10 @@ router.delete("/items/:id", itemControllers.destroy);
 
 const streetArtControllers = require("./controllers/streetArtControllers");
 
-router.get("/streetArts", streetArtControllers.browse);
-router.get("/streetArts/:id", streetArtControllers.read);
-router.put("/streetArts/:id", streetArtControllers.edit);
-router.post("/streetArts", streetArtControllers.add);
-router.delete("/streetArts/:id", streetArtControllers.destroy);
+router.get("/street-arts", streetArtControllers.browse);
+router.get("/street-arts/:id", streetArtControllers.read);
+router.put("/street-arts/:id", streetArtControllers.edit);
+router.post("/street-arts", streetArtControllers.add);
+router.delete("/street-arts/:id", streetArtControllers.destroy);
 
 module.exports = router;
