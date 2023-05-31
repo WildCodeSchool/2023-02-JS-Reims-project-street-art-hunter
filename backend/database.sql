@@ -1,6 +1,19 @@
-CREATE TABLE item (
+CREATE TABLE street_art (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  title varchar(255) NOT NULL
+  name varchar(255) NULL,
+  image BLOB NOT NULL,
+  x FLOAT NOT NUlL,
+  y FLOAT NOT NULL,
+  isValid BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');
+CREATE TABLE gallery (
+  id_user int(11) NOT NULL,
+  id_street_art int(11) NOT NULL,
+  date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  image BLOB NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
