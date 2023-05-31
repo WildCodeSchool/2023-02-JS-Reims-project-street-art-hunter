@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <div className="display" />
-      <div className="controleur">
+      <div className="controller">
         <button type="button" className="up">
           {" "}
         </button>
@@ -18,7 +18,7 @@ function App() {
           {" "}
         </button>
       </div>
-      <div className="buttonControleur">
+      <div className="buttonController">
         <button type="button" className="button1">
           {" "}
         </button>

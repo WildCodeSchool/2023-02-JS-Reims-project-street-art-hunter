@@ -3,10 +3,10 @@ body {
   margin: 0;
   cursor: url(./assets/main.png), auto;
 }
-button,
-.button {
+button {
   cursor: pointer;
   cursor: url(./assets/point.png), pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .App {
   height: 100vh;
@@ -23,7 +23,7 @@ button,
   grid-column-start: 1;
   grid-column-end: 3;
 }
-.controleur {
+.controller {
   grid-row-start: 2;
   grid-column: 1;
   display: grid;
@@ -61,7 +61,7 @@ button,
     background-image: url(./assets/right.png);
   }
 }
-.buttonControleur {
+.buttonController {
   grid-row-start: 2;
   grid-column: 2;
   display: grid;
@@ -98,11 +98,11 @@ button,
     grid-column-start: 2;
     grid-column-end: 2;
   }
-  .controleur {
+  .controller {
     grid-row-start: 1;
     grid-column: 1;
   }
-  .buttonControleur {
+  .buttonController {
     grid-row-start: 1;
     grid-column: 3;
   }
