@@ -4,17 +4,9 @@ import { useRef, useState, useCallback } from "react";
 function Camera() {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
-  const [lat, setLat] = useState();
-  const [long, setLong] = useState();
-
-  navigator.geolocation.getCurrentPosition((position) => {
-    setLat(position.coords.latitude);
-    setLong(position.coords.longitude);
-  });
 
   const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setImgSrc(imageSrc);
+    setImgSrc(webcamRef.current.getScreenshot());
   }, [webcamRef]);
 
   const retake = () => {
@@ -25,9 +17,9 @@ function Camera() {
     <div className="container">
       {imgSrc ? (
         <>
-          <img src={imgSrc} alt="webcam" />
-          <h1>Latitude is : {lat}</h1>
-          <h1>Longitude is : {long}</h1>
+          <div className="img-container">
+            <img src={imgSrc} alt="webcam" />
+          </div>
           <div className="btn-container">
             <button type="button" onClick={retake}>
               Reprendre la photo
@@ -36,7 +28,14 @@ function Camera() {
         </>
       ) : (
         <>
-          <Webcam height={600} width={600} ref={webcamRef} />
+          <div className="video-container">
+            <Webcam
+              height={600}
+              width={600}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+            />
+          </div>
           <div className="btn-container">
             <button type="button" onClick={capture}>
               Capture photo
