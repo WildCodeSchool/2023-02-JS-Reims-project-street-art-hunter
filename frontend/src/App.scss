@@ -11,6 +11,47 @@ button {
   cursor: url(./assets/point.png), pointer;
   -webkit-tap-highlight-color: transparent;
 }
+
+.img-container {
+  margin-top: 10rem;
+}
+
+.posTitle {
+  color: white;
+}
+
+.video-container {
+  margin-top: 10em;
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 20em;
+    padding: 1rem;
+
+    .video-container {
+      margin-top: 0em;
+      border-radius: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-container:first-child {
+      overflow: hidden;
+    }
+    .img-container {
+      border-radius: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0rem;
+    }
+    .img-container:first-child {
+      overflow: hidden;
+    }
+  }
+}
+
 .gameBoy {
   height: 100vh;
   background-color: #d1d6cd;

@@ -51,7 +51,7 @@ export default function Menu() {
   const rightController = () => {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
-  const buton1Controller = () => {
+  const button1Controller = () => {
     document.location.href = menu[numberY][numberX].path;
   };
   return (
