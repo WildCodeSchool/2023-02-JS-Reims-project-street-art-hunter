@@ -61,8 +61,10 @@ export default function Menu() {
       leftController={leftController}
       rightController={rightController}
       buton1Controller={buton1Controller}
+      buttonLabel1="Entrer"
     >
       <div className="menu">
+        {numberY > 0 && <p className="upDirection">↑</p>}
         <div className="category">
           <h1>
             {menu[numberY][0].name}
@@ -74,6 +76,11 @@ export default function Menu() {
           alt={menu[numberY][numberX].name}
         />
         <p>{menu[numberY][numberX].name}</p>
+        {numberX > 1 && <p className="leftDirection">←</p>}
+        {numberX < menu[numberY].length - 1 && (
+          <p className="rightDirection">→</p>
+        )}
+        {numberY < menu.length - 1 && <p className="downDirection">↓</p>}
       </div>
     </GameBoy>
   );

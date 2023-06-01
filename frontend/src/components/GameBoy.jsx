@@ -8,6 +8,8 @@ export default function GameBoy({
   rightController,
   buton1Controller,
   buton2Controller,
+  buttonLabel1,
+  buttonLabel2,
 }) {
   return (
     <div className="gameBoy">
@@ -30,10 +32,26 @@ export default function GameBoy({
         </button>
       </div>
       <div className="buttonController">
-        <button type="button" className="button1" onClick={buton1Controller}>
+        <label htmlFor="button1" className="label1">
+          {buttonLabel1}
+        </label>
+        <label htmlFor="button2" className="label2">
+          {buttonLabel2}
+        </label>
+        <button
+          type="button"
+          className="button1"
+          name="button1"
+          onClick={buton1Controller}
+        >
           {" "}
         </button>
-        <button type="button" className="button2" onClick={buton2Controller}>
+        <button
+          type="button"
+          className="button2"
+          name="button2"
+          onClick={buton2Controller}
+        >
           {" "}
         </button>
       </div>
@@ -49,4 +67,6 @@ GameBoy.propTypes = {
   rightController: PropTypes.func.isRequired,
   buton1Controller: PropTypes.func.isRequired,
   buton2Controller: PropTypes.func.isRequired,
+  buttonLabel1: PropTypes.string.isRequired,
+  buttonLabel2: PropTypes.string.isRequired,
 };
