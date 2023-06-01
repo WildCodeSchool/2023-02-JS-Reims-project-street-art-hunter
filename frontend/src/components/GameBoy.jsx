@@ -6,8 +6,8 @@ export default function GameBoy({
   downController,
   leftController,
   rightController,
-  buton1Controller,
-  buton2Controller,
+  button1Controller,
+  button2Controller,
   buttonLabel1,
   buttonLabel2,
 }) {
@@ -42,7 +42,7 @@ export default function GameBoy({
           type="button"
           className="button1"
           name="button1"
-          onClick={buton1Controller}
+          onClick={button1Controller}
         >
           {" "}
         </button>
@@ -50,7 +50,7 @@ export default function GameBoy({
           type="button"
           className="button2"
           name="button2"
-          onClick={buton2Controller}
+          onClick={button2Controller}
         >
           {" "}
         </button>
@@ -65,8 +65,8 @@ GameBoy.propTypes = {
   downController: PropTypes.func.isRequired,
   leftController: PropTypes.func.isRequired,
   rightController: PropTypes.func.isRequired,
-  buton1Controller: PropTypes.func.isRequired,
-  buton2Controller: PropTypes.func.isRequired,
+  button1Controller: PropTypes.func.isRequired,
+  button2Controller: PropTypes.func.isRequired,
   buttonLabel1: PropTypes.string.isRequired,
   buttonLabel2: PropTypes.string.isRequired,
 };

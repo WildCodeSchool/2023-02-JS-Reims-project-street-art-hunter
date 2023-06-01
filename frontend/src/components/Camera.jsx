@@ -1,29 +1,40 @@
+import { useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
-import { useRef, useState, useCallback } from "react";
 
 import GameBoy from "./GameBoy";
 
 function Camera() {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
+  const [label1, setLabel1] = useState("Screen");
+  const [label2, setLabel2] = useState("Return");
 
   const navigate = useNavigate();
 
   const capture = useCallback(() => {
     setImgSrc(webcamRef.current.getScreenshot());
+    setLabel1("Confirm");
+    setLabel2("cancel");
   }, [webcamRef]);
 
   const retake = () => {
     if (imgSrc) {
       setImgSrc(null);
+      setLabel1("Screen");
+      setLabel2("Return");
     } else {
       navigate("/");
     }
   };
 
   return (
-    <GameBoy button1Controller={capture} button2Controller={retake}>
+    <GameBoy
+      button1Controller={capture}
+      button2Controller={retake}
+      buttonLabel1={label1}
+      buttonLabel2={label2}
+    >
       <div className="container">
         {imgSrc ? (
           <div className="img-container">

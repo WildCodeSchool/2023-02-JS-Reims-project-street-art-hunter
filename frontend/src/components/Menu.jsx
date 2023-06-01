@@ -30,8 +30,13 @@ export default function Menu() {
         path: "/camera",
       },
       {
-        name: "Galery",
-        image: "src/assets/galery.png",
+        name: "Gallery",
+        image: "src/assets/gallery.png",
+        path: "/",
+      },
+      {
+        name: "Score",
+        image: "src/assets/score.png",
         path: "/",
       },
     ],
@@ -60,11 +65,11 @@ export default function Menu() {
       downController={downController}
       leftController={leftController}
       rightController={rightController}
-      buton1Controller={buton1Controller}
+      button1Controller={button1Controller}
       buttonLabel1="Entrer"
     >
       <div className="menu">
-        {numberY > 0 && <p className="upDirection">↑</p>}
+        {numberY > 0 && <p className="upDirection">▲</p>}
         <div className="category">
           <h1>
             {menu[numberY][0].name}
@@ -76,11 +81,11 @@ export default function Menu() {
           alt={menu[numberY][numberX].name}
         />
         <p>{menu[numberY][numberX].name}</p>
-        {numberX > 1 && <p className="leftDirection">←</p>}
+        {numberX > 1 && <p className="leftDirection">◀</p>}
         {numberX < menu[numberY].length - 1 && (
-          <p className="rightDirection">→</p>
+          <p className="rightDirection">▶</p>
         )}
-        {numberY < menu.length - 1 && <p className="downDirection">↓</p>}
+        {numberY < menu.length - 1 && <p className="downDirection">▼</p>}
       </div>
     </GameBoy>
   );
