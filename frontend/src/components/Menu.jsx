@@ -51,7 +51,7 @@ export default function Menu() {
   const rightController = () => {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
-  const buton1Controller = () => {
+  const button1Controller = () => {
     document.location.href = menu[numberY][numberX].path;
   };
   return (
@@ -60,7 +60,7 @@ export default function Menu() {
       downController={downController}
       leftController={leftController}
       rightController={rightController}
-      buton1Controller={buton1Controller}
+      button1Controller={button1Controller}
     >
       <div className="menu">
         <div className="category">

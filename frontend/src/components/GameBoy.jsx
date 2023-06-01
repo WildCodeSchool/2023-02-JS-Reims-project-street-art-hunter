@@ -6,8 +6,8 @@ export default function GameBoy({
   downController,
   leftController,
   rightController,
-  buton1Controller,
-  buton2Controller,
+  button1Controller,
+  button2Controller,
 }) {
   return (
     <div className="gameBoy">
@@ -30,10 +30,10 @@ export default function GameBoy({
         </button>
       </div>
       <div className="buttonController">
-        <button type="button" className="button1" onClick={buton1Controller}>
+        <button type="button" className="button1" onClick={button1Controller}>
           {" "}
         </button>
-        <button type="button" className="button2" onClick={buton2Controller}>
+        <button type="button" className="button2" onClick={button2Controller}>
           {" "}
         </button>
       </div>
@@ -47,6 +47,6 @@ GameBoy.propTypes = {
   downController: PropTypes.func.isRequired,
   leftController: PropTypes.func.isRequired,
   rightController: PropTypes.func.isRequired,
-  buton1Controller: PropTypes.func.isRequired,
-  buton2Controller: PropTypes.func.isRequired,
+  button1Controller: PropTypes.func.isRequired,
+  button2Controller: PropTypes.func.isRequired,
 };
