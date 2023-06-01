@@ -1,4 +1,3 @@
-import { useGeolocated } from "react-geolocated";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import { useRef, useState, useCallback } from "react";
@@ -10,13 +9,6 @@ function Camera() {
   const [imgSrc, setImgSrc] = useState(null);
 
   const navigate = useNavigate();
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-    useGeolocated({
-      positionOptions: {
-        enableHighAccuracy: false,
-      },
-      userDecisionTimeout: 5000,
-    });
 
   const capture = useCallback(() => {
     setImgSrc(webcamRef.current.getScreenshot());
@@ -40,8 +32,8 @@ function Camera() {
         ) : (
           <div className="video-container">
             <Webcam
-              height={600}
-              width={600}
+              height="auto"
+              width="auto"
               ref={webcamRef}
               screenshotFormat="image/jpeg"
               mirrored
@@ -49,12 +41,6 @@ function Camera() {
           </div>
         )}
       </div>
-      {isGeolocationAvailable && isGeolocationEnabled && coords && imgSrc && (
-        <>
-          <h1 className="posTitle">Latitude : {coords.latitude}</h1>
-          <h1 className="posTitle">Longitude : {coords.longitude}</h1>
-        </>
-      )}
     </GameBoy>
   );
 }
