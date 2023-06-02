@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import GameBoy from "./GameBoy";
 
 export default function Menu() {
+  const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
   const menu = [
@@ -57,7 +59,7 @@ export default function Menu() {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
   const button1Controller = () => {
-    document.location.href = menu[numberY][numberX].path;
+    navigate(menu[numberY][numberX].path);
   };
   return (
     <GameBoy
