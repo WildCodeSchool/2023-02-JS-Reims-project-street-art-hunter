@@ -84,29 +84,30 @@ button {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
       img {
         height: 10rem;
       }
       .rightDirection {
         position: absolute;
-        top: 13rem;
-        right: 2rem;
+        top: 10rem;
+        right: 0rem;
         font-size: 2rem;
       }
       .leftDirection {
         position: absolute;
-        top: 13rem;
-        left: 2rem;
+        top: 10rem;
+        left: 0rem;
         font-size: 2rem;
       }
       .upDirection {
-        position: relative;
-        bottom: 1.5rem;
+        position: absolute;
+        top: 0rem;
         font-size: 2rem;
       }
       .downDirection {
-        position: relative;
-        top: 1.5rem;
+        position: absolute;
+        bottom: 0rem;
         font-size: 2rem;
       }
       .category {
