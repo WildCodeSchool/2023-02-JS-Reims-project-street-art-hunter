@@ -202,25 +202,6 @@ button {
       grid-row-start: 1;
       grid-column-start: 2;
       grid-column-end: 2;
-      .menu {
-        img {
-          height: 5rem;
-        }
-        .rightDirection {
-          top: 10rem;
-          right: 13.5rem;
-        }
-        .leftDirection {
-          top: 10rem;
-          left: 13.5rem;
-        }
-        .upDirection {
-          bottom: 1rem;
-        }
-        .downDirection {
-          top: 1rem;
-        }
-      }
     }
     .controller {
       grid-row-start: 1;
