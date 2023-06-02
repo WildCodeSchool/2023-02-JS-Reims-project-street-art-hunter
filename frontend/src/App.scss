@@ -90,25 +90,25 @@ button {
       }
       .rightDirection {
         position: absolute;
-        top: 10rem;
+        top: 50%;
         right: 0rem;
-        font-size: 2rem;
+        font-size: 200%;
       }
       .leftDirection {
         position: absolute;
-        top: 10rem;
-        left: 0rem;
-        font-size: 2rem;
+        top: 50%;
+        left: 0;
+        font-size: 200%;
       }
       .upDirection {
         position: absolute;
-        top: 0rem;
-        font-size: 2rem;
+        top: 0;
+        font-size: 200%;
       }
       .downDirection {
         position: absolute;
-        bottom: 0rem;
-        font-size: 2rem;
+        bottom: 0;
+        font-size: 200%;
       }
       .category {
         display: flex;
