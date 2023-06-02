@@ -199,6 +199,7 @@ button {
   grid-template-rows: 10fr 1fr;
   text-align: center;
   height: 100vh;
+  position: relative;
   .title {
     margin: 0;
     grid-row-start: 2;
@@ -217,7 +218,7 @@ button {
     img {
       height: 2rem;
       position: absolute;
-      right: 2rem;
+      right: 3rem;
       bottom: 2rem;
     }
   }
