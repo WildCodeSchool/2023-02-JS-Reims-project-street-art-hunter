@@ -19,14 +19,15 @@ class ScoreManager extends AbstractManager {
   }
 
   find(id) {
-    return this.database.query(`select * from  ${this.table} where id = ?`, [
-      id,
-    ]);
+    return this.database.query(
+      `SELECT * FROM gallery JOIN users ON users.id=gallery.id_user JOIN street_art ON street_art.id=gallery.id_street_art WHERE gallery.id= ?`,
+      [id]
+    );
   }
 
   findAll() {
     return this.database.query(
-      `select * from  ${this.table} join utilisateur on `
+      `SELECT users.id,users.pseudo, SUM(street_art.score) AS score FROM gallery JOIN users ON users.id=gallery.id_user JOIN street_art ON street_art.id=gallery.id_street_art GROUP BY gallery.id_user`
     );
   }
 
