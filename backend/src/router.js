@@ -18,12 +18,4 @@ router.put("/street-arts/:id", streetArtControllers.edit);
 router.post("/street-arts", streetArtControllers.add);
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 
-const scoreControllers = require("./controllers/scoreControllers");
-
-router.get("/scores", scoreControllers.browse);
-router.get("/scores/:id", scoreControllers.read);
-router.put("/scores/:id", scoreControllers.edit);
-router.post("/scores", scoreControllers.add);
-router.delete("/scores/:id", scoreControllers.destroy);
-
 module.exports = router;
