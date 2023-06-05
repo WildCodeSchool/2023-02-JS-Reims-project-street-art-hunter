@@ -34,6 +34,7 @@ function Camera() {
       button2Controller={retake}
       buttonLabel1={label1}
       buttonLabel2={label2}
+      ButtonColor1={label1 === "Confirm" ? "green" : "red"}
     >
       <div className="container">
         {imgSrc ? (
