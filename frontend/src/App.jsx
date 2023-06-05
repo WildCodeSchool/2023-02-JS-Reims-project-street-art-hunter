@@ -1,7 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Menu from "./components/Menu";
 import Camera from "./components/Camera";
+
 import Register from "./pages/Register";
+
+import GameBoy from "./components/GameBoy";
+import GameBoyScreen from "./components/GameBoyScreen";
 
 import "./App.scss";
 
@@ -12,6 +16,13 @@ function App() {
         <Route path="/" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
         <Route path="/register" element={<Register />} />
+        {/* route de dev */}
+        <Route path="/gameboy" element={<GameBoy />} />
+        <Route path="/gameboy/screen" element={<GameBoyScreen />} />
+        <Route
+          path="/gameboy/screen/test"
+          element={<GameBoyScreen>test</GameBoyScreen>}
+        />
       </Routes>
     </div>
   );

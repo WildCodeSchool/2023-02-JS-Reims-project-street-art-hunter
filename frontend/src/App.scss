@@ -11,7 +11,6 @@ button {
   cursor: url(./assets/point.png), pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
 .img-container {
   margin-top: 10rem;
 }
@@ -58,7 +57,6 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
-
   .display {
     background-color: black;
     border-radius: 1rem 1rem 3rem 1rem;
@@ -86,7 +84,13 @@ button {
       justify-content: center;
       position: relative;
       img {
-        height: 10rem;
+        height: 7rem;
+      }
+      figure {
+        border: 1rem solid;
+        border-style: inset;
+        height: 12rem;
+        width: 12rem;
       }
       .rightDirection {
         position: absolute;
@@ -110,11 +114,21 @@ button {
         bottom: 0;
         font-size: 200%;
       }
-      .category {
-        display: flex;
-        img {
-          height: 2rem;
-        }
+    }
+    .menu-inventory {
+      background: #cbab58;
+      figure {
+        border-color: gold;
+        border-style: inset;
+        background-color: goldenrod;
+      }
+    }
+    .menu-Setting {
+      background: radial-gradient(cyan, blue);
+      figure {
+        border-color: gray;
+        border-style: inset;
+        background-color: rgb(204, 204, 204);
       }
     }
   }
@@ -168,11 +182,33 @@ button {
       border: none;
       border-radius: 50%;
       background-color: transparent;
-      background-image: url(./assets/button.png);
       background-size: cover;
     }
-    button:active {
-      background-image: url(./assets/buttonClick.png);
+    .red {
+      background-image: url(./assets/red.png);
+    }
+    .red:active {
+      background-image: url(./assets/redClick.png);
+    }
+
+    .green {
+      background-image: url(./assets/green.png);
+    }
+    .green:active {
+      background-image: url(./assets/greenClick.png);
+    }
+
+    .blue {
+      background-image: url(./assets/blue.png);
+    }
+    .blue:active {
+      background-image: url(./assets/blueClick.png);
+    }
+    .yellow {
+      background-image: url(./assets/yellow.png);
+    }
+    .yellow:active {
+      background-image: url(./assets/yellowClick.png);
     }
     .button1 {
       grid-column: 2;
@@ -191,6 +227,37 @@ button {
       grid-column: 2;
       grid-row: 2;
       padding-block: 1.5rem;
+    }
+  }
+}
+.gameBoyScreen {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10fr 1fr;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+  .title {
+    margin: 0;
+    grid-row-start: 2;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .Screen {
+    background-color: white;
+    border-radius: 1rem;
+    margin: 1rem;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    img {
+      height: 2rem;
+      position: absolute;
+      right: 3rem;
+      bottom: 2rem;
     }
   }
 }
