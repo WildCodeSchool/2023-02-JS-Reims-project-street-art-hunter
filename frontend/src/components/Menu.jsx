@@ -39,7 +39,7 @@ export default function Menu() {
       {
         name: "Score",
         image: "src/assets/score.png",
-        path: "/",
+        path: "/score",
       },
     ],
   ];
