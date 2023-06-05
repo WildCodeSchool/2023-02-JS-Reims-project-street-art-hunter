@@ -5,16 +5,16 @@ class ScoreManager extends AbstractManager {
     super({ table: "gallery" });
   }
 
-  insert(gallery) {
+  insert(score) {
     return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      gallery.title,
+      score.title,
     ]);
   }
 
-  update(gallery) {
+  update(score) {
     return this.database.query(
       `update ${this.table} set title = ? where id = ?`,
-      [gallery.title, gallery.id]
+      [score.title, score.id]
     );
   }
 
