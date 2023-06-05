@@ -210,6 +210,9 @@ button {
     background-color: white;
     border-radius: 1rem;
     margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
   }
   button {
     background-color: transparent;
@@ -222,6 +225,20 @@ button {
       bottom: 2rem;
     }
   }
+}
+table {
+  margin: auto;
+  width: 70%;
+}
+table,
+td {
+  border: 1px solid #333;
+}
+
+thead,
+tfoot {
+  background-color: #333;
+  color: #fff;
 }
 @media (orientation: landscape) {
   .gameBoy {

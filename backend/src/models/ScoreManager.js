@@ -27,7 +27,7 @@ class ScoreManager extends AbstractManager {
 
   findAll() {
     return this.database.query(
-      `SELECT users.id,users.pseudo, SUM(street_art.score) AS score FROM gallery JOIN users ON users.id=gallery.id_user JOIN street_art ON street_art.id=gallery.id_street_art GROUP BY gallery.id_user`
+      `SELECT users.id,users.pseudo, SUM(street_art.score) AS score FROM gallery JOIN users ON users.id=gallery.id_user JOIN street_art ON street_art.id=gallery.id_street_art GROUP BY gallery.id_user ORDER BY score DESC LIMIT 0,15`
     );
   }
 
