@@ -11,7 +11,6 @@ button {
   cursor: url(./assets/point.png), pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
 .img-container {
   margin-top: 10rem;
 }
@@ -58,7 +57,6 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
-
   .display {
     background-color: black;
     border-radius: 1rem 1rem 3rem 1rem;
@@ -191,6 +189,37 @@ button {
       grid-column: 2;
       grid-row: 2;
       padding-block: 1.5rem;
+    }
+  }
+}
+.gameBoyScreen {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10fr 1fr;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+  .title {
+    margin: 0;
+    grid-row-start: 2;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .Screen {
+    background-color: white;
+    border-radius: 1rem;
+    margin: 1rem;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    img {
+      height: 2rem;
+      position: absolute;
+      right: 3rem;
+      bottom: 2rem;
     }
   }
 }
