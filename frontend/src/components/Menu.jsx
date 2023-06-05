@@ -11,8 +11,6 @@ export default function Menu() {
     [
       {
         name: "Setting",
-        image: "src/assets/setting.png",
-        path: "/",
       },
       {
         name: "Logout",
@@ -22,9 +20,7 @@ export default function Menu() {
     ],
     [
       {
-        name: "Game",
-        image: "src/assets/game.png",
-        path: "/",
+        name: "inventory",
       },
       {
         name: "Photo",
@@ -69,20 +65,25 @@ export default function Menu() {
       rightController={rightController}
       button1Controller={button1Controller}
       buttonLabel1="Entrer"
+      buttonLabel2="Exit"
+      ButtonColor1={numberY === 1 ? "yellow" : "blue"}
+      ButtonColor2={numberY === 1 ? "yellow" : "blue"}
     >
-      <div className="menu">
+      <div
+        className={`menu ${numberY === 1 ? "menu-inventory" : "menu-Setting"}`}
+      >
         {numberY > 0 && <p className="upDirection">▲</p>}
-        <div className="category">
-          <h1>
-            {menu[numberY][0].name}
-            <img src={menu[numberY][0].image} alt={menu[numberY][0].name} />
-          </h1>
-        </div>
-        <img
-          src={menu[numberY][numberX].image}
-          alt={menu[numberY][numberX].name}
-        />
-        <p>{menu[numberY][numberX].name}</p>
+        <h2>{menu[numberY][0].name}</h2>
+        <figure>
+          <img
+            src={menu[numberY][numberX].image}
+            alt={menu[numberY][numberX].name}
+            name="image"
+          />
+          <figcaption>
+            <h1>{menu[numberY][numberX].name}</h1>
+          </figcaption>
+        </figure>
         {numberX > 1 && <p className="leftDirection">◀</p>}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">▶</p>
