@@ -17,6 +17,11 @@ export default function Score() {
         <tr>
           <th colSpan="3">Scores</th>
         </tr>
+        <tr>
+          <th>Rang</th>
+          <th>Player</th>
+          <th>Point</th>
+        </tr>
       </thead>
       <tbody>
         {scores.map((score, index) => (
