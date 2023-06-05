@@ -10,6 +10,8 @@ export default function GameBoy({
   button2Controller,
   buttonLabel1,
   buttonLabel2,
+  ButtonColor1,
+  ButtonColor2,
 }) {
   return (
     <div className="gameBoy">
@@ -40,7 +42,7 @@ export default function GameBoy({
         </label>
         <button
           type="button"
-          className="button1"
+          className={`button1 ${ButtonColor1 ?? "red"}`}
           name="button1"
           onClick={button1Controller}
         >
@@ -48,7 +50,7 @@ export default function GameBoy({
         </button>
         <button
           type="button"
-          className="button2"
+          className={`button2 ${ButtonColor2 ?? "red"}`}
           name="button2"
           onClick={button2Controller}
         >
@@ -69,4 +71,6 @@ GameBoy.propTypes = {
   button2Controller: PropTypes.func.isRequired,
   buttonLabel1: PropTypes.string.isRequired,
   buttonLabel2: PropTypes.string.isRequired,
+  ButtonColor1: PropTypes.string.isRequired,
+  ButtonColor2: PropTypes.string.isRequired,
 };

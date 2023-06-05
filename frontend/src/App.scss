@@ -88,6 +88,12 @@ button {
       img {
         height: 10rem;
       }
+      figcaption {
+        border: 1rem solid;
+        border-style: inset;
+        height: 14rem;
+        width: 14rem;
+      }
       .rightDirection {
         position: absolute;
         top: 50%;
@@ -110,11 +116,21 @@ button {
         bottom: 0;
         font-size: 200%;
       }
-      .category {
-        display: flex;
-        img {
-          height: 2rem;
-        }
+    }
+    .menu-inventory {
+      background: #cbab58;
+      figcaption {
+        border-color: gold;
+        border-style: inset;
+        background-color: goldenrod;
+      }
+    }
+    .menu-Setting {
+      background: radial-gradient(cyan, blue);
+      figcaption {
+        border-color: gray;
+        border-style: inset;
+        background-color: rgb(204, 204, 204);
       }
     }
   }
@@ -168,11 +184,33 @@ button {
       border: none;
       border-radius: 50%;
       background-color: transparent;
-      background-image: url(./assets/button.png);
       background-size: cover;
     }
-    button:active {
-      background-image: url(./assets/buttonClick.png);
+    .red {
+      background-image: url(./assets/red.png);
+    }
+    .red:active {
+      background-image: url(./assets/redClick.png);
+    }
+
+    .green {
+      background-image: url(./assets/green.png);
+    }
+    .green:active {
+      background-image: url(./assets/greenClick.png);
+    }
+
+    .blue {
+      background-image: url(./assets/blue.png);
+    }
+    .blue:active {
+      background-image: url(./assets/blueClick.png);
+    }
+    .yellow {
+      background-image: url(./assets/yellow.png);
+    }
+    .yellow:active {
+      background-image: url(./assets/yellowClick.png);
     }
     .button1 {
       grid-column: 2;
