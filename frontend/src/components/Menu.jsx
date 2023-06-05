@@ -72,16 +72,16 @@ export default function Menu() {
       >
         {numberY > 0 && <p className="upDirection">▲</p>}
         <h2>{menu[numberY][0].name}</h2>
-        <figcaption>
+        <figure>
           <img
             src={menu[numberY][numberX].image}
             alt={menu[numberY][numberX].name}
             name="image"
           />
-          <figure>
+          <figcaption>
             <h1>{menu[numberY][numberX].name}</h1>
-          </figure>
-        </figcaption>
+          </figcaption>
+        </figure>
         {numberX > 1 && <p className="leftDirection">◀</p>}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">▶</p>

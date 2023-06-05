@@ -86,13 +86,13 @@ button {
       justify-content: center;
       position: relative;
       img {
-        height: 10rem;
+        height: 7rem;
       }
-      figcaption {
+      figure {
         border: 1rem solid;
         border-style: inset;
-        height: 14rem;
-        width: 14rem;
+        height: 12rem;
+        width: 12rem;
       }
       .rightDirection {
         position: absolute;
@@ -119,7 +119,7 @@ button {
     }
     .menu-inventory {
       background: #cbab58;
-      figcaption {
+      figure {
         border-color: gold;
         border-style: inset;
         background-color: goldenrod;
@@ -127,7 +127,7 @@ button {
     }
     .menu-Setting {
       background: radial-gradient(cyan, blue);
-      figcaption {
+      figure {
         border-color: gray;
         border-style: inset;
         background-color: rgb(204, 204, 204);
