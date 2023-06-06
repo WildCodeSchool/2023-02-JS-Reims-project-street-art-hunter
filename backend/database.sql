@@ -22,7 +22,7 @@ create table user (
   username VARCHAR(80) NOT NULL UNIQUE,
   password VARCHAR(80) NOT NULL,
   mail VARCHAR(40) NOT NULL UNIQUE,
-  isadmin BOOLEAN 
+  isadmin BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

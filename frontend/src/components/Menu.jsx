@@ -64,6 +64,7 @@ export default function Menu() {
       leftController={leftController}
       rightController={rightController}
       button1Controller={button1Controller}
+      button2Controller={() => navigate("/")}
       buttonLabel1="Entrer"
       buttonLabel2="Exit"
       ButtonColor1={numberY === 1 ? "yellow" : "blue"}
