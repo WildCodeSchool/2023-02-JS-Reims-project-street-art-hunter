@@ -290,20 +290,36 @@ button {
     background-color: white;
     border-radius: 1rem;
     margin: 1rem;
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      figure {
-        margin: 0;
-        padding: 1rem;
-        img {
-          height: 5rem;
-        }
-        figcaption {
-          p {
-            background-color: black;
-            color: white;
-          }
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
+  }
+  table {
+    margin: auto;
+    max-width: 17rem;
+  }
+  table,
+  td {
+    border: 1px solid #333;
+  }
+  thead,
+  tfoot {
+    background-color: #333;
+    color: #fff;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    figure {
+      margin: 0;
+      padding: 1rem;
+      img {
+        height: 5rem;
+      }
+      figcaption {
+        p {
+          background-color: black;
+          color: white;
         }
       }
     }
@@ -320,6 +336,7 @@ button {
     }
   }
 }
+
 @media (orientation: landscape) {
   .gameBoy {
     grid-template-columns: 1fr 2.5fr 1fr;

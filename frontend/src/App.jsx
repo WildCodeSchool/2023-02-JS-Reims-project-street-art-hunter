@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Menu from "./components/Menu";
 import Camera from "./components/Camera";
 import GameBoyScreen from "./components/GameBoyScreen";
+import Score from "./components/Score";
 import Gallery from "./components/Gallery";
 
 import "./App.scss";
@@ -19,6 +20,14 @@ function App() {
           element={
             <GameBoyScreen>
               <Gallery />
+            </GameBoyScreen>
+          }
+        />
+        <Route
+          path="/score"
+          element={
+            <GameBoyScreen>
+              <Score />
             </GameBoyScreen>
           }
         />
