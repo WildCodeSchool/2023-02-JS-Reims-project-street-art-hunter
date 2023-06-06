@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-
+import GameBoy from "./components/GameBoy";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menu from "./components/Menu";
