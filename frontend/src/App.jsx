@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 
 import GameBoy from "./components/GameBoy";
 import GameBoyScreen from "./components/GameBoyScreen";
+import Gallery from "./components/Gallery";
 
 import "./App.scss";
 
@@ -16,6 +17,14 @@ function App() {
         <Route path="/" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/gallery"
+          element={
+            <GameBoyScreen>
+              <Gallery />
+            </GameBoyScreen>
+          }
+        />
         {/* route de dev */}
         <Route path="/gameboy" element={<GameBoy />} />
         <Route path="/gameboy/screen" element={<GameBoyScreen />} />
