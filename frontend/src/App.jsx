@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
+import GameBoyColor from "./components/GameBoyColor";
 import Menu from "./components/Menu";
 import Camera from "./components/Camera";
 import GameBoyScreen from "./components/GameBoyScreen";
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gameboycolor" element={<GameBoyColor />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
         <Route

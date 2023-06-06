@@ -134,6 +134,9 @@ button {
         height: 12rem;
         width: 12rem;
       }
+      h1 {
+        margin: 0;
+      }
       .rightDirection {
         position: absolute;
         top: 50%;
@@ -335,6 +338,12 @@ button {
       bottom: 2rem;
     }
   }
+}
+.gameBoyColor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (orientation: landscape) {
