@@ -30,7 +30,7 @@ export default function Menu() {
       {
         name: "Gallery",
         image: "src/assets/gallery.png",
-        path: "/",
+        path: "/gallery",
       },
       {
         name: "Score",

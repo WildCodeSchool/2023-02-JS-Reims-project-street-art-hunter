@@ -265,6 +265,23 @@ button {
     background-color: #333;
     color: #fff;
   }
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    figure {
+      margin: 0;
+      padding: 1rem;
+      img {
+        height: 5rem;
+      }
+      figcaption {
+        p {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+  }
   button {
     background-color: transparent;
     border: none;

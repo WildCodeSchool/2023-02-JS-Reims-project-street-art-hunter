@@ -4,6 +4,7 @@ import GameBoyScreen from "./components/GameBoyScreen";
 import Menu from "./components/Menu";
 import Camera from "./components/Camera";
 import Score from "./components/Score";
+import Gallery from "./components/Gallery";
 
 import "./App.scss";
 
@@ -13,6 +14,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
+        <Route
+          path="/gallery"
+          element={
+            <GameBoyScreen>
+              <Gallery />
+            </GameBoyScreen>
+          }
+        />
         <Route
           path="/score"
           element={
