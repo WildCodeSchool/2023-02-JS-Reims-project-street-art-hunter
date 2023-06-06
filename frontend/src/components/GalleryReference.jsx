@@ -4,7 +4,7 @@ export default function GalleryReference() {
   const [streetArts, setStreetArts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/street-arts")
+    fetch(`${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000" }/street-arts`)
       .then((response) => response.json())
       .then((data) => {
         setStreetArts(data);
@@ -16,7 +16,7 @@ export default function GalleryReference() {
         <figure key={streetArt.id}>
           <img
             src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-            alt="picture of street art"
+            alt="street"
           />
 
           <figcaption>{streetArt.name && <p>{streetArt.name}</p>}</figcaption>

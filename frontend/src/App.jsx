@@ -22,7 +22,7 @@ function App() {
           }
         />
         <Route
-          path="/gallery-reference"
+          path="/street-arts"
           element={
             <GameBoyScreen>
               <GalleryReference />
