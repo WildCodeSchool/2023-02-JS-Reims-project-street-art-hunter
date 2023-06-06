@@ -2,8 +2,8 @@ CREATE TABLE street_art (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name varchar(255) NULL,
   image varchar(255) NOT NULL,
-  longitude FLOAT NOT NUlL,
-  latitude FLOAT NOT NULL,
+  longitude NUMERIC(10,5) NOT NUlL,
+  latitude NUMERIC(10,5) NOT NULL,
   is_valid BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

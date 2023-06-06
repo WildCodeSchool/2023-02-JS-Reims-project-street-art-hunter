@@ -4,8 +4,9 @@ import Camera from "./components/Camera";
 import GameBoy from "./components/GameBoy";
 import GameBoyScreen from "./components/GameBoyScreen";
 import Gallery from "./components/Gallery";
-
+import GalleryReference from "./components/GalleryReference";
 import "./App.scss";
+
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
           element={
             <GameBoyScreen>
               <Gallery />
+            </GameBoyScreen>
+          }
+        />
+        <Route
+          path="/gallery-reference"
+          element={
+            <GameBoyScreen>
+              <GalleryReference />
             </GameBoyScreen>
           }
         />
