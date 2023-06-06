@@ -4,7 +4,9 @@ export default function Score() {
   const [scores, setScores] = useState([]);
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`}/scores`
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
+      }/users/scores`
     )
       .then((res) => res.json())
       .then((data) => {
