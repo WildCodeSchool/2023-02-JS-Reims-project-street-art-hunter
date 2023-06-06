@@ -344,6 +344,10 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  input[type="color"] {
+    width: 70%;
+    height: 70%;
+  }
 }
 
 @media (orientation: landscape) {
