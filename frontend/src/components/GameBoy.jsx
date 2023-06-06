@@ -42,7 +42,7 @@ export default function GameBoy({
         </label>
         <button
           type="button"
-          className={`button1 ${ButtonColor1 ?? "red"}`}
+          className={`button1 ${ButtonColor1}`}
           name="button1"
           onClick={button1Controller}
         >
@@ -50,7 +50,7 @@ export default function GameBoy({
         </button>
         <button
           type="button"
-          className={`button2 ${ButtonColor2 ?? "red"}`}
+          className={`button2 ${ButtonColor2}`}
           name="button2"
           onClick={button2Controller}
         >
@@ -63,14 +63,27 @@ export default function GameBoy({
 
 GameBoy.propTypes = {
   children: PropTypes.node.isRequired,
-  upController: PropTypes.func.isRequired,
-  downController: PropTypes.func.isRequired,
-  leftController: PropTypes.func.isRequired,
-  rightController: PropTypes.func.isRequired,
-  button1Controller: PropTypes.func.isRequired,
-  button2Controller: PropTypes.func.isRequired,
-  buttonLabel1: PropTypes.string.isRequired,
-  buttonLabel2: PropTypes.string.isRequired,
-  ButtonColor1: PropTypes.string.isRequired,
-  ButtonColor2: PropTypes.string.isRequired,
+  upController: PropTypes.func,
+  downController: PropTypes.func,
+  leftController: PropTypes.func,
+  rightController: PropTypes.func,
+  button1Controller: PropTypes.func,
+  button2Controller: PropTypes.func,
+  buttonLabel1: PropTypes.string,
+  buttonLabel2: PropTypes.string,
+  ButtonColor1: PropTypes.string,
+  ButtonColor2: PropTypes.string,
+};
+
+GameBoy.defaultProps = {
+  upController: () => {},
+  downController: () => {},
+  leftController: () => {},
+  rightController: () => {},
+  button1Controller: () => {},
+  button2Controller: () => {},
+  buttonLabel1: "",
+  buttonLabel2: "",
+  ButtonColor1: "red",
+  ButtonColor2: "red",
 };
