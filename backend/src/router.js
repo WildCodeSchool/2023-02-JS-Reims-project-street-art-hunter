@@ -18,4 +18,14 @@ router.put("/street-arts/:id", streetArtControllers.edit);
 router.post("/street-arts", streetArtControllers.add);
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 
+router.get("/users/scores", (req, res) =>
+  res.send([
+    { id: 1, pseudo: "Player1", score: 200 },
+    { id: 2, pseudo: "Player2", score: 100 },
+  ])
+);
+router.get("/users/scores/:id", (req, res) =>
+  res.send([{ id: 1, pseudo: "Player1", score: 200 }])
+);
+
 module.exports = router;
