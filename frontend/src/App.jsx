@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-
+import GameBoy from "./components/GameBoy";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menu from "./components/Menu";
@@ -8,7 +8,7 @@ import Camera from "./components/Camera";
 import GameBoyScreen from "./components/GameBoyScreen";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
-
+import GalleryReference from "./components/GalleryReference";
 import "./App.scss";
 import { useAuth } from "./contexts/AuthContext";
 
@@ -39,6 +39,17 @@ function App() {
             </GameBoyScreen>
           }
         />
+        <Route
+          path="/street-arts"
+          element={
+            <GameBoyScreen>
+              <GalleryReference />
+            </GameBoyScreen>
+          }
+        />
+        {/* route de dev */}
+        <Route path="/gameboy" element={<GameBoy />} />
+        <Route path="/gameboy/screen" element={<GameBoyScreen />} />
         <Route
           path="/score"
           element={
