@@ -38,6 +38,11 @@ const StreetArtManager = require("./StreetArtManager");
 
 models.streetArt = new StreetArtManager();
 models.streetArt.setDatabase(pool);
+
+const UserManager = require("./UserManager");
+
+models.user = new UserManager();
+models.user.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 
