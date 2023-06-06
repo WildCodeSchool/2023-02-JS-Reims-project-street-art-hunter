@@ -29,7 +29,7 @@ export default function Score() {
         {scores.map((score, index) => (
           <tr key={score.id}>
             <td>{index + 1}</td>
-            <td>{score.pseudo}</td>
+            <td>{score.username}</td>
             <td>{score.score}</td>
           </tr>
         ))}

@@ -80,10 +80,23 @@ const destroy = (req, res) => {
     });
 };
 
+const scores = (req, res) => {
+  models.user
+    .findAllScores()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  scores,
 };
