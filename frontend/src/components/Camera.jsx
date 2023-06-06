@@ -24,7 +24,7 @@ function Camera() {
       setLabel1("Screen");
       setLabel2("Return");
     } else {
-      navigate("/");
+      navigate("/menu");
     }
   };
 

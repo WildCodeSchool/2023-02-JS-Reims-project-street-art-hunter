@@ -9,7 +9,7 @@ export default function GameBoyScreen({ children }) {
       <div className="Screen">{children}</div>
       <p className="title">
         Street Art Hunter
-        <Link to="/">
+        <Link to="/menu">
           <button type="button" className="return">
             <img src={Return} alt="return" />
           </button>
