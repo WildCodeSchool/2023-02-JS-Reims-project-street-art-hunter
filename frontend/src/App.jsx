@@ -7,7 +7,6 @@ import Gallery from "./components/Gallery";
 import GalleryReference from "./components/GalleryReference";
 import "./App.scss";
 
-
 function App() {
   return (
     <div className="App">

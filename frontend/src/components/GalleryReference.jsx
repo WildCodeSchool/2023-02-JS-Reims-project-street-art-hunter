@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function GalleryReference() {
-  
   const [streetArts, setStreetArts] = useState([]);
 
   useEffect(() => {
@@ -11,20 +10,16 @@ export default function GalleryReference() {
         setStreetArts(data);
       });
   }, []);
-  console.log(streetArts)
   return (
     <div className="gallery">
       {streetArts.map((streetArt) => (
         <figure key={streetArt.id}>
-          <img src={streetArt.image
-          ? `${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`
-          : streetArt.image} alt="" />
-          
-          <figcaption>
-            {streetArt.id && <p>{streetArt.id}</p>}
-            
-          </figcaption>
-          
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
+            alt="picture of street art"
+          />
+
+          <figcaption>{streetArt.name && <p>{streetArt.name}</p>}</figcaption>
         </figure>
       ))}
     </div>
