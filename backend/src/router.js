@@ -21,9 +21,7 @@ router.delete("/street-arts/:id", streetArtControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.get("/users/scores", userControllers.scores);
-router.get("/users/scores/:id", (req, res) =>
-  res.send([{ id: 1, pseudo: "Player1", score: 200 }])
-);
+router.get("/users/:id/score", userControllers.score);
 
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
