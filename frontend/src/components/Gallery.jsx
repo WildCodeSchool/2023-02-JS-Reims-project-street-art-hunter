@@ -18,7 +18,12 @@ export default function Gallery() {
     <div className="gallery">
       {gallery.map((picture) => (
         <figure key={picture.id}>
-          <img src={picture.image} alt="" />
+          <img
+            src={`${
+              import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
+            }${picture.image}`}
+            alt=""
+          />
           <figcaption>
             {picture.name && <p>{picture.name}</p>}
             {picture.creation_date}
