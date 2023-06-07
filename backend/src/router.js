@@ -20,6 +20,9 @@ router.delete("/street-arts/:id", streetArtControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
+router.get("/users/scores", userControllers.scores);
+router.get("/users/:id/score", userControllers.score);
+
 router.get("/users/:id/gallery", userControllers.gallery);
 
 router.get("/users", userControllers.browse);
@@ -31,14 +34,5 @@ router.delete("/users/:id", userControllers.destroy);
 const authControllers = require("./controllers/authControllers");
 
 router.post("/login", authControllers.login);
-router.get("/users/scores", (req, res) =>
-  res.send([
-    { id: 1, pseudo: "Player1", score: 200 },
-    { id: 2, pseudo: "Player2", score: 100 },
-  ])
-);
-router.get("/users/scores/:id", (req, res) =>
-  res.send([{ id: 1, pseudo: "Player1", score: 200 }])
-);
 
 module.exports = router;

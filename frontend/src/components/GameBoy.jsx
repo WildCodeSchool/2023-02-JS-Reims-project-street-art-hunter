@@ -12,9 +12,10 @@ export default function GameBoy({
   buttonLabel2,
   ButtonColor1,
   ButtonColor2,
+  gameBoyColor,
 }) {
   return (
-    <div className="gameBoy">
+    <div className="gameBoy" style={{ backgroundColor: gameBoyColor }}>
       <div className="display">
         {children}
         <p className="title">Street Art Hunter</p>
@@ -73,6 +74,7 @@ GameBoy.propTypes = {
   buttonLabel2: PropTypes.string,
   ButtonColor1: PropTypes.string,
   ButtonColor2: PropTypes.string,
+  gameBoyColor: PropTypes.string,
 };
 
 GameBoy.defaultProps = {
@@ -86,4 +88,5 @@ GameBoy.defaultProps = {
   buttonLabel2: "",
   ButtonColor1: "red",
   ButtonColor2: "red",
+  gameBoyColor: localStorage.getItem("gameBoyColor"),
 };
