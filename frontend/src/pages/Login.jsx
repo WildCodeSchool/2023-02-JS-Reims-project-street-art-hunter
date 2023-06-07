@@ -9,11 +9,12 @@ function Login() {
   const navigate = useNavigate();
   return (
     <form
+      className="form-login"
       onSubmit={(event) => {
         event.preventDefault();
         fetch(
           `${
-            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
           }/login`,
           {
             method: "post",
@@ -27,17 +28,17 @@ function Login() {
           .then((response) => response.json())
           .then((data) => {
             setToken(data.token);
-            navigate("/");
+            navigate("/menu");
           });
       }}
     >
       {" "}
-      <div>
+      <div className="form-line">
         {" "}
         <label htmlFor="username">Username</label>{" "}
         <input ref={usernameRef} type="text" id="username" name="username" />{" "}
       </div>{" "}
-      <div>
+      <div className="form-line">
         {" "}
         <label htmlFor="password">Password</label>{" "}
         <input

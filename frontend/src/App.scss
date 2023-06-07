@@ -369,3 +369,41 @@ button {
     }
   }
 }
+
+.form-connexion {
+  background-color: rgba($color: #300963, $alpha: 0.6);
+  color: #1c023d;
+  border: 3px solid #1c023d;
+  padding: 1em;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.change-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em;
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: medium;
+  }
+}
+
+.form-login,
+.form-register {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-around;
+  .form-line {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+  }
+}
