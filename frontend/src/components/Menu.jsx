@@ -13,7 +13,7 @@ export default function Menu() {
         name: "Setting",
       },
       {
-        name: "Game Boy Color",
+        name: "Color",
         image: "src/assets/color.png",
         path: "/gameboycolor",
       },

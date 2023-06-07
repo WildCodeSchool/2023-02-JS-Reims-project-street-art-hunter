@@ -2,6 +2,12 @@ body {
   padding: 0;
   margin: 0;
   cursor: url(./assets/main.png), auto;
+  font-family: retropix;
+}
+@font-face {
+  font-family: "retropix";
+  src: url("./assets/retropix.otf");
+  font-weight: bold;
 }
 p {
   margin: 0;
@@ -19,44 +25,47 @@ button {
   color: white;
 }
 
-.video-container {
-  margin-top: 10em;
-}
-
-@media (max-width: 600px) {
-  .container {
-    max-width: 20em;
-    padding: 1rem;
-
-    .video-container {
-      margin-top: 0em;
-      border-radius: 1em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-container:first-child {
-      overflow: hidden;
-    }
-    .img-container {
-      border-radius: 1em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0rem;
-    }
-    .img-container:first-child {
-      overflow: hidden;
-    }
+.container {
+  max-width: 20em;
+  padding: 1rem;
+  position: absolute;
+  .video-container {
+    position: relative;
+    margin-top: 10em;
+    height: 50vh;
+    width: auto;
+  }
+  .video-container {
+    margin-top: 0em;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-container:first-child {
+    overflow: hidden;
+  }
+  .img-container {
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0rem;
+  }
+  .img-container:first-child {
+    overflow: hidden;
   }
 }
+
 .home {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(#3c3747, blueviolet);
+  background-image: url(./assets/bg1.jpg);
+  background-size: cover;
+  background-position: center;
   img {
     height: 15rem;
     position: relative;
@@ -133,9 +142,16 @@ button {
         border-style: inset;
         height: 12rem;
         width: 12rem;
+        padding-top: 10px;
       }
       h1 {
         margin: 0;
+      }
+      h2 {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        padding: 1rem;
       }
       .rightDirection {
         position: absolute;
@@ -161,7 +177,12 @@ button {
       }
     }
     .menu-inventory {
-      background: #cbab58;
+      background-image: url(./assets/cuire.jpg);
+      background-size: cover;
+      h2 {
+        background-image: url(./assets/title-inventory.png);
+        color: white;
+      }
       figure {
         border-color: gold;
         border-style: inset;
@@ -170,6 +191,11 @@ button {
     }
     .menu-Setting {
       background: radial-gradient(cyan, blue);
+      h2 {
+        background-image: url(./assets/title-Setting.png);
+        background-size: 20rem 15rem;
+        background-repeat: no-repeat;
+      }
       figure {
         border-color: gray;
         border-style: inset;
@@ -263,15 +289,20 @@ button {
       grid-column: 1;
       grid-row: 2;
     }
+    label {
+      background-color: #d1d6cd;
+      border-radius: 1rem;
+      text-align: center;
+    }
     .label1 {
       grid-column: 1;
       grid-row: 1;
-      padding-block: 1.5rem;
+      margin-block: 1.5rem;
     }
     .label2 {
       grid-column: 2;
       grid-row: 2;
-      padding-block: 1.5rem;
+      margin-block: 1.5rem;
     }
   }
 }
@@ -351,6 +382,10 @@ button {
 }
 
 @media (orientation: landscape) {
+  .home {
+    flex-direction: row;
+    background-image: url(./assets/bg2.jpg);
+  }
   .gameBoy {
     grid-template-columns: 1fr 2.5fr 1fr;
     grid-template-rows: 1fr;
@@ -358,6 +393,18 @@ button {
       grid-row-start: 1;
       grid-column-start: 2;
       grid-column-end: 2;
+      .menu {
+        img {
+          height: 3rem;
+        }
+        figure {
+          height: 6rem;
+          width: 10rem;
+        }
+        h2 {
+          font-size: 1rem;
+        }
+      }
     }
     .controller {
       grid-row-start: 1;
@@ -366,6 +413,12 @@ button {
     .buttonController {
       grid-row-start: 1;
       grid-column: 3;
+    }
+  }
+  .container {
+    .video-container {
+      height: 75vh;
+      width: 46vw;
     }
   }
 }
