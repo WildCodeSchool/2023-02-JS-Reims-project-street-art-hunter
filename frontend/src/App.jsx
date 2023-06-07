@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import GameBoy from "./components/GameBoy";
+import GameBoyColor from "./components/GameBoyColor";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menu from "./components/Menu";
@@ -18,6 +18,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gameboycolor" element={<GameBoyColor />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
         {token == null ? (
@@ -47,9 +48,6 @@ function App() {
             </GameBoyScreen>
           }
         />
-        {/* route de dev */}
-        <Route path="/gameboy" element={<GameBoy />} />
-        <Route path="/gameboy/screen" element={<GameBoyScreen />} />
         <Route
           path="/score"
           element={
