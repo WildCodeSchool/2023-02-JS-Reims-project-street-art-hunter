@@ -18,6 +18,13 @@ class UserManager extends AbstractManager {
       [user.username, user.password, user.mail, user.id]
     );
   }
+
+  findGallery(id) {
+    return this.database.query(
+      "SELECT gallery.id, street_art.name, street_art.image, gallery.creation_date FROM `gallery` JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
+      [id]
+    );
+  }
 }
 
 module.exports = UserManager;

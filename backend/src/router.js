@@ -20,6 +20,8 @@ router.delete("/street-arts/:id", streetArtControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
+router.get("/users/:id/gallery", userControllers.gallery);
+
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
