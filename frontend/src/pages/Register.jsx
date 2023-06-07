@@ -46,7 +46,9 @@ function Register() {
         <label htmlFor="mail">E-mail</label>
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
-      <button type="submit">Go</button>
+      <button type="submit" className="submit-register">
+        Go
+      </button>
     </form>
   );
 }

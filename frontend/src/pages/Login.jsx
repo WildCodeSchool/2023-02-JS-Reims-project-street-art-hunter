@@ -48,7 +48,9 @@ function Login() {
           name="password"
         />{" "}
       </div>{" "}
-      <button type="submit">Go</button>{" "}
+      <button type="submit" className="submit-login">
+        Go
+      </button>{" "}
     </form>
   );
 }

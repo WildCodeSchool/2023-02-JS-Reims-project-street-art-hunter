@@ -461,6 +461,7 @@ button {
     border: none;
     padding: 0;
     font-size: medium;
+    font-family: "retropix";
     color: #fff;
   }
 }
@@ -479,4 +480,9 @@ button {
   label {
     color: #fff;
   }
+}
+
+.submit-login,
+.submit-register {
+  font-family: "retropix";
 }
