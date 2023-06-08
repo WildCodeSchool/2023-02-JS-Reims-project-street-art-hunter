@@ -18,10 +18,14 @@ create table user (
 
 CREATE TABLE gallery (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  id_user int(11) NOT NULL,
-  id_street_art int(11) NOT NULL,
+  id_user int(11) UNSIGNED NOT NULL,
+  id_street_art int(11) UNSIGNED NOT NULL,
   creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  image varchar(255) NOT NULL
+  image varchar(255) NOT NULL,
+  KEY `fk_gallery_user` (`id_user`),
+  KEY `fk_gallery_street_art` (`id_street_art`),
+  CONSTRAINT `fk_gallery_user` FOREIGN KEY (id_user) REFERENCES `user`(id),
+  CONSTRAINT `fk_gallery_street_art` FOREIGN KEY (id_street_art) REFERENCES `street_art`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
