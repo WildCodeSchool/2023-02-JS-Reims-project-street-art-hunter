@@ -27,6 +27,7 @@ export default function Gallery() {
           <figcaption>
             {picture.name && <p>{picture.name}</p>}
             {picture.creation_date}
+            <p>{picture.score} point</p>
           </figcaption>
         </figure>
       ))}
