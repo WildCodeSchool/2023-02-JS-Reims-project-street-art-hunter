@@ -47,7 +47,7 @@ function Register() {
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
       <button type="submit" className="submit-register">
-        Go
+        Play
       </button>
     </form>
   );

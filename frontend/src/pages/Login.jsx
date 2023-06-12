@@ -49,7 +49,7 @@ function Login() {
         />{" "}
       </div>{" "}
       <button type="submit" className="submit-login">
-        Go
+        Play
       </button>{" "}
     </form>
   );

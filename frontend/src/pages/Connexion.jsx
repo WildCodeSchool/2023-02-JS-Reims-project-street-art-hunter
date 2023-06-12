@@ -12,10 +12,18 @@ function Connexion() {
       <img src={logo} alt="" />
       <div className="form-connexion">
         <div className="change-menu">
-          <button type="button" onClick={() => setIsLogin(true)}>
+          <button
+            className={isLogin ? "selected-button" : "default-button"}
+            type="button"
+            onClick={() => setIsLogin(true)}
+          >
             Login
           </button>
-          <button type="button" onClick={() => setIsLogin(false)}>
+          <button
+            className={!isLogin ? "selected-button" : "default-button"}
+            type="button"
+            onClick={() => setIsLogin(false)}
+          >
             Register
           </button>
         </div>
