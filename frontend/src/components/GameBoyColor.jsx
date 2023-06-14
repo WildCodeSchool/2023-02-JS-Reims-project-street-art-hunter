@@ -18,26 +18,20 @@ export default function GameBoyColor() {
       }}
       buttonLabel2="Exit"
       gameBoyColor={color}
+      buttonLabelup="Delete color"
+      upController={() => setColor(null)}
+      buttonLabeldown="Reset sov color"
+      downController={() => setColor(localStorage.getItem("gameBoyColor"))}
       leftController={() => setColor(color - 1)}
       rightController={() => setColor(color + 1)}
     >
-      <div className="gameBoyColor">
-        <button type="button" onClick={() => setColor(null)}>
-          Delet color
-        </button>
-        <input
-          type="color"
-          name="couleur"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
-        <button
-          type="button"
-          onClick={() => setColor(localStorage.getItem("gameBoyColor"))}
-        >
-          Riset color
-        </button>
-      </div>
+      <input
+        className="gameBoyColor"
+        type="color"
+        name="couleur"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
     </GameBoy>
   );
 }

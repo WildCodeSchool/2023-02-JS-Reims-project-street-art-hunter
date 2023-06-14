@@ -104,10 +104,12 @@ button {
 }
 .gameBoy {
   height: 100vh;
+  width: 100%;
   background-color: hsl(93, 10%, 82%);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
+  position: absolute;
   .display {
     background-color: black;
     border-radius: 1rem 1rem 3rem 1rem;
@@ -119,60 +121,80 @@ button {
     grid-template-columns: 1fr;
     grid-template-rows: 10fr 1fr;
     text-align: center;
+    position: relative;
+    width: auto;
     .title {
       margin: 0;
       grid-row-start: 2;
       color: white;
-      font-size: 1.5rem;
+      font-size: 150%;
     }
     .menu {
       background-color: white;
       margin: 1rem;
       border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 10% 1fr 10%;
+      grid-template-rows: 10% 1fr 10%;
       align-items: center;
       justify-content: center;
       position: relative;
-      img {
-        height: 7rem;
-      }
-      figure {
-        border: 1rem solid;
-        border-style: inset;
-        height: 12rem;
-        width: 12rem;
-        padding-top: 10px;
-      }
-      h1 {
-        margin: 0;
-      }
-      h2 {
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        padding: 1rem;
+      width: auto;
+      .cadre {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 0;
+        border: 3px solid black;
+        border-style: dashed;
+        border-radius: 5px;
+        grid-row: 2;
+        grid-column: 2;
+        width: 85%;
+        height: 85%;
+        img {
+          height: 50%;
+        }
+        figure {
+          border: 10px solid;
+          border-style: double;
+          padding-top: 10px;
+          margin: auto;
+          width: 70%;
+          height: 50%;
+        }
+        h1 {
+          margin: 0;
+        }
+        h2 {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          margin: auto;
+          padding: 1rem;
+          padding-inline: 5rem;
+        }
       }
       .rightDirection {
-        position: absolute;
-        top: 50%;
-        right: 0rem;
+        grid-column: 3;
+        grid-row: 2;
         font-size: 200%;
       }
       .leftDirection {
-        position: absolute;
-        top: 50%;
-        left: 0;
+        grid-column: 1;
+        grid-row: 2;
         font-size: 200%;
       }
       .upDirection {
-        position: absolute;
-        top: 0;
+        grid-column: 2;
+        grid-row: 1;
         font-size: 200%;
       }
       .downDirection {
-        position: absolute;
-        bottom: 0;
+        grid-column: 2;
+        grid-row: 3;
         font-size: 200%;
       }
     }
@@ -184,22 +206,26 @@ button {
         color: white;
       }
       figure {
-        border-color: gold;
-        border-style: inset;
-        background-color: goldenrod;
+        border-color: black;
+        background-color: darkgoldenrod;
+      }
+      .cadre {
+        border-color: burlywood;
       }
     }
     .menu-Setting {
       background: radial-gradient(cyan, blue);
       h2 {
         background-image: url(./assets/title-Setting.png);
-        background-size: 20rem 15rem;
         background-repeat: no-repeat;
       }
       figure {
         border-color: gray;
-        border-style: inset;
-        background-color: rgb(204, 204, 204);
+        background-color: silver;
+      }
+      .cadre {
+        border-style: double;
+        border-color: goldenrod;
       }
     }
   }
@@ -208,7 +234,7 @@ button {
     grid-column: 1;
     display: grid;
     grid-template-columns: repeat(3, 3rem);
-    grid-template-rows: repeat(3, 3rem);
+    grid-template-rows: 2rem repeat(3, 3rem) 2rem;
     align-content: center;
     justify-content: center;
     button {
@@ -222,23 +248,40 @@ button {
     }
     .up {
       grid-column: 2;
-      grid-row: 1;
+      grid-row: 2;
       background-image: url(./assets/up.png);
     }
     .down {
       grid-column: 2;
-      grid-row: 3;
+      grid-row: 4;
       background-image: url(./assets/down.png);
     }
     .left {
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
       background-image: url(./assets/left.png);
     }
     .right {
       grid-column: 3;
-      grid-row: 2;
+      grid-row: 3;
       background-image: url(./assets/right.png);
+    }
+    label {
+      background-color: #d1d6cd;
+      border-radius: 1rem;
+      text-align: center;
+      margin: auto;
+      padding-inline: 1rem;
+    }
+    .labelup {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row: 1;
+    }
+    .labeldown {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row: 5;
     }
   }
   .buttonController {
@@ -371,14 +414,9 @@ button {
   }
 }
 .gameBoyColor {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  input[type="color"] {
-    width: 70%;
-    height: 70%;
-  }
+  width: 50%;
+  height: 50%;
+  margin: auto;
 }
 
 .form-connection {
@@ -476,19 +514,6 @@ button {
     .display {
       grid-row-start: 1;
       grid-column-start: 2;
-      grid-column-end: 2;
-      .menu {
-        img {
-          height: 3rem;
-        }
-        figure {
-          height: 6rem;
-          width: 10rem;
-        }
-        h2 {
-          font-size: 1rem;
-        }
-      }
     }
     .controller {
       grid-row-start: 1;
