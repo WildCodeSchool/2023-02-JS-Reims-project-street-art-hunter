@@ -2,7 +2,9 @@ import { useState } from "react";
 import GameBoy from "./GameBoy";
 
 export default function GameBoyColor() {
-  const [color, setColor] = useState(localStorage.getItem("gameBoyColor"));
+  const [color, setColor] = useState(
+    parseInt(localStorage.getItem("gameBoyColor") ?? 93, 10)
+  );
   return (
     <GameBoy
       button1Controller={() => {
@@ -16,6 +18,8 @@ export default function GameBoyColor() {
       }}
       buttonLabel2="Exit"
       gameBoyColor={color}
+      leftController={() => setColor(color - 1)}
+      rightController={() => setColor(color + 1)}
     >
       <div className="gameBoyColor">
         <button type="button" onClick={() => setColor(null)}>

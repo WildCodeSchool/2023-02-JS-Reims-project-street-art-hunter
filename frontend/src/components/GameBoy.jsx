@@ -15,7 +15,10 @@ export default function GameBoy({
   gameBoyColor,
 }) {
   return (
-    <div className="gameBoy" style={{ backgroundColor: gameBoyColor }}>
+    <div
+      className="gameBoy"
+      style={{ backgroundColor: `hsl(${gameBoyColor}, 10%, 82%)` }}
+    >
       <div className="display">
         {children}
         <p className="title">Street Art Hunter</p>
@@ -88,5 +91,5 @@ GameBoy.defaultProps = {
   buttonLabel2: "",
   ButtonColor1: "red",
   ButtonColor2: "red",
-  gameBoyColor: localStorage.getItem("gameBoyColor"),
+  gameBoyColor: parseInt(localStorage.getItem("gameBoyColor"), 10),
 };
