@@ -10,7 +10,7 @@ export default function Home() {
       <button
         type="button"
         className="return"
-        onClick={() => navigate("/menu")}
+        onClick={() => navigate("/connexion")}
       >
         Start
       </button>
