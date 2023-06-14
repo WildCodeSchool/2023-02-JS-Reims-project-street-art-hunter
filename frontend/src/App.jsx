@@ -6,7 +6,7 @@ import Camera from "./components/Camera";
 import GameBoyScreen from "./components/GameBoyScreen";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
-import GalleryReference from "./components/GalleryReference";
+import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import "./App.scss";
 
@@ -31,7 +31,7 @@ function App() {
           path="/street-arts"
           element={
             <GameBoyScreen>
-              <GalleryReference />
+              <StreetArtsList />
             </GameBoyScreen>
           }
         />
