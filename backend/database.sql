@@ -56,8 +56,6 @@ CREATE TABLE friendship (
 
 
 
-
-
 insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
 ('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50),
 ('/assets/images/avenue_paul_marchandeau.jpg',49.24220,4.02503, true, 100),
@@ -76,6 +74,7 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (2, 2, '2023-06-06 17:23:42', ''),
 (2, 4, '2023-06-06 17:24:04', '');
 
+
 INSERT INTO friends (id_user, id_gallery, id_street_art, friend_name, mail, date_added) VALUES
 (1, 1, 1, "Neocity", "neocity@street.art", "2023-06-07"),
 (1, 1, 1,  "Technowiz", "technowiz@street.art", "2023-06-08"),
@@ -84,6 +83,7 @@ INSERT INTO friends (id_user, id_gallery, id_street_art, friend_name, mail, date
 (1, 1, 1, "Ironfist", "ironfist@street.art", "2023-06-10");
 
 
+INSERT INTO friendship (user_id_1, user_id_2) VALUES (1, 2);
 
 SELECT street_art.id, street_art.name, street_art.image, street_art.score, street_art.longitude, street_art.latitude
 FROM street_art
@@ -94,4 +94,38 @@ SELECT gallery.id, gallery.id_user, gallery.creation_date, gallery.image
 FROM gallery
 INNER JOIN friendship ON (gallery.id_user = friendship.user_id_2)
 WHERE friendship.user_id_1 = 2;
+
+
+//** Test pour automatiser la gestion des amitiés **//
+
+DELIMITER //
+
+CREATE TRIGGER new_friendships AFTER INSERT ON user
+FOR EACH ROW
+
+BEGIN
+DECLARE other_user_id INT;
+DECLARE cur CURSOR FOR SELECT id FROM user;
+OPEN cur;
+read_loop: LOOP
+FETCH cur INTO other_user_id;
+
+IF other_user_id = NEW.id THEN
+ITERATE read_loop;
+END IF;
+
+IF NOT EXISTS (
+SELECT 1 FROM friendship
+WHERE (user_id_1 = NEW.id AND user_id_2 = other_user_id)
+OR (user_id_1 = other_user_id AND user_id_2 = NEW.id)
+) 
+THEN
+INSERT INTO friendship (user_id_1, user_id_2)
+VALUES (NEW.id, other_user_id);
+
+END IF;
+END LOOP;
+CLOSE cur;
+END;
+DELIMITER;
 
