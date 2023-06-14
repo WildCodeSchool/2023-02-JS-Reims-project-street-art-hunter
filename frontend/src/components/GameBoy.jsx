@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 export default function GameBoy({
   children,
   upController,
+  buttonLabelup,
   downController,
+  buttonLabeldown,
   leftController,
   rightController,
   button1Controller,
@@ -33,6 +35,10 @@ export default function GameBoy({
         <button type="button" className="right" onClick={rightController}>
           {" "}
         </button>
+        {buttonLabelup && <label className="labelup">{buttonLabelup}</label>}
+        {buttonLabeldown && (
+          <label className="labeldown">{buttonLabeldown}</label>
+        )}
       </div>
       <div className="buttonController">
         <label htmlFor="button1" className="label1">
@@ -72,6 +78,8 @@ GameBoy.propTypes = {
   button2Controller: PropTypes.func,
   buttonLabel1: PropTypes.string,
   buttonLabel2: PropTypes.string,
+  buttonLabelup: PropTypes.string,
+  buttonLabeldown: PropTypes.string,
   ButtonColor1: PropTypes.string,
   ButtonColor2: PropTypes.string,
   gameBoyColor: PropTypes.string,
@@ -84,6 +92,8 @@ GameBoy.defaultProps = {
   rightController: () => {},
   button1Controller: () => {},
   button2Controller: () => {},
+  buttonLabelup: "",
+  buttonLabeldown: "",
   buttonLabel1: "",
   buttonLabel2: "",
   ButtonColor1: "red",
