@@ -419,6 +419,90 @@ button {
   margin: auto;
 }
 
+.form-connection {
+  background-color: rgba($color: #300963, $alpha: 0.9);
+  color: #1c023d;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #13c7fe,
+    0 0 0.8rem #13c7fe, 0 0 2.8rem #13c7fe, inset 0 0 1.3rem #13c7fe;
+  padding: 1em;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.connection {
+  background-image: url(./assets/murtest.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  img {
+    height: 10rem;
+    position: absolute;
+    top: 25%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+.change-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em;
+  .default-button {
+    background-color: transparent;
+    border-radius: 1em;
+    border-color: #13c7fe;
+    padding: 1em;
+    font-size: medium;
+    font-family: "retropix";
+    color: #fff;
+  }
+  .selected-button {
+    background-color: rgba($color: #2f06a0, $alpha: 0.5);
+    border-radius: 1em;
+    border-color: #13c7fe;
+    padding: 1em;
+    font-size: medium;
+    font-family: "retropix";
+    color: #13c7fe;
+  }
+}
+
+.form-login,
+.form-register {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-around;
+  .form-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    input {
+      font-family: "retropix";
+    }
+  }
+  label {
+    color: #fff;
+  }
+}
+
+.submit-login,
+.submit-register {
+  font-family: "retropix";
+  margin-left: 4em;
+  margin-right: 4em;
+  background-color: transparent;
+  border-radius: 1em;
+  border-color: #13c7fe;
+  color: white;
+  padding: 1em;
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
@@ -445,5 +529,8 @@ button {
       height: 75vh;
       width: 46vw;
     }
+  }
+  .connection {
+    background-image: url(./assets/bg2.jpg);
   }
 }

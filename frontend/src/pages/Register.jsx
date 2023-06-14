@@ -7,6 +7,7 @@ function Register() {
 
   return (
     <form
+      className="form-register"
       onSubmit={(event) => {
         event.preventDefault();
 
@@ -28,11 +29,11 @@ function Register() {
         );
       }}
     >
-      <div>
+      <div className="form-line">
         <label htmlFor="username">Username</label>
         <input ref={usernameRef} type="text" id="username" name="username" />
       </div>
-      <div>
+      <div className="form-line">
         <label htmlFor="password">Password</label>
         <input
           ref={passwordRef}
@@ -41,11 +42,13 @@ function Register() {
           name="password"
         />
       </div>
-      <div>
+      <div className="form-line">
         <label htmlFor="mail">E-mail</label>
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
-      <button type="submit">Go</button>
+      <button type="submit" className="submit-register">
+        Play
+      </button>
     </form>
   );
 }

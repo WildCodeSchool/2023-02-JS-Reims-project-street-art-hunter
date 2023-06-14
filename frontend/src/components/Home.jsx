@@ -12,7 +12,7 @@ export default function Home() {
         className="return"
         onClick={() => {
           document.documentElement.requestFullscreen();
-          navigate("/menu");
+          navigate("/connexion");
         }}
       >
         Start
