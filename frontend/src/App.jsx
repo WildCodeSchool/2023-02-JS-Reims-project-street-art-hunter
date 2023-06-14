@@ -8,7 +8,7 @@ import Camera from "./components/Camera";
 import GameBoyScreen from "./components/GameBoyScreen";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
-import GalleryReference from "./components/GalleryReference";
+import StreetArtsList from "./components/StreetArtsList";
 import "./App.scss";
 import { useAuth } from "./contexts/AuthContext";
 
@@ -44,7 +44,7 @@ function App() {
           path="/street-arts"
           element={
             <GameBoyScreen>
-              <GalleryReference />
+              <StreetArtsList />
             </GameBoyScreen>
           }
         />
