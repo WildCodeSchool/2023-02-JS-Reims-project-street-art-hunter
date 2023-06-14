@@ -28,6 +28,36 @@ CREATE TABLE gallery (
   CONSTRAINT `fk_gallery_street_art` FOREIGN KEY (id_street_art) REFERENCES `street_art`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE friends (
+  id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id_user INT(11) UNSIGNED NOT NULL,
+  id_gallery INT(11) UNSIGNED NOT NULL,
+  id_street_art INT(11) UNSIGNED NOT NULL,
+  friend_name VARCHAR(80) NOT NULL UNIQUE,
+  mail VARCHAR(40) NOT NULL UNIQUE,
+  date_added DATE,
+  KEY `fk_friends_user` (`id_user`),
+  KEY `fk_friends_gallery` (`id_gallery`),
+  KEY `fk_friends_street_art` (`id_street_art`),
+  CONSTRAINT `fk_friends_user` FOREIGN KEY (id_user) REFERENCES `user`(id),
+  CONSTRAINT `fk_friends_gallery` FOREIGN KEY (id_gallery) REFERENCES `gallery`(id),
+  CONSTRAINT `fk_friends_street_art` FOREIGN KEY (id_street_art) REFERENCES `street_art`(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE friendship (
+  id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  user_id_1 INT(11) UNSIGNED NOT NULL,
+  user_id_2 INT(11) UNSIGNED NOT NULL,
+  CONSTRAINT `fk_friendship_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
+  CONSTRAINT `fk_friendship_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
 insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
 ('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50),
 ('/assets/images/avenue_paul_marchandeau.jpg',49.24220,4.02503, true, 100),
@@ -45,3 +75,23 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (1, 3, '2023-06-06 17:23:25', ''),
 (2, 2, '2023-06-06 17:23:42', ''),
 (2, 4, '2023-06-06 17:24:04', '');
+
+INSERT INTO friends (id_user, id_gallery, id_street_art, friend_name, mail, date_added) VALUES
+(1, 1, 1, "Neocity", "neocity@street.art", "2023-06-07"),
+(1, 1, 1,  "Technowiz", "technowiz@street.art", "2023-06-08"),
+(1, 1, 1, "Gecko", "gecko@street.art", "2023-06-09"),
+(1, 1, 1, "Roboboule", "e-boulette@street.art", "2023-06-07"),
+(1, 1, 1, "Ironfist", "ironfist@street.art", "2023-06-10");
+
+
+
+SELECT street_art.id, street_art.name, street_art.image, street_art.score, street_art.longitude, street_art.latitude
+FROM street_art
+INNER JOIN gallery ON (street_art.id = gallery.id_street_art)
+WHERE gallery.id = 1;
+
+SELECT gallery.id, gallery.id_user, gallery.creation_date, gallery.image
+FROM gallery
+INNER JOIN friendship ON (gallery.id_user = friendship.user_id_2)
+WHERE friendship.user_id_1 = 2;
+
