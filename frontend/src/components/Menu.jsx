@@ -69,7 +69,10 @@ export default function Menu() {
       leftController={leftController}
       rightController={rightController}
       button1Controller={button1Controller}
-      button2Controller={() => navigate("/")}
+      button2Controller={() => {
+        document.exitFullscreen();
+        navigate("/");
+      }}
       buttonLabel1="Entrer"
       buttonLabel2="Exit"
       ButtonColor1={numberY === 1 ? "yellow" : "blue"}
@@ -79,17 +82,19 @@ export default function Menu() {
         className={`menu ${numberY === 1 ? "menu-inventory" : "menu-Setting"}`}
       >
         {numberY > 0 && <p className="upDirection">▲</p>}
-        <h2>{menu[numberY][0].name}</h2>
-        <figure>
-          <img
-            src={menu[numberY][numberX].image}
-            alt={menu[numberY][numberX].name}
-            name="image"
-          />
-          <figcaption>
-            <h1>{menu[numberY][numberX].name}</h1>
-          </figcaption>
-        </figure>
+        <div className="cadre">
+          <h2>{menu[numberY][0].name}</h2>
+          <figure>
+            <img
+              src={menu[numberY][numberX].image}
+              alt={menu[numberY][numberX].name}
+              name="image"
+            />
+            <figcaption>
+              <h1>{menu[numberY][numberX].name}</h1>
+            </figcaption>
+          </figure>
+        </div>
         {numberX > 1 && <p className="leftDirection">◀</p>}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">▶</p>
