@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function GameBoy({
   children,
@@ -14,12 +15,16 @@ export default function GameBoy({
   buttonLabel2,
   ButtonColor1,
   ButtonColor2,
-  gameBoyColor,
 }) {
+  const { gameBoyColor } = useAuth();
   return (
     <div
       className="gameBoy"
-      style={{ backgroundColor: `hsl(${gameBoyColor}, 10%, 82%)` }}
+      style={
+        Number.isNaN(gameBoyColor)
+          ? { backgroundColor: `hsl(93, 10%, 82%)` }
+          : { backgroundColor: `hsl(${gameBoyColor}, 100%, 50%)` }
+      }
     >
       <div className="display">
         {children}
@@ -85,7 +90,6 @@ GameBoy.propTypes = {
   buttonLabeldown: PropTypes.string,
   ButtonColor1: PropTypes.string,
   ButtonColor2: PropTypes.string,
-  gameBoyColor: PropTypes.string,
 };
 
 GameBoy.defaultProps = {
@@ -101,5 +105,4 @@ GameBoy.defaultProps = {
   buttonLabel2: "",
   ButtonColor1: "red",
   ButtonColor2: "red",
-  gameBoyColor: parseInt(localStorage.getItem("gameBoyColor"), 10),
 };
