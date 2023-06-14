@@ -17,9 +17,6 @@ button {
   cursor: url(./assets/point.png), pointer;
   -webkit-tap-highlight-color: transparent;
 }
-.img-container {
-  margin-top: 10rem;
-}
 
 .posTitle {
   color: white;
@@ -28,14 +25,11 @@ button {
 .container {
   max-width: 20em;
   padding: 1rem;
-  position: absolute;
+  position: relative;
   .video-container {
-    position: relative;
     margin-top: 10em;
     height: 50vh;
     width: auto;
-  }
-  .video-container {
     margin-top: 0em;
     border-radius: 1em;
     display: flex;
@@ -46,11 +40,14 @@ button {
     overflow: hidden;
   }
   .img-container {
+    margin-top: 10em;
+    height: 50vh;
+    width: 100%;
+    margin-top: 0em;
     border-radius: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0rem;
   }
   .img-container:first-child {
     overflow: hidden;
@@ -289,7 +286,7 @@ button {
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(2, 4rem);
-    grid-template-rows: repeat(2, 4rem);
+    grid-template-rows: repeat(4, 4rem);
     align-content: center;
     justify-content: center;
     button {
@@ -304,14 +301,12 @@ button {
     .red:active {
       background-image: url(./assets/redClick.png);
     }
-
     .green {
       background-image: url(./assets/green.png);
     }
     .green:active {
       background-image: url(./assets/greenClick.png);
     }
-
     .blue {
       background-image: url(./assets/blue.png);
     }
@@ -326,26 +321,26 @@ button {
     }
     .button1 {
       grid-column: 2;
-      grid-row: 1;
+      grid-row: 2;
     }
     .button2 {
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
     }
     label {
       background-color: #d1d6cd;
       border-radius: 1rem;
       text-align: center;
+      bottom: 0;
+      margin-top: auto;
     }
     .label1 {
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 1;
-      margin-block: 1.5rem;
     }
     .label2 {
-      grid-column: 2;
+      grid-column: 1;
       grid-row: 2;
-      margin-block: 1.5rem;
     }
   }
 }
