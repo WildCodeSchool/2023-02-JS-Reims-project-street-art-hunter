@@ -7,7 +7,7 @@ import GameBoyScreen from "./components/GameBoyScreen";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
 import GalleryReference from "./components/GalleryReference";
-import Connexion from "./pages/Connexion";
+import Connection from "./pages/Connection";
 import "./App.scss";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/gameboycolor" element={<GameBoyColor />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/camera" element={<Camera />} />
-        <Route path="/connexion" element={<Connexion />} />
+        <Route path="/connection" element={<Connection />} />
         <Route
           path="/gallery"
           element={

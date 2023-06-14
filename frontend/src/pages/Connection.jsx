@@ -4,13 +4,13 @@ import Register from "./Register";
 
 import logo from "../assets/logo.png";
 
-function Connexion() {
+function Connection() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="connexion">
+    <div className="connection">
       <img src={logo} alt="" />
-      <div className="form-connexion">
+      <div className="form-connection">
         <div className="change-menu">
           <button
             className={isLogin ? "selected-button" : "default-button"}
@@ -33,4 +33,4 @@ function Connexion() {
   );
 }
 
-export default Connexion;
+export default Connection;
