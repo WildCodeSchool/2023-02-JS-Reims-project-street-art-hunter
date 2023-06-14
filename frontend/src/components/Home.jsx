@@ -10,7 +10,10 @@ export default function Home() {
       <button
         type="button"
         className="return"
-        onClick={() => navigate("/connexion")}
+        onClick={() => {
+          document.documentElement.requestFullscreen();
+          navigate("/connection");
+        }}
       >
         Start
       </button>
