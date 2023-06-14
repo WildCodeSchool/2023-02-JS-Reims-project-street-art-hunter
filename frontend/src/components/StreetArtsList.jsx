@@ -20,7 +20,7 @@ export default function GalleryReference() {
         <figure key={streetArt.id}>
           <img
             src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-            alt="street"
+            alt="streetart"
           />
 
           <figcaption>{streetArt.name && <p>{streetArt.name}</p>}</figcaption>
