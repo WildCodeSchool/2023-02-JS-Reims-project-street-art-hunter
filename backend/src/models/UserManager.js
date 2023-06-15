@@ -26,6 +26,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  findFriends(id) {
+    return this.database.query(
+      "SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON (user.id != ? AND user.id = friends.user_id_1) OR (user.id != ? AND user.id = friends.user_id_2) WHERE (user_id_1 = ? OR user_id_2 = ?) AND status = '1' ",
+      [id, id, id, id]
+    );
+  }
+
   findAllScores() {
     return this.database.query(
       "SELECT gallery.id_user, user.username, SUM(street_art.score) AS score FROM `gallery` JOIN user ON gallery.id_user=user.id JOIN street_art ON gallery.id_street_art=street_art.id GROUP BY gallery.id_user ORDER BY score DESC"
