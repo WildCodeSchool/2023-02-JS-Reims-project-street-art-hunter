@@ -18,6 +18,14 @@ router.put("/street-arts/:id", streetArtControllers.edit);
 router.post("/street-arts", streetArtControllers.add);
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 
+const artistControllers = require("./controllers/artistControllers");
+
+router.get("/artists", artistControllers.browse);
+router.get("/artists/:id", artistControllers.read);
+router.put("/artists/:id", artistControllers.edit);
+router.post("/artists", artistControllers.add);
+router.delete("/artists/:id", artistControllers.destroy);
+
 const userControllers = require("./controllers/userControllers");
 
 router.get("/users/scores", userControllers.scores);

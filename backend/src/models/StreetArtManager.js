@@ -7,7 +7,7 @@ class StreetArtManager extends AbstractManager {
 
   insert(streetArt) {
     return this.database.query(
-      `insert into ${this.table} (name, image, longitude, latitude, is_valid, score) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name, image, longitude, latitude, is_valid, score, id_artist) values (?, ?, ?, ?, ?, ?, ?)`,
       [
         streetArt.name,
         streetArt.image,
@@ -15,13 +15,14 @@ class StreetArtManager extends AbstractManager {
         streetArt.latitude,
         streetArt.isValid,
         streetArt.score,
+        streetArt.id_artist
       ]
     );
   }
 
   update(streetArt) {
     return this.database.query(
-      `update ${this.table} set name = ?, image = ?, longitude= ?, latitude= ?, is_valid= ?, score= ? where id = ?`,
+      `update ${this.table} set name = ?, image = ?, longitude= ?, latitude= ?, is_valid= ?, score= ?, id_artist= ? where id = ?`,
       [
         streetArt.name,
         streetArt.image,
@@ -29,7 +30,8 @@ class StreetArtManager extends AbstractManager {
         streetArt.latitude,
         streetArt.isValid,
         streetArt.score,
-        streetArt.id,
+        streetArt.id_artist,
+        streetArt.id
       ]
     );
   }
