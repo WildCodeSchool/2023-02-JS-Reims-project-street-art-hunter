@@ -49,7 +49,6 @@ const UserManager = require("./UserManager");
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
-
 const FriendsManager = require("./FriendsManager");
 
 models.friends = new FriendsManager();
