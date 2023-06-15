@@ -25,7 +25,7 @@ router.get("/users/:id/score", userControllers.score);
 
 router.get("/users/:id/gallery", userControllers.gallery);
 
-router.get("users/:id/friends", userControllers.friends);
+router.get("/users/:id/friends", userControllers.friends);
 
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
