@@ -24,7 +24,6 @@ router.get("/users/scores", userControllers.scores);
 router.get("/users/:id/score", userControllers.score);
 
 router.get("/users/:id/gallery", userControllers.gallery);
-
 router.get("/users/:id/friends", userControllers.friends);
 
 router.get("/users", userControllers.browse);
@@ -44,5 +43,15 @@ router.get("/friends/:id", friendsControllers.read);
 router.put("/friends/:id", friendsControllers.edit);
 router.post("/friends", friendsControllers.add);
 router.delete("/friends/:id", friendsControllers.destroy);
+
+const messageControllers = require("./controllers/messageControllers");
+
+router.get("/message", messageControllers.browse);
+router.get("/message/:id", messageControllers.read);
+router.put("/message/:id", messageControllers.edit);
+router.post("/message", messageControllers.add);
+router.delete("/message/:id", messageControllers.destroy);
+router.get("/message/friends/:id_friendship", messageControllers.getMessage);
+router.post("/message/friends/:id_friendship", messageControllers.postMessage);
 
 module.exports = router;

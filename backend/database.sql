@@ -28,8 +28,6 @@ CREATE TABLE gallery (
   CONSTRAINT `fk_gallery_street_art` FOREIGN KEY (id_street_art) REFERENCES `street_art`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
 CREATE TABLE friends (
   id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id_1 INT(11) UNSIGNED NOT NULL,
@@ -39,8 +37,13 @@ CREATE TABLE friends (
   CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
+CREATE TABLE message (
+  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id_friendship int(11) UNSIGNED NOT NULL,
+  user_id int(11) UNSIGNED NOT NULL,
+  content VARCHAR(80) NOT NULL,
+  post_end DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
 ('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50),
