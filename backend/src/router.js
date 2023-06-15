@@ -33,6 +33,8 @@ router.get("/users/:id/score", userControllers.score);
 
 router.get("/users/:id/gallery", userControllers.gallery);
 
+router.get("/users/:id/friends", userControllers.friends);
+
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
@@ -42,5 +44,13 @@ router.delete("/users/:id", userControllers.destroy);
 const authControllers = require("./controllers/authControllers");
 
 router.post("/login", authControllers.login);
+
+const friendsControllers = require("./controllers/friendsControllers");
+
+router.get("/friends", friendsControllers.browse);
+router.get("/friends/:id", friendsControllers.read);
+router.put("/friends/:id", friendsControllers.edit);
+router.post("/friends", friendsControllers.add);
+router.delete("/friends/:id", friendsControllers.destroy);
 
 module.exports = router;
