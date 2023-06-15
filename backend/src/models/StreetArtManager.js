@@ -15,7 +15,7 @@ class StreetArtManager extends AbstractManager {
         streetArt.latitude,
         streetArt.isValid,
         streetArt.score,
-        streetArt.id_artist
+        streetArt.id_artist,
       ]
     );
   }
@@ -31,7 +31,7 @@ class StreetArtManager extends AbstractManager {
         streetArt.isValid,
         streetArt.score,
         streetArt.id_artist,
-        streetArt.id
+        streetArt.id,
       ]
     );
   }
