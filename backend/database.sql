@@ -42,7 +42,9 @@ CREATE TABLE message (
   id_friendship int(11) UNSIGNED NOT NULL,
   user_id int(11) UNSIGNED NOT NULL,
   content VARCHAR(80) NOT NULL,
-  post_end DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+  post_end DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_message_friendship` FOREIGN KEY (user_id) REFERENCES `user`(id),
+  CONSTRAINT `fk_message_user` FOREIGN KEY (id_friendship) REFERENCES `friends`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
