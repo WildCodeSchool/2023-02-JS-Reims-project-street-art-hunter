@@ -1,32 +1,57 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import GameBoy from "./GameBoy";
 
 export default function GameBoyColor() {
-  const [color, setColor] = useState(localStorage.getItem("gameBoyColor"));
+  const navigate = useNavigate();
+  const { gameBoyColor, setGameBoyColor } = useAuth();
+  const [color, setColor] = useState(gameBoyColor);
   return (
     <GameBoy
       button1Controller={() => {
-        if (color !== null) localStorage.setItem("gameBoyColor", color);
-        else localStorage.removeItem("gameBoyColor");
+        if (Number.isNaN(color)) {
+          localStorage.removeItem("gameBoyColor");
+          setGameBoyColor(color);
+        } else {
+          localStorage.setItem("gameBoyColor", color);
+          setGameBoyColor(color);
+        }
       }}
       buttonLabel1="Valide"
       ButtonColor1="green"
       button2Controller={() => {
-        document.location.href = "/menu";
+        navigate("/menu");
       }}
       buttonLabel2="Exit"
-      gameBoyColor={color}
       buttonLabelup="Delete color"
-      upController={() => setColor(null)}
+      upController={() => setColor(NaN)}
       buttonLabeldown="Reset sov color"
-      downController={() => setColor(localStorage.getItem("gameBoyColor"))}
+      downController={() =>
+        setColor(parseInt(localStorage.getItem("gameBoyColor"), 10))
+      }
+      leftController={() => {
+        if (Number.isNaN(color)) {
+          setColor(0);
+        } else {
+          setColor(color - 10);
+        }
+      }}
+      rightController={() => {
+        if (Number.isNaN(color)) {
+          setColor(0);
+        } else {
+          setColor(color + 10);
+        }
+      }}
     >
-      <input
+      <div
         className="gameBoyColor"
-        type="color"
-        name="couleur"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
+        style={
+          Number.isNaN(color)
+            ? { backgroundColor: `hsl(93, 10%, 82%)` }
+            : { backgroundColor: `hsl(${color}, 100%, 50%)` }
+        }
       />
     </GameBoy>
   );
