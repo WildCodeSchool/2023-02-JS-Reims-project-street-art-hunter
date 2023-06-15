@@ -25,7 +25,7 @@ router.get("/users/:id/score", userControllers.score);
 
 router.get("/users/:id/gallery", userControllers.gallery);
 
-router.get("users/:id/friendship", userControllers.friendship);
+router.get("users/:id/friends", userControllers.friends);
 
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
@@ -37,12 +37,12 @@ const authControllers = require("./controllers/authControllers");
 
 router.post("/login", authControllers.login);
 
-const friendshipControllers = require("./controllers/friendshipControllers");
+const friendsControllers = require("./controllers/friendsControllers");
 
-router.get("/friendship", friendshipControllers.browse);
-router.get("/friendship/:id", friendshipControllers.read);
-router.put("/friendship/:id", friendshipControllers.edit);
-router.post("/friendship", friendshipControllers.add);
-router.delete("/friendship/:id", friendshipControllers.destroy);
+router.get("/friends", friendsControllers.browse);
+router.get("/friends/:id", friendsControllers.read);
+router.put("/friends/:id", friendsControllers.edit);
+router.post("/friends", friendsControllers.add);
+router.delete("/friends/:id", friendsControllers.destroy);
 
 module.exports = router;

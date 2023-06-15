@@ -30,12 +30,13 @@ CREATE TABLE gallery (
 
 
 
-CREATE TABLE friendship (
+CREATE TABLE friends (
   id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id_1 INT(11) UNSIGNED NOT NULL,
   user_id_2 INT(11) UNSIGNED NOT NULL,
-  CONSTRAINT `fk_friendship_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
-  CONSTRAINT `fk_friendship_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
+  status ENUM ('0', '1') DEFAULT '0',
+  CONSTRAINT `fk_friends_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
+  CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -58,52 +59,4 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (1, 3, '2023-06-06 17:23:25', ''),
 (2, 2, '2023-06-06 17:23:42', ''),
 (2, 4, '2023-06-06 17:24:04', '');
-
-
-
-INSERT INTO friendship (user_id_1, user_id_2) VALUES (1, 2);
-
-SELECT street_art.id, street_art.name, street_art.image, street_art.score, street_art.longitude, street_art.latitude
-FROM street_art
-INNER JOIN gallery ON (street_art.id = gallery.id_street_art)
-WHERE gallery.id = 1;
-
-SELECT gallery.id, gallery.id_user, gallery.creation_date, gallery.image
-FROM gallery
-INNER JOIN friendship ON (gallery.id_user = friendship.user_id_2)
-WHERE friendship.user_id_1 = 2;
-
-
-//** Test pour automatiser la gestion des amitiés **//
-
-DELIMITER //
-
-CREATE TRIGGER new_friendships AFTER INSERT ON user
-FOR EACH ROW
-
-BEGIN
-DECLARE other_user_id INT;
-DECLARE cur CURSOR FOR SELECT id FROM user;
-OPEN cur;
-read_loop: LOOP
-FETCH cur INTO other_user_id;
-
-IF other_user_id = NEW.id THEN
-ITERATE read_loop;
-END IF;
-
-IF NOT EXISTS (
-SELECT 1 FROM friendship
-WHERE (user_id_1 = NEW.id AND user_id_2 = other_user_id)
-OR (user_id_1 = other_user_id AND user_id_2 = NEW.id)
-) 
-THEN
-INSERT INTO friendship (user_id_1, user_id_2)
-VALUES (NEW.id, other_user_id);
-
-END IF;
-END LOOP;
-CLOSE cur;
-END;
-DELIMITER;
 

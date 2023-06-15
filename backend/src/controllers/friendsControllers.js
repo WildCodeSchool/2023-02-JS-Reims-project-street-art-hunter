@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.friendship
+  models.friends
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.friendship
+  models.friends
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const friendship = req.body;
+  const friends = req.body;
 
   // TODO validations (length, format...)
 
-  friendship.id = parseInt(req.params.id, 10);
+  friends.id = parseInt(req.params.id, 10);
 
-  models.friendship
-    .update(friendship)
+  models.friends
+    .update(friends)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,12 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const friendship = req.body;
+  const friends = req.body;
 
   // TODO validations (length, format...)
 
-  models.friendship
-    .insert(friendship)
+  models.friends
+    .insert(friends)
     .then(([result]) => {
       res.location(`/items/${result.insertId}`).sendStatus(201);
     })
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.friendship
+  models.friends
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
