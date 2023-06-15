@@ -46,12 +46,12 @@ router.delete("/friends/:id", friendsControllers.destroy);
 
 const messageControllers = require("./controllers/messageControllers");
 
-router.get("/message", messageControllers.browse);
-router.get("/message/:id", messageControllers.read);
-router.put("/message/:id", messageControllers.edit);
-router.post("/message", messageControllers.add);
-router.delete("/message/:id", messageControllers.destroy);
-router.get("/message/friends/:id_friendship", messageControllers.getMessage);
-router.post("/message/friends/:id_friendship", messageControllers.postMessage);
+router.get("/messages", messageControllers.browse);
+router.get("/messages/:id", messageControllers.read);
+router.put("/messages/:id", messageControllers.edit);
+router.post("/messages", messageControllers.add);
+router.delete("/messages/:id", messageControllers.destroy);
+router.get("/messages/friends/:id_friendship", messageControllers.getMessage);
+router.post("/messages/friends/:id_friendship", messageControllers.postMessage);
 
 module.exports = router;
