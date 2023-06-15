@@ -28,8 +28,8 @@ class UserManager extends AbstractManager {
 
   findFriends(id) {
     return this.database.query(
-      "SELECT * FROM friends WHERE (user_id_1 = ? OR user_id_2 = ?)",
-      [id, id]
+      "SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON (user.id != ? AND user.id = friends.user_id_1) OR (user.id != ? AND user.id = friends.user_id_2) WHERE (user_id_1 = ? OR user_id_2 = ?) AND status = '1' ",
+      [id, id, id, id]
     );
   }
 
