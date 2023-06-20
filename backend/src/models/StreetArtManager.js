@@ -33,6 +33,19 @@ class StreetArtManager extends AbstractManager {
       ]
     );
   }
+
+  checkLocation(location) {
+    const errorGape = 0.00022;
+    return this.database.query(
+      `select id from  ${this.table} where (longitude BETWEEN ? AND ?) AND (latitude BETWEEN ? AND ?)`,
+      [
+        parseFloat(location.x, 10) - errorGape,
+        parseFloat(location.x, 10) + errorGape,
+        parseFloat(location.y, 10) - errorGape,
+        parseFloat(location.y, 10) + errorGape,
+      ]
+    );
+  }
 }
 
 module.exports = StreetArtManager;

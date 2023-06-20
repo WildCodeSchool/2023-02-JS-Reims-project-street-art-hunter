@@ -55,8 +55,8 @@ insert into user (username, password, mail, is_admin) VALUES
 ("user", "azerty", "user@street.art", FALSE);
 
 INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VALUES
-(1, 1, '2023-06-06 17:23:02', ''),
-(1, 3, '2023-06-06 17:23:25', ''),
-(2, 2, '2023-06-06 17:23:42', ''),
-(2, 4, '2023-06-06 17:24:04', '');
+(1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg'),
+(1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg'),
+(2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg'),
+(2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg');
 
