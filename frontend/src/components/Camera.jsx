@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGeolocated } from "react-geolocated";
 import Webcam from "react-webcam";
 
 import GameBoy from "./GameBoy";
@@ -9,13 +10,37 @@ function Camera() {
   const [imgSrc, setImgSrc] = useState(null);
   const [label1, setLabel1] = useState("Screen");
   const [label2, setLabel2] = useState("Return");
+  const [videoConstraint, setVideoConstraint] = useState("environment");
 
   const navigate = useNavigate();
+  const { coords } = useGeolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+  });
 
   const capture = useCallback(() => {
-    setImgSrc(webcamRef.current.getScreenshot());
-    setLabel1("Confirm");
-    setLabel2("cancel");
+    if (imgSrc != null) {
+      const formData = new FormData();
+      formData.append("gallery", imgSrc);
+      formData.append("x", coords.latitude);
+      formData.append("y", coords.longitude);
+      fetch(
+        `${
+          import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+        }/gallery`,
+        {
+          method: "post",
+          headers: { "content-type": "multipart/form-data" },
+          body: formData,
+        }
+      ).then((response) => response.json());
+    } else {
+      setImgSrc(webcamRef.current.getScreenshot());
+      setLabel1("Confirm");
+      setLabel2("cancel");
+    }
   }, [webcamRef]);
 
   const retake = () => {
@@ -27,14 +52,21 @@ function Camera() {
       navigate("/menu");
     }
   };
-
   return (
     <GameBoy
       button1Controller={capture}
       button2Controller={retake}
       buttonLabel1={label1}
       buttonLabel2={label2}
+      buttonLabelup="Facing-Out camera"
       ButtonColor1={label1 === "Confirm" ? "green" : "red"}
+      upController={() => {
+        setVideoConstraint("environment");
+      }}
+      buttonLabeldown="forward facing camera"
+      downController={() => {
+        setVideoConstraint("user");
+      }}
     >
       <div className="container">
         {imgSrc ? (
@@ -48,7 +80,8 @@ function Camera() {
               width="auto"
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              mirrored
+              videoConstraints={{ facingMode: videoConstraint }}
+              mirrored={videoConstraint === "user"}
             />
           </div>
         )}
