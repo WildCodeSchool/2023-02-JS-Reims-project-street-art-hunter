@@ -27,6 +27,10 @@ const userControllers = require("./controllers/userControllers");
 
 const friendsControllers = require("./controllers/friendsControllers");
 
+const artistControllers = require("./controllers/artistControllers");
+
+const messageControllers = require("./controllers/messageControllers");
+
 // route public
 
 // items
@@ -38,6 +42,14 @@ router.get("/items/:id", itemControllers.read);
 
 router.get("/street-arts", streetArtControllers.browse);
 router.get("/street-arts/:id", streetArtControllers.read);
+
+// artists
+
+router.get("/artists", artistControllers.browse);
+router.get("/artists/:id", artistControllers.read);
+router.put("/artists/:id", artistControllers.edit);
+router.post("/artists", artistControllers.add);
+router.delete("/artists/:id", artistControllers.destroy);
 
 // score
 
@@ -51,6 +63,11 @@ router.get("/users/:id/gallery", userControllers.gallery);
 // friends
 
 router.get("/users/:id/friends", userControllers.friends);
+
+// messages
+
+router.get("/messages", messageControllers.browse);
+router.get("/messages/:id", messageControllers.read);
 
 // users
 
@@ -88,5 +105,11 @@ router.delete("/street-arts/:id", streetArtControllers.destroy);
 router.put("/friends/:id", friendsControllers.edit);
 router.post("/friends", friendsControllers.add);
 router.delete("/friends/:id", friendsControllers.destroy);
+
+router.put("/messages/:id", messageControllers.edit);
+router.post("/messages", messageControllers.add);
+router.delete("/messages/:id", messageControllers.destroy);
+router.get("/messages/friends/:id_friendship", messageControllers.getMessage);
+router.post("/messages/friends/:id_friendship", messageControllers.postMessage);
 
 module.exports = router;
