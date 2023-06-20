@@ -2,6 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
+const cors = require("cors");
+
+router.use(
+  cors({
+    origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
+    optionsSuccessStatus: 200,
+  })
+);
+
 const {
   hashPassword,
   verifyPassword,
@@ -55,7 +64,7 @@ router.delete("/users/:id", userControllers.destroy);
 
 router.post(
   "/login",
-  userControllers.getUserByEmailWithPasswordAndPassToNext,
+  userControllers.getUserByUsernameWithPasswordAndPassToNext,
   verifyPassword
 );
 
