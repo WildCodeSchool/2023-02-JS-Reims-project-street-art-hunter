@@ -34,10 +34,11 @@ CREATE TABLE friends (
   id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id_1 INT(11) UNSIGNED NOT NULL,
   user_id_2 INT(11) UNSIGNED NOT NULL,
-  status ENUM ('0', '1') DEFAULT '0',
+  status ENUM ('0', '1', '2') DEFAULT '0',
   CONSTRAINT `fk_friends_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
   CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 
@@ -60,3 +61,6 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (2, 2, '2023-06-06 17:23:42', ''),
 (2, 4, '2023-06-06 17:24:04', '');
 
+INSERT INTO 'friends' ('user_id_1' , 'user_id_2') VALUES
+(1, 2),
+(2, 1),

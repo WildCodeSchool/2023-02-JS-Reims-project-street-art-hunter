@@ -132,6 +132,30 @@ const friends = (req, res) => {
     });
 };
 
+const editFriendsRequest = (req, res) => {
+  models.user
+    .findFriendsRequest(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const editFriendsPending = (req, res) => {
+  models.user
+    .findFriendsPending(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -142,4 +166,6 @@ module.exports = {
   score,
   gallery,
   friends,
+  editFriendsRequest,
+  editFriendsPending,
 };
