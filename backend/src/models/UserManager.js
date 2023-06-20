@@ -8,14 +8,14 @@ class UserManager extends AbstractManager {
   insert(user) {
     return this.database.query(
       `insert into ${this.table} (username, password, mail, isadmin) values (?, ?, ?, ?)`,
-      [user.username, user.password, user.mail, false]
+      [user.username, user.hashedPassword, user.mail, false]
     );
   }
 
   update(user) {
     return this.database.query(
       `update ${this.table} set username = ?, password = ?, mail = ? where id = ?`,
-      [user.username, user.password, user.mail, user.id]
+      [user.username, user.hashedPassword, user.mail, user.id]
     );
   }
 
@@ -44,6 +44,12 @@ class UserManager extends AbstractManager {
       "SELECT gallery.id_user, user.username, SUM(street_art.score) AS score FROM `gallery` JOIN user ON gallery.id_user=user.id JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
       [id]
     );
+  }
+
+  findUserByUsername(username) {
+    return this.database.query("select * from  user where mail = ?", [
+      username,
+    ]);
   }
 }
 

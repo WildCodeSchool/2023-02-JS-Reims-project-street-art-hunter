@@ -14,11 +14,13 @@ function Login() {
         event.preventDefault();
         fetch(
           `${
-            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
           }/login`,
           {
             method: "post",
-            headers: { "content-type": "application/json" },
+            headers: {
+              "content-type": "application/json",
+            },
             body: JSON.stringify({
               username: usernameRef.current.value,
               password: passwordRef.current.value,

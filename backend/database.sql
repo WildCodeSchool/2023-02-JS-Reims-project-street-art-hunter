@@ -11,7 +11,7 @@ CREATE TABLE street_art (
 create table user (
   id INT(11) unsigned PRIMARY KEY NOT NULL AUTO_INCREMENT,
   username VARCHAR(80) NOT NULL UNIQUE,
-  password VARCHAR(80) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   mail VARCHAR(40) NOT NULL UNIQUE,
   is_admin BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
