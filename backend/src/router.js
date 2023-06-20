@@ -4,8 +4,7 @@ const router = express.Router();
 
 const multer = require("multer");
 
-// const streetArt = multer({ dest: "./public/streetArts/" });
-const gallery = multer({ dest: "./public/gallery/" });
+const upload = multer({ dest: "./public/upload/" });
 
 const middleware = require("./services/middleware");
 
@@ -43,7 +42,13 @@ const streetArtControllers = require("./controllers/streetArtControllers");
 router.get("/street-arts", streetArtControllers.browse);
 router.get("/street-arts/:id", streetArtControllers.read);
 router.put("/street-arts/:id", streetArtControllers.edit);
-router.post("/street-arts/users", streetArtControllers.addUsers);
+router.post(
+  "/street-arts/users",
+  upload.single("streetArt"),
+  middleware.checkIdStreeArt,
+  middleware.uploadRename,
+  streetArtControllers.addUsers
+);
 router.post(
   "/street-arts/administrator",
   streetArtControllers.addAdministrator
@@ -61,7 +66,7 @@ router.get("/gallery/:id", galleryControllers.read);
 router.put("/gallery/:id", galleryControllers.edit);
 router.post(
   "/gallery",
-  gallery.single("gallery"),
+  upload.single("gallery"),
   middleware.checkLocation,
   middleware.uploadRename,
   galleryControllers.add

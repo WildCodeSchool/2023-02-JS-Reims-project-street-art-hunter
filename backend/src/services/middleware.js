@@ -45,7 +45,21 @@ const uploadRename = (req, res, next) => {
   );
 };
 
+const checkIdStreeArt = (req, res, next) => {
+  models.streetArt
+    .findEndId()
+    .then(([rows]) => {
+      req.body.id_street_art = rows[0].id + 1;
+      next();
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   uploadRename,
   checkLocation,
+  checkIdStreeArt,
 };
