@@ -39,6 +39,11 @@ const StreetArtManager = require("./StreetArtManager");
 models.streetArt = new StreetArtManager();
 models.streetArt.setDatabase(pool);
 
+const ArtistManager = require("./ArtistManager");
+
+models.artist = new ArtistManager();
+models.artist.setDatabase(pool);
+
 const UserManager = require("./UserManager");
 
 models.user = new UserManager();
@@ -53,6 +58,11 @@ const FriendsManager = require("./FriendsManager");
 
 models.friends = new FriendsManager();
 models.friends.setDatabase(pool);
+
+const MessageManager = require("./MessageManager");
+
+models.message = new MessageManager();
+models.message.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 
