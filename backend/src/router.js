@@ -70,6 +70,13 @@ router.get("/users/:id/gallery", userControllers.gallery);
 
 router.get("/users/:id/friends", userControllers.friends);
 
+router.put("/users/:id/friends_request", userControllers.editFriendsRequest);
+router.post("/users/:id/friends_request", userControllers.add);
+router.delete("/users/:id/friends_request", userControllers.destroy);
+
+router.put("/users/:id/friends_pending", userControllers.editFriendsPending);
+router.post("/users/:id/friends_pending", userControllers.add);
+router.delete("/users/:id/friends_pending", userControllers.destroy);
 // messages
 
 router.get("/messages", messageControllers.browse);
