@@ -7,21 +7,21 @@ class UserManager extends AbstractManager {
 
   insert(user) {
     return this.database.query(
-      `insert into ${this.table} (username, password, mail, isadmin) values (?, ?, ?, ?)`,
-      [user.username, user.password, user.mail, false]
+      `insert into ${this.table} (username, password, mail, is_admin) values (?, ?, ?, ?)`,
+      [user.username, user.hashedPassword, user.mail, false]
     );
   }
 
   update(user) {
     return this.database.query(
       `update ${this.table} set username = ?, password = ?, mail = ? where id = ?`,
-      [user.username, user.password, user.mail, user.id]
+      [user.username, user.hashedPassword, user.mail, user.id]
     );
   }
 
   findGallery(id) {
     return this.database.query(
-      "SELECT gallery.id, street_art.name, street_art.image, street_art.score, gallery.creation_date FROM `gallery` JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
+      "SELECT gallery.id, street_art.name, gallery.image, street_art.score, gallery.creation_date FROM `gallery` JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
       [id]
     );
   }
@@ -43,6 +43,13 @@ class UserManager extends AbstractManager {
     return this.database.query(
       "SELECT gallery.id_user, user.username, SUM(street_art.score) AS score FROM `gallery` JOIN user ON gallery.id_user=user.id JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
       [id]
+    );
+  }
+
+  findUserByUsername(username) {
+    return this.database.query(
+      `select id, username, password from  ${this.table} where username = ?`,
+      [username]
     );
   }
 }

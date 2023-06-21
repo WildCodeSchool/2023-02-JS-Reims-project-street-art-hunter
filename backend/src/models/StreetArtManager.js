@@ -5,18 +5,10 @@ class StreetArtManager extends AbstractManager {
     super({ table: "street_art" });
   }
 
-  insert(streetArt) {
+  insertFromUsers(streetArt) {
     return this.database.query(
-      `insert into ${this.table} (name, image, longitude, latitude, is_valid, score, id_artist) values (?, ?, ?, ?, ?, ?, ?)`,
-      [
-        streetArt.name,
-        streetArt.image,
-        streetArt.longitude,
-        streetArt.latitude,
-        streetArt.isValid,
-        streetArt.score,
-        streetArt.id_artist,
-      ]
+      `insert into ${this.table} (name, image, longitude, latitude, add_by) values (?, ?, ?, ?, ?)`,
+      [streetArt.name, streetArt.imgURL, streetArt.x, streetArt.y, streetArt.id]
     );
   }
 
@@ -33,6 +25,25 @@ class StreetArtManager extends AbstractManager {
         streetArt.id_artist,
         streetArt.id,
       ]
+    );
+  }
+
+  checkLocation(location) {
+    const errorGape = 0.00022;
+    return this.database.query(
+      `select id from  ${this.table} where (longitude BETWEEN ? AND ?) AND (latitude BETWEEN ? AND ?)`,
+      [
+        parseFloat(location.x, 10) - errorGape,
+        parseFloat(location.x, 10) + errorGape,
+        parseFloat(location.y, 10) - errorGape,
+        parseFloat(location.y, 10) + errorGape,
+      ]
+    );
+  }
+
+  findEndId() {
+    return this.database.query(
+      `select id from  ${this.table} ORDER BY id DESC LIMIT 1`
     );
   }
 
