@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 export default function Artist() {
   const { id } = useParams();
-  const [artist, setArtist] = useState([]);
+  const [artist, setArtist] = useState(null);
   useEffect(() => {
     fetch(
       `${
@@ -16,13 +16,9 @@ export default function Artist() {
       });
   }, []);
   return (
-    <div>
-      <figure key={artist.id}>
-        <figcaption>
-          <p>{artist.name}</p>
-          <p>{artist.bio}</p>
-        </figcaption>
-      </figure>
-    </div>
+    <figcaption>
+      <p>{artist?.name}</p>
+      <p>{artist?.bio}</p>
+    </figcaption>
   );
 }
