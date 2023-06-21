@@ -8,6 +8,7 @@ import Score from "./components/Score";
 import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
+import Artist from "./components/Artist";
 import "./App.scss";
 
 function App() {
@@ -40,6 +41,14 @@ function App() {
           element={
             <GameBoyScreen>
               <Score />
+            </GameBoyScreen>
+          }
+        />
+        <Route
+          path="/artists/:id"
+          element={
+            <GameBoyScreen>
+              <Artist />
             </GameBoyScreen>
           }
         />

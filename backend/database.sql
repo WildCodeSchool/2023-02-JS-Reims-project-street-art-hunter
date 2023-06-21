@@ -77,36 +77,6 @@ L'esprit d'indépendance du graffiti se retrouve dans le travail de Mary et Jiem
 
 Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.");
 
-<<<<<<< HEAD
-insert into street_art (image, longitude, latitude, is_valid, score, id_artist) VALUES 
-('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50, 1),
-('/assets/images/avenue_paul_marchandeau.jpg',49.24220,4.02503, true, 100, 2),
-('/assets/images/boulevard_wilson_1.jpg',49.24043,4.02034, true, 50, 3),
-('/assets/images/boulevard_wilson_2.jpg',49.24098,4.01945, true, 100, 4),
-('/assets/images/place_du_forum.jpg',49.2567,4.03466, true, 50, 1),
-('/assets/images/rue_de_courcelles.jpg',49.26529,4.01402, true, 100, 1);
-
-CREATE TABLE friends (
-  id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  user_id_1 INT(11) UNSIGNED NOT NULL,
-  user_id_2 INT(11) UNSIGNED NOT NULL,
-  status ENUM ('0', '1') DEFAULT '0',
-  CONSTRAINT `fk_friends_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
-  CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE message (
-  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  id_friendship int(11) UNSIGNED NOT NULL,
-  user_id int(11) UNSIGNED NOT NULL,
-  content VARCHAR(80) NOT NULL,
-  post_end DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT `fk_message_friendship` FOREIGN KEY (user_id) REFERENCES `user`(id),
-  CONSTRAINT `fk_message_user` FOREIGN KEY (id_friendship) REFERENCES `friends`(id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-=======
->>>>>>> 799a6a8c496b17f174aad7e92980a2c85f731ad5
 insert into user (username, password, mail, is_admin) VALUES
 ("admin", "azerty", "admin@street.art", TRUE),
 ("user", "azerty", "user@street.art", FALSE);
