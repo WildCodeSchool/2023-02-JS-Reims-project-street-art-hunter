@@ -35,6 +35,12 @@ class StreetArtManager extends AbstractManager {
       ]
     );
   }
+
+  findAll() {
+    return this.database.query(
+      `select ${this.table}.*, artist.name as artistName from  ${this.table} join artist on artist.id = street_art.id_artist`
+    );
+  }
 }
 
 module.exports = StreetArtManager;
