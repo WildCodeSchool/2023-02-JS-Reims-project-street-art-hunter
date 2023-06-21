@@ -4,6 +4,12 @@ const router = express.Router();
 
 const cors = require("cors");
 
+const multer = require("multer");
+
+const upload = multer({ dest: "./public/upload/" });
+
+const middleware = require("./services/middleware");
+
 router.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
@@ -87,6 +93,20 @@ router.post(
 
 // friends
 
+const galleryControllers = require("./controllers/galleryControllers");
+
+router.get("/gallery", galleryControllers.browse);
+router.get("/gallery/:id", galleryControllers.read);
+router.put("/gallery/:id", galleryControllers.edit);
+router.post(
+  "/gallery",
+  upload.single("gallery"),
+  middleware.checkLocation,
+  middleware.uploadRename,
+  galleryControllers.add
+);
+router.delete("/gallery/:id", galleryControllers.destroy);
+
 router.get("/friends", friendsControllers.browse);
 router.get("/friends/:id", friendsControllers.read);
 
@@ -96,10 +116,22 @@ router.use(verifyToken);
 
 router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
+
 router.delete("/items/:id", itemControllers.destroy);
 
 router.put("/street-arts/:id", streetArtControllers.edit);
 router.post("/street-arts", streetArtControllers.add);
+router.post(
+  "/street-arts/users",
+  upload.single("streetArt"),
+  middleware.checkIdStreeArt,
+  middleware.uploadRename,
+  streetArtControllers.addUsers
+);
+router.post(
+  "/street-arts/administrator",
+  streetArtControllers.addAdministrator
+);
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 
 router.put("/friends/:id", friendsControllers.edit);

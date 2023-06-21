@@ -49,6 +49,11 @@ const UserManager = require("./UserManager");
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
+const GalleryManager = require("./GalleryManager");
+
+models.gallery = new GalleryManager();
+models.gallery.setDatabase(pool);
+
 const FriendsManager = require("./FriendsManager");
 
 models.friends = new FriendsManager();
