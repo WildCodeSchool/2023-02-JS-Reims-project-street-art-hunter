@@ -498,6 +498,10 @@ button {
   color: white;
   padding: 1em;
 }
+.error-message {
+  color: red;
+  text-align: center;
+}
 
 @media (orientation: landscape) {
   .home {
