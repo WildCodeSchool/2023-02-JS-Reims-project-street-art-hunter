@@ -120,7 +120,6 @@ router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
 router.put("/street-arts/:id", streetArtControllers.edit);
-router.post("/street-arts", streetArtControllers.add);
 router.post(
   "/street-arts/users",
   upload.single("streetArt"),
