@@ -1,9 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
 
-function Register() {
+function Register({ setIsLogin }) {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const mailRef = useRef();
+
+  const [isError, setIsError] = useState(false);
 
   return (
     <form
@@ -26,7 +29,13 @@ function Register() {
               mail: mailRef.current.value,
             }),
           }
-        );
+        ).then((response) => {
+          if (response.status === 201) {
+            setIsLogin(true);
+          } else {
+            setIsError(true);
+          }
+        });
       }}
     >
       <div className="form-line">
@@ -46,11 +55,16 @@ function Register() {
         <label htmlFor="mail">E-mail</label>
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
+      {isError && <p className="error-message">Erreur enregistrement</p>}
       <button type="submit" className="submit-register">
         S'enregistrer
       </button>
     </form>
   );
 }
+
+Register.propTypes = {
+  setIsLogin: PropTypes.func.isRequired,
+};
 
 export default Register;
