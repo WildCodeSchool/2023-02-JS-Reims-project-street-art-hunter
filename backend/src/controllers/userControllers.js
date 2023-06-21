@@ -132,6 +132,28 @@ const friends = (req, res) => {
     });
 };
 
+const getUserByUsernameWithPasswordAndPassToNext = (req, res, next) => {
+  const { username } = req.body;
+  models.user
+    .findUserByUsername(username)
+    .then(([users]) => {
+      if (users[0] != null) {
+        req.user.id = users[0].id;
+        req.user.username = users[0].username;
+        req.user.password = users[0].password;
+        req.user.mail = users[0].mail;
+        req.user.is_admin = users[0].is_admin;
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -142,4 +164,5 @@ module.exports = {
   score,
   gallery,
   friends,
+  getUserByUsernameWithPasswordAndPassToNext,
 };
