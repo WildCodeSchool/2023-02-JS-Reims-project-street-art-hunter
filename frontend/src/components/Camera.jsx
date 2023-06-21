@@ -22,20 +22,27 @@ function Camera() {
 
   const capture = () => {
     if (imgSrc) {
-      const formData = new FormData();
-      formData.append("gallery", imgSrc);
-      formData.append("x", coords.latitude);
-      formData.append("y", coords.longitude);
-      fetch(
-        `${
-          import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
-        }/gallery`,
-        {
-          method: "post",
-          headers: { "content-type": "application/form-data" },
-          body: formData,
-        }
-      ).then((response) => response);
+      fetch(imgSrc)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const formData = new FormData();
+          formData.append(
+            "gallery",
+            new File([blob], "tmp", { type: blob.type })
+          );
+          formData.append("x", coords.latitude);
+          formData.append("y", coords.longitude);
+          fetch(
+            `${
+              import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+            }/gallery`,
+            {
+              method: "post",
+
+              body: formData,
+            }
+          ).then((response) => response);
+        });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
       setLabel1("Confirm");
