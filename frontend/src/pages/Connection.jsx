@@ -27,7 +27,9 @@ function Connection() {
             Register
           </button>
         </div>
-        <div className="form-content">{isLogin ? <Login /> : <Register />}</div>
+        <div className="form-content">
+          {isLogin ? <Login /> : <Register setIsLogin={setIsLogin} />}
+        </div>
       </div>
     </div>
   );
