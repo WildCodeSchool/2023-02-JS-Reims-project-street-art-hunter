@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.streetArt
+  models.artist
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.streetArt
+  models.artist
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const streetArt = req.body;
+  const artist = req.body;
 
   // TODO validations (length, format...)
 
-  streetArt.id = parseInt(req.params.id, 10);
+  artist.id = parseInt(req.params.id, 10);
 
-  models.streetArt
-    .update(streetArt)
+  models.artist
+    .update(artist)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -50,30 +50,15 @@ const edit = (req, res) => {
     });
 };
 
-const addUsers = (req, res) => {
-  const streetArt = req.body;
+const add = (req, res) => {
+  const artist = req.body;
 
   // TODO validations (length, format...)
 
-  models.streetArt
-    .insertFromUsers(streetArt)
+  models.artist
+    .insert(artist)
     .then(([result]) => {
-      res.location(`/streetArts/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-const addAdministrator = (req, res) => {
-  const streetArt = req.body;
-
-  // TODO validations (length, format...)
-
-  models.streetArt
-    .insertFromAdministrator(streetArt)
-    .then(([result]) => {
-      res.location(`/streetArts/${result.insertId}`).sendStatus(201);
+      res.location(`/artists/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -82,7 +67,7 @@ const addAdministrator = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.streetArt
+  models.artist
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -101,7 +86,6 @@ module.exports = {
   browse,
   read,
   edit,
-  addUsers,
-  addAdministrator,
+  add,
   destroy,
 };

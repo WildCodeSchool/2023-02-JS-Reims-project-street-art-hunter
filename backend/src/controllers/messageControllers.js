@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.streetArt
+  models.message
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.streetArt
+  models.message
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const streetArt = req.body;
+  const message = req.body;
 
   // TODO validations (length, format...)
 
-  streetArt.id = parseInt(req.params.id, 10);
+  message.id = parseInt(req.params.id, 10);
 
-  models.streetArt
-    .update(streetArt)
+  models.message
+    .update(message)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -50,30 +50,15 @@ const edit = (req, res) => {
     });
 };
 
-const addUsers = (req, res) => {
-  const streetArt = req.body;
+const add = (req, res) => {
+  const message = req.body;
 
   // TODO validations (length, format...)
 
-  models.streetArt
-    .insertFromUsers(streetArt)
+  models.message
+    .insert(message)
     .then(([result]) => {
-      res.location(`/streetArts/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-const addAdministrator = (req, res) => {
-  const streetArt = req.body;
-
-  // TODO validations (length, format...)
-
-  models.streetArt
-    .insertFromAdministrator(streetArt)
-    .then(([result]) => {
-      res.location(`/streetArts/${result.insertId}`).sendStatus(201);
+      res.location(`/messages/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -82,7 +67,7 @@ const addAdministrator = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.streetArt
+  models.message
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -97,11 +82,39 @@ const destroy = (req, res) => {
     });
 };
 
+const getMessage = (req, res) => {
+  models.message
+    .getMessage(req.params.id_friendship)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const postMessage = (req, res) => {
+  const message = req.body;
+  message.id_friendship = parseInt(req.params.id_friendship, 10);
+
+  models.message
+    .postMessage(message)
+    .then(([result]) => {
+      res.location(`/messages/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
-  addUsers,
-  addAdministrator,
+  add,
   destroy,
+  getMessage,
+  postMessage,
 };

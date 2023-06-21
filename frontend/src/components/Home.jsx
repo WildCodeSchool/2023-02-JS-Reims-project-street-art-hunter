@@ -11,7 +11,6 @@ export default function Home() {
         type="button"
         className="return"
         onClick={() => {
-          document.documentElement.requestFullscreen();
           navigate("/connection");
         }}
       >
