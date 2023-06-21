@@ -32,7 +32,7 @@ function Camera() {
         }/gallery`,
         {
           method: "post",
-          headers: { "content-type": "multipart/form-data" },
+          headers: { "content-type": "application/form-data" },
           body: formData,
         }
       ).then((response) => response);
