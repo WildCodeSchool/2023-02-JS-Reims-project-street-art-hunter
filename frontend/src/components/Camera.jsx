@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGeolocated } from "react-geolocated";
 import Webcam from "react-webcam";
@@ -20,8 +20,8 @@ function Camera() {
     userDecisionTimeout: 5000,
   });
 
-  const capture = useCallback(() => {
-    if (imgSrc != null) {
+  const capture = () => {
+    if (imgSrc) {
       const formData = new FormData();
       formData.append("gallery", imgSrc);
       formData.append("x", coords.latitude);
@@ -35,13 +35,13 @@ function Camera() {
           headers: { "content-type": "multipart/form-data" },
           body: formData,
         }
-      ).then((response) => response.json());
+      ).then((response) => response);
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
       setLabel1("Confirm");
       setLabel2("cancel");
     }
-  }, [webcamRef]);
+  };
 
   const retake = () => {
     if (imgSrc) {
