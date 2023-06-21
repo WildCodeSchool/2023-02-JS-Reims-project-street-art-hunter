@@ -24,7 +24,7 @@ const hashPassword = (req, res, next) => {
 };
 
 const verifyPassword = (req, res) => {
-  argon2.verify(req.user.hashedPassword, req.body.password).then((ok) => {
+  argon2.verify(req.user.password, req.body.password).then((ok) => {
     if (ok) {
       const payload = {
         sub: req.user.id,
@@ -33,7 +33,6 @@ const verifyPassword = (req, res) => {
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
-
       res.json({ token });
     } else {
       res.sendStatus(401);

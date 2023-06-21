@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const [isError, setIsError] = useState(false);
   return (
     <form
       className="form-login"
@@ -24,13 +25,16 @@ function Login() {
               password: passwordRef.current.value,
             }),
           }
-        )
-          .then((response) => {
-            response.json();
-          })
-          .then(() => {
+        ).then((response) => {
+          console.info(response);
+          response.json();
+          if (response.status === 200) {
+            setIsError(false);
             navigate("/menu");
-          });
+          } else {
+            setIsError(true);
+          }
+        });
       }}
     >
       {" "}
@@ -49,6 +53,7 @@ function Login() {
           name="password"
         />{" "}
       </div>{" "}
+      {isError && <p className="error-message">Mauvais identifiants</p>}
       <button type="submit" className="submit-login">
         Play
       </button>{" "}

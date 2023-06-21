@@ -78,8 +78,8 @@ L'esprit d'indépendance du graffiti se retrouve dans le travail de Mary et Jiem
 Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.");
 
 insert into user (username, password, mail, is_admin) VALUES
-("admin", "azerty", "admin@street.art", TRUE),
-("user", "azerty", "user@street.art", FALSE);
+("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
+("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE);
 
 insert into street_art (image, longitude, latitude, is_valid, score, id_artist, add_by) VALUES 
 ('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50, 1,1),
