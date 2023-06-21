@@ -13,7 +13,7 @@ function Register() {
 
         fetch(
           `${
-            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+            import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
           }/users`,
           {
             method: "post",
@@ -47,7 +47,7 @@ function Register() {
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
       <button type="submit" className="submit-register">
-        Play
+        S'enregistrer
       </button>
     </form>
   );
