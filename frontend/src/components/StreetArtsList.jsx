@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function GalleryReference() {
+export default function StreetArtList() {
   const [streetArts, setStreetArts] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(
       `${
@@ -14,6 +15,7 @@ export default function GalleryReference() {
         setStreetArts(data);
       });
   }, []);
+
   return (
     <div className="gallery">
       {streetArts.map((streetArt) => (
@@ -23,7 +25,19 @@ export default function GalleryReference() {
             alt="streetart"
           />
 
-          <figcaption>{streetArt.name && <p>{streetArt.name}</p>}</figcaption>
+          <figcaption>
+            {streetArt.name && <p>{streetArt.name}</p>}
+            {streetArt.artistName && (
+              <button
+                type="button"
+                onClick={() => navigate(`/artists/${streetArt.id_artist}`)}
+              >
+                {streetArt.artistName}
+              </button>
+            )}
+
+            <p>{streetArt.score} points</p>
+          </figcaption>
         </figure>
       ))}
     </div>
