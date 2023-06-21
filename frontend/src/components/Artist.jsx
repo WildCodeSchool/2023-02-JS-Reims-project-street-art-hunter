@@ -16,9 +16,9 @@ export default function Artist() {
       });
   }, []);
   return (
-    <figcaption>
-      <p>{artist?.name}</p>
+    <article>
+      <h1>{artist?.name}</h1>
       <p>{artist?.bio}</p>
-    </figcaption>
+    </article>
   );
 }
