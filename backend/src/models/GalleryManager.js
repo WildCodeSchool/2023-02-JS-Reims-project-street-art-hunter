@@ -18,6 +18,13 @@ class GalleryManager extends AbstractManager {
       [gallery.title, gallery.id]
     );
   }
+
+  checkToGallery(info) {
+    return this.database.query(
+      `select * from  ${this.table} where id_user = ? AND id_street_art = ?`,
+      [info.id, info.id_street_art]
+    );
+  }
 }
 
 module.exports = GalleryManager;

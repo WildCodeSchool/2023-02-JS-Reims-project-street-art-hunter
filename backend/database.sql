@@ -59,18 +59,17 @@ CREATE TABLE message (
 
 insert into artist (name, bio) VALUES
 ('C215', "Christian GUEMY, alias C215 (Artiste peintre), vit et travaille à Ivry-sur-Seine
-
 Christian Guémy alias C215 est un artiste urbain pochoiriste français né en 1973.
 C215 intervient dans les rues du monde entier depuis le début des années 2000. Il présente ses œuvres peintes sur des objets ou sur toiles dans plusieurs galeries, en France et à l’étranger. Il a exposé dans de nombreux musées nationaux et collabore régulièrement avec des institutions publiques, culturelles ou sociales.
-
-
-insert into street_art (image, longitude, latitude, is_valid, score) VALUES 
-('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50),
-('/assets/images/avenue_paul_marchandeau.jpg',49.24220,4.02503, true, 100),
-('/assets/images/boulevard_wilson_1.jpg',49.24043,4.02034, true, 50),
-('/assets/images/boulevard_wilson_2.jpg',49.24098,4.01945, true, 100),
-('/assets/images/place_du_forum.jpg',49.2567,4.03466, true, 50),
-('/assets/images/rue_de_courcelles.jpg',49.26529,4.01402, true, 100);
+C215 est considéré aujourd’hui comme l’un des pochoiristes les plus reconnus de la scène Street art mondiale."),
+('IPIN', "Germain Prévost (alias IPIN) est artiste et sérigraphe. Il fait des études sur l’environnement et la qualité de vie entre La Ciotat et Marseille. C’est dans ce cadre qu’il étudie l’environnement social de la Cité des Arts de la Rue. Déjà graffeur, connu sous le nom de Ipin, cette expérience le conduit à s’interroger sur le statut du street art et du graffiti au sein des arts de la rue. Il s’inspire notamment des œuvres de Vasarely, qui jalonnent les villes depuis les années 80. Ses créations, souvent géométriques et faisant appel à des anamorphoses, puisent également dans l’architecture.
+Il développe le concept d’impactivisme (auto-proclamé) comme forme la plus basique de réappropriation graphique de l’espace public : c’est, en quelque sorte, un graffiti déshabillé de tout apparat décoratif, pour n’en garder que les composantes essentielles : un mouvement, une couleur, une forme et un support.  L’analogie picturale du cri primitif."),
+('SCAMP80S', "Scamp80s, un artiste probablement local qui se fait aussi appeler N10.
+De ce qu'on peut voir sur internet Scamp80s est avant tout un artiste abstrait qui fait aussi du lettrage (on trouve assez souvent son blase N10 – mais ici on ne le vois pas…)."),
+('JIEM et MARY',"Mary Limonade, artiste Belge originaire de Liège et Jiem artiste Nantais de naissance, travaillent ensemble depuis plusieurs années sur Lille et ailleurs en France ou à l'étranger. Ils occupent aujourd'hui un des ateliers de la galerie Lasécu dans lequel Jiem est arrivé en 2008. Avant de monter ensemble le duo Wanderlust Social Club, chacun d'eux a développé des pratiques personnelles de manière autodidacte.
+Leurs premières connections artistiques se sont faites par le graffiti, de manière libre et sauvage. De cette passion partagée leur vient le goût de la dérive, de l'exploration, du voyage. D'où le choix de ce nom commun, Wanderlust, mot d'origine allemande qui signifie dans la langue anglaise également la soif de voyage, l'attrait de l'inconnu et de l'exotisme.
+L'esprit d'indépendance du graffiti se retrouve dans le travail de Mary et Jiem à travers une grande liberté d'action et un large éventail de pratiques, loin des standards des galeries street art formatées. En plus d'un important travail graphique et illustratif dans leurs dessins et peintures, sur supports ou sur murs, ils pratiquent la photographie argentique, l'édition et l'art textile. Quel que soit le mode d'expression choisi, certains éléments et thèmes sont récurrents chez les deux artistes, le voyage, la ville et ses éléments graphiques, les identités collectives, les cultures underground et leurs pratiques marginales, les interactions sociales, l'amour et le romantisme, entre autres.
+Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.");
 
 insert into user (username, password, mail, is_admin) VALUES
 ("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
@@ -91,6 +90,4 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg'),
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg');
 
-INSERT INTO 'friends' ('user_id_1' , 'user_id_2') VALUES
-(1, 2),
-(2, 1),
+INSERT INTO friends (user_id_1, user_id_2) VALUES (1, 2), (2, 1);

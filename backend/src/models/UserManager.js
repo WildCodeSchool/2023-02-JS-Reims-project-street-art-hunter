@@ -21,7 +21,7 @@ class UserManager extends AbstractManager {
 
   findGallery(id) {
     return this.database.query(
-      "SELECT gallery.id, street_art.name, gallery.image, street_art.score, gallery.creation_date FROM `gallery` JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ?",
+      "SELECT gallery.id, street_art.name, gallery.image, street_art.score, gallery.creation_date FROM `gallery` JOIN street_art ON gallery.id_street_art=street_art.id where gallery.id_user = ? order by creation_date desc",
       [id]
     );
   }
