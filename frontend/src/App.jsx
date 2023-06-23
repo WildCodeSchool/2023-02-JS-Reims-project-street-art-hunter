@@ -9,49 +9,56 @@ import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
+import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 
 function App() {
+  const { token } = useAuth();
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/gameboycolor" element={<GameBoyColor />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/camera" element={<Camera />} />
         <Route path="/connection" element={<Connection />} />
-        <Route
-          path="/gallery"
-          element={
-            <GameBoyScreen>
-              <Gallery />
-            </GameBoyScreen>
-          }
-        />
-        <Route
-          path="/street-arts"
-          element={
-            <GameBoyScreen>
-              <StreetArtsList />
-            </GameBoyScreen>
-          }
-        />
-        <Route
-          path="/score"
-          element={
-            <GameBoyScreen>
-              <Score />
-            </GameBoyScreen>
-          }
-        />
-        <Route
-          path="/artists/:id"
-          element={
-            <GameBoyScreen>
-              <Artist />
-            </GameBoyScreen>
-          }
-        />
+        {token != null && (
+          <>
+            <Route path="/gameboycolor" element={<GameBoyColor />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/camera" element={<Camera />} />
+            <Route
+              path="/gallery"
+              element={
+                <GameBoyScreen>
+                  <Gallery />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/street-arts"
+              element={
+                <GameBoyScreen>
+                  <StreetArtsList />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/score"
+              element={
+                <GameBoyScreen>
+                  <Score />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/artists/:id"
+              element={
+                <GameBoyScreen>
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+          </>
+        )}
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

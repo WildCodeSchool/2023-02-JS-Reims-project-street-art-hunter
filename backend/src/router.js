@@ -65,6 +65,7 @@ router.get("/users/:id/score", userControllers.score);
 // gallery
 
 router.get("/users/:id/gallery", userControllers.gallery);
+router.get("/users/gallery", verifyToken, userControllers.galleryByUser);
 
 // friends
 
@@ -100,26 +101,26 @@ router.post(
 
 // friends
 
+// route privée
+
 const galleryControllers = require("./controllers/galleryControllers");
 
-router.get("/gallery", galleryControllers.browse);
-router.get("/gallery/:id", galleryControllers.read);
-router.put("/gallery/:id", galleryControllers.edit);
+router.get("/gallery", verifyToken, galleryControllers.browse);
+router.get("/gallery/:id", verifyToken, galleryControllers.read);
+router.put("/gallery/:id", verifyToken, galleryControllers.edit);
 router.post(
   "/gallery",
+  verifyToken,
   upload.single("gallery"),
   middleware.checkLocation,
   middleware.uploadRename,
+  middleware.checkToGallery,
   galleryControllers.add
 );
-router.delete("/gallery/:id", galleryControllers.destroy);
+router.delete("/gallery/:id", verifyToken, galleryControllers.destroy);
 
 router.get("/friends", friendsControllers.browse);
 router.get("/friends/:id", friendsControllers.read);
-
-// route privée
-
-router.use(verifyToken);
 
 router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);

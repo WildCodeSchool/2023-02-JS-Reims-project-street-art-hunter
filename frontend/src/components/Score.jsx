@@ -27,7 +27,7 @@ export default function Score() {
       </thead>
       <tbody>
         {scores.map((score, index) => (
-          <tr key={score.id}>
+          <tr key={score.id_user}>
             <td>{index + 1}</td>
             <td>{score.username}</td>
             <td>{score.score}</td>

@@ -28,6 +28,7 @@ const verifyPassword = (req, res) => {
     if (ok) {
       const payload = {
         sub: req.user.id,
+        role: req.user.role,
       };
 
       const token = jwt.sign(payload, process.env.JWT_SECRET, {

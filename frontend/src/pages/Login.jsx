@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
+  const { setToken } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -25,16 +27,18 @@ function Login() {
               password: passwordRef.current.value,
             }),
           }
-        ).then((response) => {
-          console.info(response);
-          response.json();
-          if (response.status === 200) {
-            setIsError(false);
-            navigate("/menu");
-          } else {
-            setIsError(true);
-          }
-        });
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.token !== null) {
+              setToken(data.token);
+              sessionStorage.setItem("token", data.token);
+              setIsError(false);
+              navigate("/menu");
+            } else {
+              setIsError(true);
+            }
+          });
       }}
     >
       {" "}

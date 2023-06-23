@@ -10,6 +10,22 @@ const uploadDelete = (path, res) => {
   });
 };
 
+const checkToGallery = (req, res, next) => {
+  models.gallery
+    .checkToGallery(req.body)
+    .then(([rows]) => {
+      if (rows[0] != null) {
+        res.status(404).send({ status: "posséder" });
+      } else {
+        next();
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const checkLocation = (req, res, next) => {
   models.streetArt
     .checkLocation(req.body)
@@ -29,6 +45,7 @@ const checkLocation = (req, res, next) => {
 
 const uploadRename = (req, res, next) => {
   const { fieldname, filename, mimetype, destination } = req.file;
+  req.body.id = req.payload.sub;
   const newFileName = `${fieldname}-${req.body.id}-${req.body.id_street_art}`;
   const typeFile = mimetype.replace("image/", "");
   req.body.imgURL = `${destination.replace(
@@ -62,4 +79,5 @@ module.exports = {
   uploadRename,
   checkLocation,
   checkIdStreeArt,
+  checkToGallery,
 };
