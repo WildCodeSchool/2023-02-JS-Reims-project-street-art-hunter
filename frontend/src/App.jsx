@@ -17,12 +17,15 @@ import StreetArtsList from "./components/StreetArtsList";
 // SASS
 import "./App.scss";
 
+import Message from "./components/Message";
+
 function App() {
   const { token } = useAuth();
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/message" element={<Message />} />
         <Route path="/connection" element={<Connection />} />
         {token != null && (
           <>
