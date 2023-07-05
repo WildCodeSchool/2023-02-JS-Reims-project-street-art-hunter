@@ -14,26 +14,26 @@ export default function Score() {
       });
   }, []);
   return (
-    <table>
-      <thead>
-        <tr>
-          <th colSpan="3">Scores</th>
-        </tr>
-        <tr>
-          <th>Rang</th>
-          <th>Player</th>
-          <th>Point</th>
-        </tr>
-      </thead>
-      <tbody>
-        {scores.map((score, index) => (
-          <tr key={score.id_user}>
-            <td>{index + 1}</td>
-            <td>{score.username}</td>
-            <td>{score.score}</td>
+    <>
+      <h1>Scores</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Rang</th>
+            <th>Player</th>
+            <th>Point</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {scores.map((score, index) => (
+            <tr key={score.id_user}>
+              <td>{index + 1}</td>
+              <td>{score.username}</td>
+              <td>{score.score}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }

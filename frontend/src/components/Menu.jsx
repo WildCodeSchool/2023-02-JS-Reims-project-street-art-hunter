@@ -44,6 +44,11 @@ export default function Menu() {
         image: "src/assets/score.png",
         path: "/score",
       },
+      {
+        name: "Street Arts",
+        image: "src/assets/gallery.png",
+        path: "/street-arts",
+      },
     ],
   ];
   const upController = () => {
