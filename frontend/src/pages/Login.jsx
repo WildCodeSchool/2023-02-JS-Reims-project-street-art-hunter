@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
-  const { setToken } = useAuth();
+  const { setToken, setRole } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -32,6 +32,8 @@ function Login() {
           .then((data) => {
             if (data.token !== null) {
               setToken(data.token);
+              setRole(data.role);
+              sessionStorage.setItem("role", data.role);
               sessionStorage.setItem("token", data.token);
               setIsError(false);
               navigate("/menu");

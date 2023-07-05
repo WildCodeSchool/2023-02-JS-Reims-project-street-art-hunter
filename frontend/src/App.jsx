@@ -1,24 +1,19 @@
-// Module
 import { Route, Routes } from "react-router-dom";
-import { useAuth } from "./contexts/AuthContext";
-// GameBoy style
-import GameBoyScreen from "./components/GameBoyScreen";
-// Page User
-import Connection from "./pages/Connection";
 import Home from "./components/Home";
-import Menu from "./components/Menu";
 import GameBoyColor from "./components/GameBoyColor";
+import Menu from "./components/Menu";
 import Camera from "./components/Camera";
+import GameBoyScreen from "./components/GameBoyScreen";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
-import Artist from "./components/Artist";
-// Page Admin
 import StreetArtsList from "./components/StreetArtsList";
-// SASS
+import Connection from "./pages/Connection";
+import Artist from "./components/Artist";
+import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 
 function App() {
-  const { token } = useAuth();
+  const { token, role } = useAuth();
   return (
     <div className="App">
       <Routes>
@@ -38,14 +33,6 @@ function App() {
               }
             />
             <Route
-              path="/street-arts"
-              element={
-                <GameBoyScreen>
-                  <StreetArtsList />
-                </GameBoyScreen>
-              }
-            />
-            <Route
               path="/score"
               element={
                 <GameBoyScreen>
@@ -61,6 +48,16 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            {role && (
+              <Route
+                path="/street-arts"
+                element={
+                  <GameBoyScreen>
+                    <StreetArtsList />
+                  </GameBoyScreen>
+                }
+              />
+            )}
           </>
         )}
         <Route path="*" element={<Home />} />
