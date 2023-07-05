@@ -502,6 +502,41 @@ button {
   color: red;
   text-align: center;
 }
+// SCCS pour la liste d'amis
+.friendslist {
+  background-image: url(./assets/wallfriends2.jpg);
+  background-size: cover;
+  //filter: blur(4px);//
+  background-position: bottom;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30px;
+  column-gap: 20px;
+  columns: 50rem;
+}
+
+.friends-pending {
+  background-color: #13627a;
+  border: #fff;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.friends-received {
+  background-color: #13c7fe;
+  border: #fff;
+  border-radius: 2px;
+  display: flex;
+}
+
+.friends-accepted {
+  background-color: #13c7fe;
+  border: #cc0e0e 5px;
+  border-radius: 2px;
+  display: flex;
+}
 
 @media (orientation: landscape) {
   .home {

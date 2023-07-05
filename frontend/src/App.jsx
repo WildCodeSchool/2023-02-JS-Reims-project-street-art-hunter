@@ -9,6 +9,7 @@ import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
+import FriendsList from "./components/FriendsList";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 
@@ -59,6 +60,7 @@ function App() {
           </>
         )}
         <Route path="*" element={<Home />} />
+        <Route path="friends" element={<FriendsList />} />
       </Routes>
     </div>
   );
