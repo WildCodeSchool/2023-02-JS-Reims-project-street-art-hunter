@@ -41,7 +41,7 @@ function App() {
             <Route
               path="/gallery/:id"
               element={
-                <GameBoyScreen>
+                <GameBoyScreen returnLink="/gallery">
                   <InfoStreetArt />
                 </GameBoyScreen>
               }
