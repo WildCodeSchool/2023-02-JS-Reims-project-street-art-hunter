@@ -42,6 +42,14 @@ function App() {
               }
             />
             <Route
+              path="/friends"
+              element={
+                <GameBoyScreen>
+                  <FriendsList />
+                </GameBoyScreen>
+              }
+            />
+            <Route
               path="/artists/:id"
               element={
                 <GameBoyScreen>
