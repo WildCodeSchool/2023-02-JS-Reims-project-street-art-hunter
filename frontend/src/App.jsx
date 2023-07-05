@@ -12,12 +12,15 @@ import Artist from "./components/Artist";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 
+import Message from "./components/Message";
+
 function App() {
   const { token, role } = useAuth();
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/message" element={<Message />} />
         <Route path="/connection" element={<Connection />} />
         {token != null && (
           <>

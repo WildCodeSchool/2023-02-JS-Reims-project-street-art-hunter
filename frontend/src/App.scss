@@ -510,6 +510,14 @@ button {
   text-align: center;
 }
 
+.message {
+  background-color: gray;
+  text-align: center;
+  border-radius: 1rem;
+  width: 80vw;
+  height: 90vh;
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
