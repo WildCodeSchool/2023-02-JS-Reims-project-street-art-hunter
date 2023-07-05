@@ -11,6 +11,7 @@ import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
+import InfoStreetArt from "./components/InfoStreetArt";
 
 function App() {
   const { token } = useAuth();
@@ -29,6 +30,14 @@ function App() {
               element={
                 <GameBoyScreen>
                   <Gallery />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/gallery/:id"
+              element={
+                <GameBoyScreen>
+                  <InfoStreetArt />
                 </GameBoyScreen>
               }
             />
