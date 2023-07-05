@@ -120,6 +120,9 @@ button {
     text-align: center;
     position: relative;
     width: auto;
+    .container {
+      overflow: overlay;
+    }
     .title {
       margin: 0;
       grid-row-start: 2;
@@ -352,6 +355,9 @@ button {
   text-align: center;
   height: 100vh;
   position: relative;
+  h1 {
+    margin: 0;
+  }
   .title {
     margin: 0;
     grid-row-start: 2;
@@ -365,6 +371,7 @@ button {
     padding: 1rem;
     text-align: center;
     align-items: center;
+    overflow: overlay;
   }
   table {
     margin: auto;
