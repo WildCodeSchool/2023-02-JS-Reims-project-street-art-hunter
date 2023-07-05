@@ -120,6 +120,18 @@ const gallery = (req, res) => {
     });
 };
 
+const galleryByUser = (req, res) => {
+  models.user
+    .findGallery(req.payload.sub)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const friends = (req, res) => {
   models.user
     .findFriends(req.params.id)
@@ -159,7 +171,6 @@ const editFriendsPending = (req, res) => {
 const getUserByUsernameWithPasswordAndPassToNext = (req, res, next) => {
   models.user.findUserByUsername(req.body.username).then(([rows]) => {
     const userInDatabase = rows[0];
-
     if (userInDatabase == null) {
       res.sendStatus(422);
     } else {
@@ -179,6 +190,7 @@ module.exports = {
   scores,
   score,
   gallery,
+  galleryByUser,
   friends,
   editFriendsRequest,
   editFriendsPending,

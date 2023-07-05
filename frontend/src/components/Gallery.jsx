@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Gallery() {
+  const { token } = useAuth();
   const [gallery, setGallery] = useState([]);
-  const id = 1;
   useEffect(() => {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
-      }/users/${id}/gallery`
+      }/users/gallery`,
+      {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     )
       .then((res) => res.json())
       .then((data) => {

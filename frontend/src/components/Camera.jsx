@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGeolocated } from "react-geolocated";
 import Webcam from "react-webcam";
+import { useAuth } from "../contexts/AuthContext";
 
 import GameBoy from "./GameBoy";
 
@@ -12,6 +13,7 @@ function Camera() {
   const [label2, setLabel2] = useState("Return");
   const [videoConstraint, setVideoConstraint] = useState("environment");
 
+  const { token } = useAuth();
   const navigate = useNavigate();
   const { coords } = useGeolocated({
     positionOptions: {
@@ -20,6 +22,15 @@ function Camera() {
     userDecisionTimeout: 5000,
   });
 
+  const retake = () => {
+    if (imgSrc) {
+      setImgSrc(null);
+      setLabel1("Screen");
+      setLabel2("Return");
+    } else {
+      navigate("/menu");
+    }
+  };
   const capture = () => {
     if (imgSrc) {
       fetch(imgSrc)
@@ -38,25 +49,24 @@ function Camera() {
             }/gallery`,
             {
               method: "post",
-
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
               body: formData,
             }
-          ).then((response) => response);
+          ).then((response) => {
+            if (response.ok) {
+              alert("ok");
+            } else {
+              alert("nop");
+            }
+            retake();
+          });
         });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
       setLabel1("Confirm");
       setLabel2("cancel");
-    }
-  };
-
-  const retake = () => {
-    if (imgSrc) {
-      setImgSrc(null);
-      setLabel1("Screen");
-      setLabel2("Return");
-    } else {
-      navigate("/menu");
     }
   };
   return (

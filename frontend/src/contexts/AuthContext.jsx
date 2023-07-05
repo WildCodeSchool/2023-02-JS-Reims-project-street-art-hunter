@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
   const [gameBoyColor, setGameBoyColor] = useState(
     parseInt(localStorage.getItem("gameBoyColor"), 10)
   );

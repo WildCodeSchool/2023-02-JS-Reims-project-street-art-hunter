@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 import GameBoy from "./GameBoy";
 
 export default function Menu() {
+  const { setToken } = useAuth();
   const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
@@ -42,6 +44,11 @@ export default function Menu() {
         image: "src/assets/score.png",
         path: "/score",
       },
+      {
+        name: "Street Arts",
+        image: "src/assets/gallery.png",
+        path: "/street-arts",
+      },
     ],
   ];
   const upController = () => {
@@ -60,6 +67,10 @@ export default function Menu() {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
   const button1Controller = () => {
+    if (menu[numberY][numberX].name === "Logout") {
+      setToken(null);
+      sessionStorage.removeItem("token");
+    }
     navigate(menu[numberY][numberX].path);
   };
   return (
