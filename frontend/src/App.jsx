@@ -14,7 +14,7 @@ import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 
 function App() {
-  const { token } = useAuth();
+  const { token, role } = useAuth();
   return (
     <div className="App">
       <Routes>
@@ -34,14 +34,6 @@ function App() {
               }
             />
             <Route
-              path="/street-arts"
-              element={
-                <GameBoyScreen>
-                  <StreetArtsList />
-                </GameBoyScreen>
-              }
-            />
-            <Route
               path="/score"
               element={
                 <GameBoyScreen>
@@ -57,6 +49,16 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            {role && (
+              <Route
+                path="/street-arts"
+                element={
+                  <GameBoyScreen>
+                    <StreetArtsList />
+                  </GameBoyScreen>
+                }
+              />
+            )}
           </>
         )}
         <Route path="*" element={<Home />} />

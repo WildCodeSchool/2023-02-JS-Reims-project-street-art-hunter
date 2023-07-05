@@ -62,7 +62,7 @@ class UserManager extends AbstractManager {
 
   findUserByUsername(username) {
     return this.database.query(
-      `select id, username, password from  ${this.table} where username = ?`,
+      `select id, username, password, is_admin as role from  ${this.table} where username = ?`,
       [username]
     );
   }

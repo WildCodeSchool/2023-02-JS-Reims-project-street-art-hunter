@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 import GameBoy from "./GameBoy";
 
 export default function Menu() {
-  const { setToken } = useAuth();
+  const { setToken, role } = useAuth();
   const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
@@ -50,6 +50,18 @@ export default function Menu() {
       },
     ],
   ];
+  if (role) {
+    menu.push([
+      {
+        name: "inventory admin",
+      },
+      {
+        name: "Street Arts",
+        image: "src/assets/gallery.png",
+        path: "/street-arts",
+      },
+    ]);
+  }
   const upController = () => {
     if (numberY > 0) {
       setNumberY(numberY - 1);
@@ -57,7 +69,10 @@ export default function Menu() {
     }
   };
   const downController = () => {
-    if (numberY < menu.length - 1) setNumberY(numberY + 1);
+    if (numberY < menu.length - 1) {
+      setNumberY(numberY + 1);
+      setNumberX(1);
+    }
   };
   const leftController = () => {
     if (numberX > 1) setNumberX(numberX - 1);
@@ -89,7 +104,7 @@ export default function Menu() {
       ButtonColor2={numberY === 1 ? "yellow" : "blue"}
     >
       <div
-        className={`menu ${numberY === 1 ? "menu-inventory" : "menu-Setting"}`}
+        className={`menu ${numberY === 0 ? "menu-Setting" : "menu-inventory"}`}
       >
         {numberY > 0 && <p className="upDirection">▲</p>}
         <div className="cadre">

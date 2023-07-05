@@ -7,13 +7,14 @@ const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [token, setToken] = useState(sessionStorage.getItem("token"));
+  const [role, setRole] = useState(sessionStorage.getItem("role"));
   const [gameBoyColor, setGameBoyColor] = useState(
     parseInt(localStorage.getItem("gameBoyColor"), 10)
   );
 
   return (
     <AuthContext.Provider
-      value={{ token, setToken, gameBoyColor, setGameBoyColor }}
+      value={{ token, setToken, role, setRole, gameBoyColor, setGameBoyColor }}
     >
       {children}
     </AuthContext.Provider>

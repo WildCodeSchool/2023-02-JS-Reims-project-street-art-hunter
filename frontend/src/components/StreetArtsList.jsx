@@ -17,29 +17,32 @@ export default function StreetArtList() {
   }, []);
 
   return (
-    <div className="gallery">
-      {streetArts.map((streetArt) => (
-        <figure key={streetArt.id}>
-          <img
-            src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-            alt="streetart"
-          />
+    <>
+      <h1>Street Arts List</h1>
+      <div className="gallery">
+        {streetArts.map((streetArt) => (
+          <figure key={streetArt.id}>
+            <img
+              src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
+              alt="streetart"
+            />
 
-          <figcaption>
-            {streetArt.name && <p>{streetArt.name}</p>}
-            {streetArt.artistName && (
-              <button
-                type="button"
-                onClick={() => navigate(`/artists/${streetArt.id_artist}`)}
-              >
-                {streetArt.artistName}
-              </button>
-            )}
+            <figcaption>
+              {streetArt.name && <p>{streetArt.name}</p>}
+              {streetArt.artistName && (
+                <button
+                  type="button"
+                  onClick={() => navigate(`/artists/${streetArt.id_artist}`)}
+                >
+                  {streetArt.artistName}
+                </button>
+              )}
 
-            <p>{streetArt.score} points</p>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
+              <p>{streetArt.score} points</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </>
   );
 }
