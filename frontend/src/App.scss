@@ -365,13 +365,18 @@ button {
     font-size: 1.5rem;
   }
   .Screen {
-    background-color: white;
+    background-color: #f2f2f2;
     border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
     text-align: center;
     align-items: center;
     overflow: overlay;
+    background-image: url(./assets/brickwall_beige.png);
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
   table {
     margin: auto;
@@ -539,5 +544,15 @@ button {
   }
   .connection {
     background-image: url(./assets/bg2.jpg);
+  }
+}
+
+.artistCards {
+  img {
+    width: auto;
+    height: 13rem;
+  }
+  .artistCardContent {
+    padding: 1em;
   }
 }
