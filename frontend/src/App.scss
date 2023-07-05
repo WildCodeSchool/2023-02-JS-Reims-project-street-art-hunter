@@ -503,39 +503,33 @@ button {
   text-align: center;
 }
 // SCCS pour la liste d'amis
+
+.list {
+  font-size: larger;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+}
 .friendslist {
-  background-image: url(./assets/wallfriends2.jpg);
+  background-image: url(./assets/testbis.jpg);
   background-size: cover;
-  //filter: blur(4px);//
+  //opacity: 0, 2;//
+  //filter: blur(1px);//
   background-position: bottom;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 30px;
-  column-gap: 20px;
-  columns: 50rem;
+  grid-template-rows: repeat(3, 1fr) 30px;
+  column-gap: 5px;
+  columns: 20rem;
 }
 
-.friends-pending {
-  background-color: #13627a;
-  border: #fff;
+.friends {
+  background-color: #137d9d;
+  gap: 1rem;
   border-radius: 2px;
   display: grid;
   grid-template-columns: auto;
-}
-
-.friends-received {
-  background-color: #13c7fe;
-  border: #fff;
-  border-radius: 2px;
-  display: flex;
-}
-
-.friends-accepted {
-  background-color: #13c7fe;
-  border: #cc0e0e 5px;
-  border-radius: 2px;
-  display: flex;
+  height: max-content;
 }
 
 @media (orientation: landscape) {
@@ -567,5 +561,18 @@ button {
   }
   .connection {
     background-image: url(./assets/bg2.jpg);
+  }
+  .friendslist {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 30px;
+    column-gap: 20px;
+    columns: 50rem;
+  }
+
+  .list {
+    font-size: larger;
+    height: 20px;
+    display: flex;
+    justify-content: center;
   }
 }

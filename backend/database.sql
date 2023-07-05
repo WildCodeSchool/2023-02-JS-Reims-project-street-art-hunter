@@ -91,7 +91,3 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg');
 
 INSERT INTO friends (user_id_1, user_id_2) VALUES (1, 2), (2, 1);
-
-
-
-CREATE TRIGGER 

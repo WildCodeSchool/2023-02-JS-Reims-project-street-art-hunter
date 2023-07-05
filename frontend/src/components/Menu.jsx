@@ -44,6 +44,10 @@ export default function Menu() {
         image: "src/assets/score.png",
         path: "/score",
       },
+      {
+        name: "Liste d'amis",
+        path: "/friends",
+      },
     ],
   ];
   const upController = () => {

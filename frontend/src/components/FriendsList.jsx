@@ -29,20 +29,19 @@ export default function FriendsList() {
 
   return (
     <div className="friendslist">
-      <div className="friends-pending">
-        <h2>Demandes en attente</h2>
+      <div className="friends">
+        <h1 className="list"> Liste d'amis </h1>
+        <h2 className="title-friends"> Demandes en attente</h2>
         {pendingRequests.length > 0 ? (
           pendingRequests.map((friend) => (
             <figure key={friend.id}>
-              <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${friend.image}`}
-                alt="friendslist"
-              />
               <figcaption>
                 <p>{friend.name}</p>
                 <button
                   type="button"
-                  onClick={() => navigate(`/friends/${friend.id}`)}
+                  onClick={() =>
+                    navigate(`/users/:id/friends_request${friend.id}`)
+                  }
                 >
                   Voir profil
                 </button>
@@ -50,19 +49,15 @@ export default function FriendsList() {
             </figure>
           ))
         ) : (
-          <p>Aucune demande en attente</p>
+          <p className="no-add"> Aucune demande en attente </p>
         )}
       </div>
 
-      <div className="friends-received">
-        <h2>Demandes reçues</h2>
+      <div className="friends">
+        <h2 className="title-friends"> Demandes reçues </h2>
         {receivedRequests.length > 0 ? (
           receivedRequests.map((friend) => (
             <figure key={friend.id}>
-              <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${friend.image}`}
-                alt="friendslist"
-              />
               <figcaption>
                 <p>{friend.name}</p>
                 <button
@@ -75,19 +70,15 @@ export default function FriendsList() {
             </figure>
           ))
         ) : (
-          <p>Aucune demande reçue</p>
+          <p className="no-add"> Aucune demande reçue</p>
         )}
       </div>
 
-      <div className="friends-accepted">
-        <h2>Amis acceptés</h2>
+      <div className="friends">
+        <h2 className="title-friends">Amis acceptés</h2>
         {acceptedFriends.length > 0 ? (
           acceptedFriends.map((friend) => (
             <figure key={friend.id}>
-              <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${friend.image}`}
-                alt="friendslist"
-              />
               <figcaption>
                 <p>{friend.name}</p>
                 <button
@@ -100,7 +91,7 @@ export default function FriendsList() {
             </figure>
           ))
         ) : (
-          <p>Aucun ami accepté</p>
+          <p className="no-add"> Aucun ami accepté</p>
         )}
       </div>
     </div>

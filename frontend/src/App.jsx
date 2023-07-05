@@ -60,7 +60,7 @@ function App() {
           </>
         )}
         <Route path="*" element={<Home />} />
-        <Route path="friends" element={<FriendsList />} />
+        <Route path="/friends" element={<FriendsList />} />
       </Routes>
     </div>
   );
