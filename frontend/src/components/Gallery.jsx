@@ -23,24 +23,27 @@ export default function Gallery() {
       });
   }, []);
   return (
-    <div className="gallery">
-      {gallery.map((picture) => (
-        <Link to={`/gallery/${picture.id_street_art}`}>
-          <figure key={picture.id}>
-            <img
-              src={`${
-                import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
-              }${picture.image}`}
-              alt=""
-            />
-            <figcaption>
-              {picture.name && <p>{picture.name}</p>}
-              {picture.creation_date}
-              <p>{picture.score} point</p>
-            </figcaption>
-          </figure>
-        </Link>
-      ))}
-    </div>
+    <>
+      <h1>Gallery</h1>
+      <div className="gallery">
+        {gallery.map((picture) => (
+          <Link to={`/gallery/${picture.id_street_art}`}>
+            <figure key={picture.id}>
+              <img
+                src={`${
+                  import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
+                }${picture.image}`}
+                alt=""
+              />
+              <figcaption>
+                {picture.name && <p>{picture.name}</p>}
+                {picture.creation_date}
+                <p>{picture.score} point</p>
+              </figcaption>
+            </figure>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }

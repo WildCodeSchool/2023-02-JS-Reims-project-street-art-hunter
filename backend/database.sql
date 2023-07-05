@@ -82,7 +82,7 @@ insert into street_art (image, longitude, latitude, is_valid, score, id_artist, 
 ('/assets/images/boulevard_wilson_2.jpg',49.24098,4.01945, true, 100, 4,1),
 ('/assets/images/place_du_forum.jpg',49.2567,4.03466, true, 50, 1,1),
 ('/assets/images/rue_de_courcelles.jpg',49.26529,4.01402, true, 100, 1,1),
-('/assets/images/wild.jpg',49.2652826,4.0168665, true, 100, 1,1);
+('/assets/images/wild.jpg',49.2652826,4.0168665, true, 100, null,1);
 
 INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VALUES
 (1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg'),

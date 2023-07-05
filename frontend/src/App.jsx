@@ -1,15 +1,20 @@
+// Module
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import GameBoyColor from "./components/GameBoyColor";
-import Menu from "./components/Menu";
-import Camera from "./components/Camera";
+import { useAuth } from "./contexts/AuthContext";
+// GameBoy style
 import GameBoyScreen from "./components/GameBoyScreen";
+// Page User
+import Connection from "./pages/Connection";
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import GameBoyColor from "./components/GameBoyColor";
+import Camera from "./components/Camera";
 import Score from "./components/Score";
 import Gallery from "./components/Gallery";
-import StreetArtsList from "./components/StreetArtsList";
-import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
-import { useAuth } from "./contexts/AuthContext";
+// Page Admin
+import StreetArtsList from "./components/StreetArtsList";
+// SASS
 import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
 
