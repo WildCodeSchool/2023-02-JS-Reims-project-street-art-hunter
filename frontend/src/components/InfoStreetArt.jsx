@@ -40,8 +40,8 @@ export default function InfoStreetArt() {
           <p>Latitude : {streetArt.latitude}</p>
           <p>Longitude : {streetArt.longitude}</p>
         </figcaption>
-        <MapStreetArt />
       </figure>
+      <MapStreetArt />
     </div>
   );
 }

@@ -34,7 +34,7 @@ function App() {
               }
             />
             <Route
-              path="/gallery/:id"
+              path="/gallery/:id/:longitude/:latitude"
               element={
                 <GameBoyScreen returnLink="/gallery">
                   <InfoStreetArt />

@@ -28,7 +28,7 @@ export default function Gallery() {
       <div className="gallery">
         {gallery.map((picture) => (
           <Link
-            to={`/gallery/${picture.id_street_art}?longitude=${picture.longitude}&latitude=${picture.latitude}`}
+            to={`/gallery/${picture.id_street_art}/${picture.longitude}/${picture.latitude}`}
           >
             <figure key={picture.id}>
               <img

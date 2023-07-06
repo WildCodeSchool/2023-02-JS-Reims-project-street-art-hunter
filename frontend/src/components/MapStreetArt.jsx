@@ -1,16 +1,9 @@
-import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useParams } from "react-router-dom";
 
 export default function MapStreetArt() {
-  const url = document.location.href;
-  let longitudeLatitude = url.match(/\d{1,}\.\d+/g);
-  if (longitudeLatitude.length !== 2) {
-    longitudeLatitude = [0, 0];
-  } else {
-    for (let i = 0; i < longitudeLatitude.length; i += 1) {
-      longitudeLatitude[i] = parseFloat(longitudeLatitude[i]);
-    }
-  }
+  const { longitude, latitude } = useParams();
+  const longitudeLatitude = [longitude, latitude];
 
   return (
     <MapContainer
