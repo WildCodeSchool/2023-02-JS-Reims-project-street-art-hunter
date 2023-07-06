@@ -6,9 +6,10 @@ class MessageManager extends AbstractManager {
   }
 
   insert(Message) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      Message.title,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (id_friendship, user_id, content) values (?,?,?)`,
+      [Message.id_friendship, Message.user_id, Message.content]
+    );
   }
 
   update(Message) {
@@ -29,6 +30,13 @@ class MessageManager extends AbstractManager {
     return this.database.query(
       `insert into ${this.table} (id_friendship, user_id, content) values (?,?,?)`,
       [Message.id_friendship, Message.user_id, Message.content]
+    );
+  }
+
+  findByIdFriendship(data) {
+    return this.database.query(
+      `select ${this.table}.*, user.username from ${this.table} join user on user.id=${this.table}.user_id where id_friendship = ?`,
+      [data.id_friendship]
     );
   }
 }
