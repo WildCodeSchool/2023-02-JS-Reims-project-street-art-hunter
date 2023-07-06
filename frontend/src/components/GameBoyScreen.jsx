@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import Return from "../assets/return.png";
+import { GiReturnArrow } from "react-icons/gi";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function GameBoyScreen({ children }) {
+  const { gameBoyColor } = useAuth();
   return (
     <div className="gameBoyScreen">
       <div className="Screen">{children}</div>
@@ -11,7 +13,14 @@ export default function GameBoyScreen({ children }) {
         Street Art Hunter
         <Link to="/menu">
           <button type="button" className="return">
-            <img src={Return} alt="return" />
+            <GiReturnArrow
+              size="2rem"
+              style={
+                Number.isNaN(gameBoyColor)
+                  ? { color: `#FFF` }
+                  : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
+              }
+            />
           </button>
         </Link>
       </p>

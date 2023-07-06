@@ -1,14 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
 
+import {
+  BiChevronsDown,
+  BiChevronsUp,
+  BiChevronsLeft,
+  BiChevronsRight,
+} from "react-icons/bi";
+import { FcGallery, FcOldTimeCamera, FcSlrBackSide } from "react-icons/fc";
+import { GrScorecard } from "react-icons/gr";
+import { IoColorFilterSharp } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 import GameBoy from "./GameBoy";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Menu() {
   const { setToken, role } = useAuth();
   const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
+  const { gameBoyColor } = useAuth();
   const menu = [
     [
       {
@@ -16,12 +27,21 @@ export default function Menu() {
       },
       {
         name: "Color",
-        image: "src/assets/color.png",
+        image: (
+          <IoColorFilterSharp
+            size="5rem"
+            style={
+              Number.isNaN(gameBoyColor)
+                ? { color: `black` }
+                : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
+            }
+          />
+        ),
         path: "/gameboycolor",
       },
       {
         name: "Logout",
-        image: "src/assets/logout.png",
+        image: <FiLogOut size="5rem" />,
         path: "/",
       },
     ],
@@ -31,17 +51,17 @@ export default function Menu() {
       },
       {
         name: "Photo",
-        image: "src/assets/photo.png",
+        image: <FcOldTimeCamera size="5rem" />,
         path: "/camera",
       },
       {
         name: "Gallery",
-        image: "src/assets/gallery.png",
+        image: <FcSlrBackSide size="5rem" />,
         path: "/gallery",
       },
       {
         name: "Score",
-        image: "src/assets/score.png",
+        image: <GrScorecard size="5rem" />,
         path: "/score",
       },
     ],
@@ -53,7 +73,7 @@ export default function Menu() {
       },
       {
         name: "Street Arts",
-        image: "src/assets/gallery.png",
+        image: <FcGallery size="5rem" />,
         path: "/street-arts",
       },
     ]);
@@ -96,31 +116,49 @@ export default function Menu() {
       }}
       buttonLabel1="Entrer"
       buttonLabel2="Exit"
-      ButtonColor1={numberY === 1 ? "yellow" : "blue"}
-      ButtonColor2={numberY === 1 ? "yellow" : "blue"}
+      ButtonColor1={numberY === 0 ? "blue" : "yellow"}
+      ButtonColor2={numberY === 0 ? "blue" : "yellow"}
     >
       <div
         className={`menu ${numberY === 0 ? "menu-Setting" : "menu-inventory"}`}
       >
-        {numberY > 0 && <p className="upDirection">▲</p>}
+        {numberY > 0 && (
+          <p className="upDirection">
+            <BiChevronsUp />
+          </p>
+        )}
         <div className="cadre">
           <h2>{menu[numberY][0].name}</h2>
           <figure>
-            <img
-              src={menu[numberY][numberX].image}
-              alt={menu[numberY][numberX].name}
-              name="image"
-            />
+            {typeof menu[numberY][numberX].image === "string" ? (
+              <img
+                src={menu[numberY][numberX].image}
+                alt={menu[numberY][numberX].name}
+                name="image"
+              />
+            ) : (
+              menu[numberY][numberX].image
+            )}
             <figcaption>
               <h1>{menu[numberY][numberX].name}</h1>
             </figcaption>
           </figure>
         </div>
-        {numberX > 1 && <p className="leftDirection">◀</p>}
-        {numberX < menu[numberY].length - 1 && (
-          <p className="rightDirection">▶</p>
+        {numberX > 1 && (
+          <p className="leftDirection">
+            <BiChevronsLeft />
+          </p>
         )}
-        {numberY < menu.length - 1 && <p className="downDirection">▼</p>}
+        {numberX < menu[numberY].length - 1 && (
+          <p className="rightDirection">
+            <BiChevronsRight />
+          </p>
+        )}
+        {numberY < menu.length - 1 && (
+          <p className="downDirection">
+            <BiChevronsDown />
+          </p>
+        )}
       </div>
     </GameBoy>
   );
