@@ -511,11 +511,49 @@ button {
 }
 
 .message {
-  background-color: gray;
   text-align: center;
   border-radius: 1rem;
   width: 80vw;
   height: 90vh;
+  max-height: 90vh;
+  display: grid;
+  position: relative;
+  .messages {
+    overflow: overlay;
+    display: flex;
+    flex-direction: column;
+    .allMessage {
+      border-radius: 1rem;
+      margin: 0.1rem;
+      margin-inline: 1rem;
+      padding: 0.5rem;
+    }
+    .myMessage {
+      background-color: deepskyblue;
+    }
+    .yourMessage {
+      background-color: seashell;
+    }
+  }
+  .allMessages {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .myMessages {
+    justify-content: flex-end;
+  }
+  .return {
+    position: absolute;
+    left: 1rem;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    .send {
+      padding-inline: 1px;
+      margin-inline: 0.5rem;
+    }
+  }
 }
 
 @media (orientation: landscape) {
