@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TbMessages } from "react-icons/tb";
 
 import {
   BiChevronsDown,
@@ -63,6 +64,11 @@ export default function Menu() {
         name: "Score",
         image: <GrScorecard size="5rem" />,
         path: "/score",
+      },
+      {
+        name: "message",
+        image: <TbMessages size="1rem" />,
+        path: "/message",
       },
     ],
   ];

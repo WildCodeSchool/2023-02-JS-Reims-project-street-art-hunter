@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function StreetArtList() {
   const [streetArts, setStreetArts] = useState([]);
-  const navigate = useNavigate();
   useEffect(() => {
     fetch(
       `${
@@ -17,32 +16,25 @@ export default function StreetArtList() {
   }, []);
 
   return (
-    <>
-      <h1>Street Arts List</h1>
-      <div className="gallery">
-        {streetArts.map((streetArt) => (
-          <figure key={streetArt.id}>
-            <img
-              src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-              alt="streetart"
-            />
+    <div className="gallery">
+      {streetArts.map((streetArt) => (
+        <figure key={streetArt.id}>
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
+            alt="streetart"
+          />
 
-            <figcaption>
-              {streetArt.name && <p>{streetArt.name}</p>}
-              {streetArt.artistName && (
-                <button
-                  type="button"
-                  onClick={() => navigate(`/artists/${streetArt.id_artist}`)}
-                >
-                  {streetArt.artistName}
-                </button>
-              )}
-
-              <p>{streetArt.score} points</p>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </>
+          <figcaption>
+            {streetArt.name && <p>{streetArt.name}</p>}
+            {streetArt.artistName && (
+              <Link to={`/artists/${streetArt.id_artist}`}>
+                {streetArt.artistName}
+              </Link>
+            )}
+            <p>{streetArt.score} points</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   );
 }
