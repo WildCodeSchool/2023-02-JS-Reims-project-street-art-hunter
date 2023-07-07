@@ -20,10 +20,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/message" element={<Message />} />
         <Route path="/connection" element={<Connection />} />
         {token != null && (
           <>
+            <Route path="/message" element={<Message />} />
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
