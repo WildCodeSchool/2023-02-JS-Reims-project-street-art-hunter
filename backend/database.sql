@@ -1,7 +1,7 @@
 create table artist (
   id INT(11) unsigned PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(80) NOT NULL UNIQUE,
-  bio VARCHAR(10000) NULL,
+  bio TEXT NULL,
   picture VARCHAR(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

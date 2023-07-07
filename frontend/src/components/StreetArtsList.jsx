@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function StreetArtList() {
   const [streetArts, setStreetArts] = useState([]);
-  const navigate = useNavigate();
   useEffect(() => {
     fetch(
       `${
@@ -28,12 +27,11 @@ export default function StreetArtList() {
           <figcaption>
             {streetArt.name && <p>{streetArt.name}</p>}
             {streetArt.artistName && (
-              <button
-                type="button"
-                onClick={() => navigate(`/artists/${streetArt.id_artist}`)}
-              >
-                {streetArt.artistName}
-              </button>
+              <Link to={`/artists/${streetArt.id_artist}`}>
+                <button type="button" className="ArtistBio">
+                  {streetArt.artistName}
+                </button>
+              </Link>
             )}
             <p>{streetArt.score} points</p>
           </figcaption>
