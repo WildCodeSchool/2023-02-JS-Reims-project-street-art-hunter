@@ -11,6 +11,7 @@ import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
+import InfoStreetArt from "./components/InfoStreetArt";
 
 import Message from "./components/Message";
 
@@ -32,6 +33,22 @@ function App() {
               element={
                 <GameBoyScreen>
                   <Gallery />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/gallery/:id/:longitude/:latitude"
+              element={
+                <GameBoyScreen returnLink="/gallery">
+                  <InfoStreetArt />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/street-arts"
+              element={
+                <GameBoyScreen>
+                  <StreetArtsList />
                 </GameBoyScreen>
               }
             />
