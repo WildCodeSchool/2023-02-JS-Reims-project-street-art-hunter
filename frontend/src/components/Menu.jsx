@@ -67,7 +67,7 @@ export default function Menu() {
       },
       {
         name: "message",
-        image: <TbMessages size="1rem" />,
+        image: <TbMessages size="5rem" />,
         path: "/message",
       },
     ],
@@ -130,7 +130,7 @@ export default function Menu() {
       >
         {numberY > 0 && (
           <p className="upDirection">
-            <BiChevronsUp />
+            <BiChevronsUp onClick={upController} />
           </p>
         )}
         <div className="cadre">
@@ -152,17 +152,17 @@ export default function Menu() {
         </div>
         {numberX > 1 && (
           <p className="leftDirection">
-            <BiChevronsLeft />
+            <BiChevronsLeft onClick={leftController} />
           </p>
         )}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">
-            <BiChevronsRight />
+            <BiChevronsRight onClick={rightController} />
           </p>
         )}
         {numberY < menu.length - 1 && (
           <p className="downDirection">
-            <BiChevronsDown />
+            <BiChevronsDown onClick={downController} />
           </p>
         )}
       </div>
