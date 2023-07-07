@@ -16,9 +16,21 @@ export default function Artist() {
       });
   }, []);
   return (
-    <article>
-      <h1>{artist?.name}</h1>
-      <p>{artist?.bio}</p>
-    </article>
+    <div className="artistCards">
+      <article>
+        <header>
+          <h2>{artist?.name}</h2>
+        </header>
+        {artist?.picture && (
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}${artist?.picture}`}
+            alt="artist"
+          />
+        )}
+        <div className="artistCardContent">
+          <p>{artist?.bio}</p>
+        </div>
+      </article>
+    </div>
   );
 }
