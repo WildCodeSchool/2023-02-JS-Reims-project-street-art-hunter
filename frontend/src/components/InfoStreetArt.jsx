@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import MapStreetArt from "./MapStreetArt";
 
 export default function InfoStreetArt() {
   const { token } = useAuth();
@@ -41,7 +40,6 @@ export default function InfoStreetArt() {
           <p>Longitude : {streetArt.longitude}</p>
         </figcaption>
       </figure>
-      <MapStreetArt />
     </div>
   );
 }
