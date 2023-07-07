@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TbMessages } from "react-icons/tb";
 import { useAuth } from "../contexts/AuthContext";
 
 import GameBoy from "./GameBoy";
@@ -43,6 +44,11 @@ export default function Menu() {
         name: "Score",
         image: "src/assets/score.png",
         path: "/score",
+      },
+      {
+        name: "message",
+        image: <TbMessages size="1rem" />,
+        path: "/message",
       },
     ],
   ];

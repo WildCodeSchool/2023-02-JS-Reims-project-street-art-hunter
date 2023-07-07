@@ -35,7 +35,7 @@ class MessageManager extends AbstractManager {
 
   findByIdFriendship(data) {
     return this.database.query(
-      `select ${this.table}.*, user.username from ${this.table} join user on user.id=${this.table}.user_id where id_friendship = ?`,
+      `select ${this.table}.*, user.username from ${this.table} join user on user.id=${this.table}.user_id where id_friendship = ? order by ${this.table}.post_end`,
       [data.id_friendship]
     );
   }
