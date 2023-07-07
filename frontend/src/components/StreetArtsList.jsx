@@ -28,9 +28,7 @@ export default function StreetArtList() {
             {streetArt.name && <p>{streetArt.name}</p>}
             {streetArt.artistName && (
               <Link to={`/artists/${streetArt.id_artist}`}>
-                <button type="button" className="ArtistBio">
-                  {streetArt.artistName}
-                </button>
+                {streetArt.artistName}
               </Link>
             )}
             <p>{streetArt.score} points</p>
