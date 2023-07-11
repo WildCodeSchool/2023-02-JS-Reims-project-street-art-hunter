@@ -54,14 +54,18 @@ function Camera() {
               },
               body: formData,
             }
-          ).then((response) => {
-            if (response.ok) {
-              alert("ok");
-            } else {
-              alert("nop");
-            }
-            retake();
-          });
+          )
+            .then((response) => {
+              return response.text();
+            })
+            .then((res) => {
+              if (res === "Created") {
+                alert("✔");
+              } else {
+                alert(res);
+              }
+              retake();
+            });
         });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());

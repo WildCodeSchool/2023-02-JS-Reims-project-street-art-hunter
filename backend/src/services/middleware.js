@@ -15,7 +15,7 @@ const checkToGallery = (req, res, next) => {
     .checkToGallery(req.body)
     .then(([rows]) => {
       if (rows[0] != null) {
-        res.status(404).send({ status: "posséder" });
+        res.status(404).send("posséder");
       } else {
         next();
       }
