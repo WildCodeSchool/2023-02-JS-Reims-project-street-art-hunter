@@ -49,6 +49,7 @@ function App() {
                 </GameBoyScreen>
               }
             />
+
             <Route
               path="/artists/:id"
               element={
@@ -70,7 +71,6 @@ function App() {
           </>
         )}
         <Route path="*" element={<Home />} />
-        <Route path="/friends" element={<FriendsList />} />
       </Routes>
     </div>
   );
