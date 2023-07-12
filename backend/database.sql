@@ -43,7 +43,7 @@ CREATE TABLE friends (
   id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id_1 INT(11) UNSIGNED NOT NULL,
   user_id_2 INT(11) UNSIGNED NOT NULL,
-  status ENUM ('0', '1', '2') DEFAULT '0',
+  status ENUM ('pending', 'accepted', 'refused') DEFAULT 'pending',
   CONSTRAINT `fk_friends_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
   CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

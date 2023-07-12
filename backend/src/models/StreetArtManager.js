@@ -53,6 +53,13 @@ class StreetArtManager extends AbstractManager {
       `select ${this.table}.*, artist.name as artistName from  ${this.table} left join artist on artist.id = street_art.id_artist`
     );
   }
+
+  findWithArtist(id) {
+    return this.database.query(
+      `select ${this.table}.*, artist.name as artistName from  ${this.table} left join artist on artist.id = street_art.id_artist where ${this.table}.id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = StreetArtManager;

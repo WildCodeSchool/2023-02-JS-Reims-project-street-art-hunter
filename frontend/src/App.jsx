@@ -9,6 +9,7 @@ import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
+import FriendsList from "./components/FriendsList";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
@@ -61,9 +62,26 @@ function App() {
               }
             />
             <Route
+              path="/friends"
+              element={
+                <GameBoyScreen>
+                  <FriendsList />
+                </GameBoyScreen>
+              }
+            />
+
+            <Route
               path="/artists/:id"
               element={
                 <GameBoyScreen>
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/gallery/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/gallery">
                   <Artist />
                 </GameBoyScreen>
               }

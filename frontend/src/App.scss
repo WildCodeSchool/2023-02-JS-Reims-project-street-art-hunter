@@ -522,6 +522,32 @@ button {
   color: red;
   text-align: center;
 }
+// SCCS pour la liste d'amis
+
+.container-list {
+  background-image: url(./assets/testbis.jpg);
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) 30px;
+}
+
+.title-list {
+  font-size: 50px larger;
+  color: #13c7fe;
+  text-align: center;
+}
+
+.friends {
+  background-color: #96ddf3;
+  gap: 3px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto;
+  height: max-content;
+  list-style: url("/media/examples/rocket.svg");
+}
 
 .message {
   text-align: center;
@@ -568,6 +594,20 @@ button {
       margin-inline: 0.5rem;
     }
   }
+}
+
+.map-container {
+  display: flex;
+  align-items: center;
+}
+
+.description-street-art {
+  p {
+    margin: 2em;
+  }
+}
+.img-info-street-art {
+  max-width: 100%;
 }
 
 .popup {
@@ -620,6 +660,10 @@ button {
   }
   .connection {
     background-image: url(./assets/bg2.jpg);
+  }
+
+  .friendslist {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
