@@ -388,16 +388,32 @@ button {
   }
   table {
     margin: auto;
+    margin-top: 3em;
     max-width: 17rem;
+
+    td {
+      padding: 1em;
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+    th {
+      font-size: larger;
+    }
+    tbody {
+      font-size: 20px;
+      tr:nth-child(even) {
+        color: blue;
+      }
+      tr:nth-child(odd) {
+        color: rgb(117, 39, 11);
+      }
+    }
   }
-  table,
-  td {
-    border: 1px solid #333;
-  }
+
   thead,
   tfoot {
-    background-color: #333;
-    color: #fff;
+    font-size: large;
+    color: black;
   }
   .gallery {
     display: grid;
