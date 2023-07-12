@@ -33,6 +33,7 @@ export default function InfoStreetArt() {
             streetArt.image
           }`}
           alt=""
+          className="img-info-street-art"
         />
         <figcaption className="description-street-art">
           {streetArt.name && <p>{streetArt.name}</p>}
