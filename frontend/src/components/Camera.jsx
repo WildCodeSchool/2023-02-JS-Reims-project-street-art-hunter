@@ -5,6 +5,7 @@ import Webcam from "react-webcam";
 import { useAuth } from "../contexts/AuthContext";
 
 import GameBoy from "./GameBoy";
+import { Valide } from "./PopUp";
 
 function Camera() {
   const webcamRef = useRef(null);
@@ -12,6 +13,8 @@ function Camera() {
   const [label1, setLabel1] = useState("Screen");
   const [label2, setLabel2] = useState("Return");
   const [videoConstraint, setVideoConstraint] = useState("environment");
+
+  const [valide, setValide] = useState(true);
 
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -60,7 +63,7 @@ function Camera() {
             })
             .then((res) => {
               if (res === "Created") {
-                alert("✔");
+                setValide(true);
               } else {
                 alert(res);
               }
@@ -89,6 +92,7 @@ function Camera() {
         setVideoConstraint("user");
       }}
     >
+      {valide && <Valide setValide={setValide} />}
       <div className="container">
         {imgSrc ? (
           <div className="img-container">

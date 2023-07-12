@@ -113,8 +113,8 @@ router.post(
   verifyToken,
   upload.single("gallery"),
   middleware.checkLocation,
-  middleware.uploadRename,
   middleware.checkToGallery,
+  middleware.uploadRename,
   galleryControllers.add
 );
 router.delete("/gallery/:id", verifyToken, galleryControllers.destroy);

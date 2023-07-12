@@ -1,21 +1,22 @@
 const fs = require("fs");
 const models = require("../models");
 
-const uploadDelete = (path, res) => {
+const uploadDelete = (path) => {
   fs.unlink(path, (err) => {
     if (err) {
       throw err;
     }
-    res.sendStatus(404);
   });
 };
 
 const checkToGallery = (req, res, next) => {
+  req.body.id = req.payload.sub;
   models.gallery
     .checkToGallery(req.body)
     .then(([rows]) => {
       if (rows[0] != null) {
-        res.status(404).send("posséder");
+        uploadDelete(req.file.path);
+        res.status(200).send("posséder");
       } else {
         next();
       }
@@ -31,7 +32,8 @@ const checkLocation = (req, res, next) => {
     .checkLocation(req.body)
     .then(([rows]) => {
       if (rows[0] == null) {
-        uploadDelete(req.file.path, res);
+        uploadDelete(req.file.path);
+        res.sendStatus(404);
       } else {
         req.body.id_street_art = rows[0].id;
         next();
@@ -45,7 +47,6 @@ const checkLocation = (req, res, next) => {
 
 const uploadRename = (req, res, next) => {
   const { fieldname, filename, mimetype, destination } = req.file;
-  req.body.id = req.payload.sub;
   const newFileName = `${fieldname}-${req.body.id}-${req.body.id_street_art}`;
   const typeFile = mimetype.replace("image/", "");
   req.body.imgURL = `${destination.replace(

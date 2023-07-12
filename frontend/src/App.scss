@@ -570,6 +570,28 @@ button {
   }
 }
 
+.popup {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  background-color: #13c7fe;
+  border: 1px solid red;
+  border-radius: 1rem;
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 1;
+  .popupButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    button {
+      font-size: xx-large;
+    }
+  }
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
