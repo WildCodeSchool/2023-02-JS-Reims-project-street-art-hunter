@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import MapStreetArt from "./MapStreetArt";
 
-export default function InfoStreetArt() {
+export default function InfoAdminStreetArt() {
   const { token } = useAuth();
   const [streetArt, setStreetArt] = useState([]);
   const { id } = useParams();
@@ -45,7 +45,7 @@ export default function InfoStreetArt() {
           {streetArt.artistName && (
             <p>
               Artiste :{" "}
-              <Link to={`/gallery/artists/${streetArt.id_artist}`}>
+              <Link to={`/street-arts/artists/${streetArt.id_artist}`}>
                 {streetArt.artistName}
               </Link>
             </p>

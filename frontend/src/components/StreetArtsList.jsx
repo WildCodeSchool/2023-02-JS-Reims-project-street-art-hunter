@@ -20,24 +20,27 @@ export default function StreetArtList() {
       <Link to="/street-arts-pending">
         Allez aux street arts en attente de validation
       </Link>
+
       <div className="gallery">
         {streetArts.map((streetArt) => (
-          <figure key={streetArt.id}>
-            <img
-              src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-              alt="streetart"
-            />
+          <Link
+            to={`/street-arts/${streetArt.id}/${streetArt.longitude}/${streetArt.latitude}`}
+          >
+            <figure key={streetArt.id}>
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
+                alt="streetart"
+              />
 
-            <figcaption>
-              {streetArt.name && <p>{streetArt.name}</p>}
-              {streetArt.artistName && (
-                <Link to={`/artists/${streetArt.id_artist}`}>
-                  {streetArt.artistName}
-                </Link>
-              )}
-              <p>{streetArt.score} points</p>
-            </figcaption>
-          </figure>
+              <figcaption>
+                {streetArt.name && <p>{streetArt.name}</p>}
+
+                {streetArt.artistName && <p>{streetArt.artistName}</p>}
+
+                <p>{streetArt.score} points</p>
+              </figcaption>
+            </figure>
+          </Link>
         ))}
       </div>
     </>

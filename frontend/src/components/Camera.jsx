@@ -5,6 +5,7 @@ import Webcam from "react-webcam";
 import { useAuth } from "../contexts/AuthContext";
 
 import GameBoy from "./GameBoy";
+import { Valide, NewStreetArt, Posseder } from "./PopUp";
 
 function Camera() {
   const webcamRef = useRef(null);
@@ -12,6 +13,10 @@ function Camera() {
   const [label1, setLabel1] = useState("Screen");
   const [label2, setLabel2] = useState("Return");
   const [videoConstraint, setVideoConstraint] = useState("environment");
+  const [sovData, setSovData] = useState();
+  const [valide, setValide] = useState(false);
+  const [newStreetArt, setNewStreetArt] = useState(false);
+  const [posseder, setPosseder] = useState(false);
 
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -37,12 +42,20 @@ function Camera() {
         .then((response) => response.blob())
         .then((blob) => {
           const formData = new FormData();
+          const data = new FormData();
           formData.append(
             "gallery",
             new File([blob], "tmp", { type: blob.type })
           );
+          data.append(
+            "streetArt",
+            new File([blob], "tmp", { type: blob.type })
+          );
           formData.append("x", coords.latitude);
           formData.append("y", coords.longitude);
+          data.append("x", coords.latitude);
+          data.append("y", coords.longitude);
+          setSovData(data);
           fetch(
             `${
               import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
@@ -54,20 +67,49 @@ function Camera() {
               },
               body: formData,
             }
-          ).then((response) => {
-            if (response.ok) {
-              alert("ok");
-            } else {
-              alert("nop");
-            }
-            retake();
-          });
+          )
+            .then((response) => {
+              return response.json();
+            })
+            .then((res) => {
+              if (res.text === "Created") {
+                setValide(true);
+              } else if (res.text === "notExist") {
+                setNewStreetArt(true);
+              } else if (res.text === "posséder") {
+                setPosseder(true);
+              }
+              retake();
+            });
         });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
       setLabel1("Confirm");
       setLabel2("cancel");
     }
+  };
+  const NewArt = () => {
+    setNewStreetArt(false);
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:6000"
+      }/street-arts`,
+      {
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: sovData,
+      }
+    )
+      .then((response) => {
+        return response.text();
+      })
+      .then((res) => {
+        if (res === "Created") {
+          setValide(true);
+        }
+      });
   };
   return (
     <GameBoy
@@ -85,6 +127,11 @@ function Camera() {
         setVideoConstraint("user");
       }}
     >
+      {valide && <Valide setValide={setValide} />}
+      {newStreetArt && (
+        <NewStreetArt setNewStreetArt={setNewStreetArt} NewArt={NewArt} />
+      )}
+      {posseder && <Posseder setPosseder={setPosseder} />}
       <div className="container">
         {imgSrc ? (
           <div className="img-container">
@@ -96,7 +143,7 @@ function Camera() {
               height="auto"
               width="auto"
               ref={webcamRef}
-              screenshotFormat="image/jpeg"
+              screenshotFormat="image/webp"
               videoConstraints={{ facingMode: videoConstraint }}
               mirrored={videoConstraint === "user"}
             />

@@ -9,13 +9,14 @@ import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
+import FriendsList from "./components/FriendsList";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
+import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
 
 import Message from "./components/Message";
 import PendingStreetArtList from "./components/PendingStreetArtsList";
-import GameBoyScreenChoice from "./components/GameBoyScreenChoice";
 
 function App() {
   const { token, role } = useAuth();
@@ -48,6 +49,15 @@ function App() {
               }
             />
             <Route
+              path="/gallery/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/gallery">
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+
+            <Route
               path="/street-arts"
               element={
                 <GameBoyScreen>
@@ -55,6 +65,23 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            <Route
+              path="/street-arts/:id/:longitude/:latitude"
+              element={
+                <GameBoyScreen returnLink="/street-arts">
+                  <InfoAdminStreetArt />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/street-arts/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/street-arts">
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+
             <Route
               path="/score"
               element={
@@ -71,22 +98,31 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            <Route
+              path="/friends"
+              element={
+                <GameBoyScreen>
+                  <FriendsList />
+                </GameBoyScreen>
+              }
+            />
+
             {role && (
               <>
                 <Route
                   path="/street-arts"
                   element={
-                    <GameBoyScreenChoice>
+                    <GameBoyScreen>
                       <StreetArtsList />
-                    </GameBoyScreenChoice>
+                    </GameBoyScreen>
                   }
                 />
                 <Route
                   path="/street-arts-pending"
                   element={
-                    <GameBoyScreenChoice>
+                    <GameBoyScreen>
                       <PendingStreetArtList />
-                    </GameBoyScreenChoice>
+                    </GameBoyScreen>
                   }
                 />
               </>

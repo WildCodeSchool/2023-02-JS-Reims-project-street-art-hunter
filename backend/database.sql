@@ -44,7 +44,7 @@ CREATE TABLE friends (
   id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id_1 INT(11) UNSIGNED NOT NULL,
   user_id_2 INT(11) UNSIGNED NOT NULL,
-  status ENUM ('0', '1', '2') DEFAULT '0',
+  status ENUM ('pending', 'accepted', 'refused') DEFAULT 'pending',
   CONSTRAINT `fk_friends_user_1` FOREIGN KEY (user_id_1) REFERENCES `user`(id),
   CONSTRAINT `fk_friends_user_2` FOREIGN KEY (user_id_2) REFERENCES `user`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -87,9 +87,9 @@ insert into street_art (image, longitude, latitude, is_valid, score, id_artist, 
 ('/assets/images/wild.jpg',49.2652826,4.0168665, true, 100, null,1);
 
 INSERT INTO `gallery` (`id_user`, `id_street_art`,   `creation_date`, `image`, `is_valid` ) VALUES
-(1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg',1),
-(1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg,',0),
-(2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg',1),
+(1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg',0),
+(1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
+(2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg',0),
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg',0);
 
 INSERT INTO friends (user_id_1, user_id_2) VALUES (1, 2), (2, 1);

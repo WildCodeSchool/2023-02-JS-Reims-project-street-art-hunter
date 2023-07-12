@@ -1,22 +1,21 @@
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useParams } from "react-router-dom";
+import { Map, Marker } from "pigeon-maps";
+
+import { stamenToner } from "pigeon-maps/providers";
 
 export default function MapStreetArt() {
   const { longitude, latitude } = useParams();
-  const longitudeLatitude = [longitude, latitude];
+
+  const longitudeLatitude = [parseFloat(longitude), parseFloat(latitude)];
 
   return (
-    <MapContainer
-      center={longitudeLatitude}
-      zoom={15}
-      scrollWheelZoom={false}
-      style={{ flexGrow: 1, minHeight: "initial" }}
+    <Map
+      provider={stamenToner}
+      height={400}
+      defaultCenter={longitudeLatitude}
+      defaultZoom={14}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={longitudeLatitude} />
-    </MapContainer>
+      <Marker width={50} anchor={longitudeLatitude} />
+    </Map>
   );
 }

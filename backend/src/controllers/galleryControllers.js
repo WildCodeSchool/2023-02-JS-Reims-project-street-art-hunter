@@ -58,7 +58,10 @@ const add = (req, res) => {
   models.gallery
     .insert(gallery)
     .then(([result]) => {
-      res.location(`/gallerys/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/gallerys/${result.insertId}`)
+        .status(201)
+        .send({ text: "Created" });
     })
     .catch((err) => {
       console.error(err);
@@ -92,7 +95,31 @@ const galleryByNotValid = (req, res) => {
       res.sendStatus(500);
     });
 };
+
+const validate = (req, res) => {
+  const gallery = req.body;
+
+  // TODO validations (length, format...)
+
+  gallery.id = parseInt(req.params.id, 10);
+
+  models.gallery
+    .update(gallery)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
+  validate,
   browse,
   read,
   edit,

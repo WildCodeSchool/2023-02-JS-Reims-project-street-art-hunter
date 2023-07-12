@@ -29,7 +29,7 @@ class StreetArtManager extends AbstractManager {
   }
 
   checkLocation(location) {
-    // 0.00022
+    // const errorGape = 0.00022;
     const errorGape = 0.05;
     return this.database.query(
       `select id from  ${this.table} where (longitude BETWEEN ? AND ?) AND (latitude BETWEEN ? AND ?)`,
@@ -51,6 +51,13 @@ class StreetArtManager extends AbstractManager {
   findAll() {
     return this.database.query(
       `select ${this.table}.*, artist.name as artistName from  ${this.table} left join artist on artist.id = street_art.id_artist`
+    );
+  }
+
+  findWithArtist(id) {
+    return this.database.query(
+      `select ${this.table}.*, artist.name as artistName from  ${this.table} left join artist on artist.id = street_art.id_artist where ${this.table}.id = ?`,
+      [id]
     );
   }
 }

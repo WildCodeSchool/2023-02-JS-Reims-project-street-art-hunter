@@ -388,16 +388,32 @@ button {
   }
   table {
     margin: auto;
+    margin-top: 3em;
     max-width: 17rem;
+
+    td {
+      padding: 1em;
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+    th {
+      font-size: larger;
+    }
+    tbody {
+      font-size: 20px;
+      tr:nth-child(even) {
+        color: blue;
+      }
+      tr:nth-child(odd) {
+        color: rgb(117, 39, 11);
+      }
+    }
   }
-  table,
-  td {
-    border: 1px solid #333;
-  }
+
   thead,
   tfoot {
-    background-color: #333;
-    color: #fff;
+    font-size: large;
+    color: black;
   }
   .gallery {
     display: grid;
@@ -522,6 +538,32 @@ button {
   color: red;
   text-align: center;
 }
+// SCCS pour la liste d'amis
+
+.container-list {
+  background-image: url(./assets/testbis.jpg);
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) 30px;
+}
+
+.title-list {
+  font-size: 50px larger;
+  color: #13c7fe;
+  text-align: center;
+}
+
+.friends {
+  background-color: #96ddf3;
+  gap: 3px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto;
+  height: max-content;
+  list-style: url("/media/examples/rocket.svg");
+}
 
 .message {
   text-align: center;
@@ -570,6 +612,41 @@ button {
   }
 }
 
+.map-container {
+  display: flex;
+  align-items: center;
+}
+
+.description-street-art {
+  p {
+    margin: 2em;
+  }
+}
+.img-info-street-art {
+  max-width: 100%;
+}
+
+.popup {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  background-color: #13c7fe;
+  border-radius: 1rem;
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 1;
+  .popupButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    button {
+      font-size: x-large;
+    }
+  }
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
@@ -599,6 +676,10 @@ button {
   }
   .connection {
     background-image: url(./assets/bg2.jpg);
+  }
+
+  .friendslist {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

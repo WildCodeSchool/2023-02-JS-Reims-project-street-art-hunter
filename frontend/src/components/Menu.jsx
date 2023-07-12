@@ -16,7 +16,7 @@ import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Menu() {
-  const { setToken, role } = useAuth();
+  const { setToken, role, setRole } = useAuth();
   const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
@@ -66,7 +66,11 @@ export default function Menu() {
         path: "/score",
       },
       {
-        name: "Messagerie",
+        name: "Liste d'amis",
+        path: "/friends",
+      },
+      {
+        name: "messagerie",
         image: <TbMessages size="5rem" />,
         path: "/message",
       },
@@ -108,9 +112,11 @@ export default function Menu() {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
   const button1Controller = () => {
-    if (menu[numberY][numberX].name === "Logout") {
+    if (menu[numberY][numberX].name === "Déconnexion") {
       setToken(null);
+      setRole(null);
       sessionStorage.removeItem("token");
+      sessionStorage.removeItem("role");
     }
     navigate(menu[numberY][numberX].path);
   };
@@ -135,7 +141,7 @@ export default function Menu() {
       >
         {numberY > 0 && (
           <p className="upDirection">
-            <BiChevronsUp />
+            <BiChevronsUp onClick={upController} />
           </p>
         )}
         <div className="cadre">
@@ -157,17 +163,17 @@ export default function Menu() {
         </div>
         {numberX > 1 && (
           <p className="leftDirection">
-            <BiChevronsLeft />
+            <BiChevronsLeft onClick={leftController} />
           </p>
         )}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">
-            <BiChevronsRight />
+            <BiChevronsRight onClick={rightController} />
           </p>
         )}
         {numberY < menu.length - 1 && (
           <p className="downDirection">
-            <BiChevronsDown />
+            <BiChevronsDown onClick={downController} />
           </p>
         )}
       </div>
