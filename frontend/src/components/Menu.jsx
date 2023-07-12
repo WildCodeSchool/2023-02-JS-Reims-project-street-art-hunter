@@ -66,6 +66,10 @@ export default function Menu() {
         path: "/score",
       },
       {
+        name: "Liste d'amis",
+        path: "/friends",
+      },
+      {
         name: "message",
         image: <TbMessages size="5rem" />,
         path: "/message",
