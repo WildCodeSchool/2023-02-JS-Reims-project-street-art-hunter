@@ -518,6 +518,17 @@ button {
   height: 90vh;
 }
 
+.map-container {
+  display: flex;
+  align-items: center;
+}
+
+.description-street-art {
+  p {
+    margin: 2em;
+  }
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
