@@ -99,25 +99,26 @@ router.post(
   verifyPassword
 );
 
-// friends
+// route veryf
+router.use(verifyToken);
 
 // route privée
 
 const galleryControllers = require("./controllers/galleryControllers");
 
-router.get("/gallery", verifyToken, galleryControllers.browse);
-router.get("/gallery/:id", verifyToken, galleryControllers.read);
-router.put("/gallery/:id", verifyToken, galleryControllers.edit);
+router.get("/gallery", galleryControllers.browse);
+router.get("/gallery/:id", galleryControllers.read);
+router.put("/gallery/:id", galleryControllers.edit);
 router.post(
   "/gallery",
-  verifyToken,
+
   upload.single("gallery"),
   middleware.checkLocation,
   middleware.checkToGallery,
   middleware.uploadRename,
   galleryControllers.add
 );
-router.delete("/gallery/:id", verifyToken, galleryControllers.destroy);
+router.delete("/gallery/:id", galleryControllers.destroy);
 
 router.get("/friends", friendsControllers.browse);
 router.get("/friends/:id", friendsControllers.read);
@@ -129,15 +130,11 @@ router.delete("/items/:id", itemControllers.destroy);
 
 router.put("/street-arts/:id", streetArtControllers.edit);
 router.post(
-  "/street-arts/users",
+  "/street-arts",
   upload.single("streetArt"),
   middleware.checkIdStreeArt,
   middleware.uploadRename,
   streetArtControllers.addUsers
-);
-router.post(
-  "/street-arts/administrator",
-  streetArtControllers.addAdministrator
 );
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 

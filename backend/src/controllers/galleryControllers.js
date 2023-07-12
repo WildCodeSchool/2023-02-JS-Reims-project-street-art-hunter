@@ -58,7 +58,10 @@ const add = (req, res) => {
   models.gallery
     .insert(gallery)
     .then(([result]) => {
-      res.location(`/gallerys/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/gallerys/${result.insertId}`)
+        .status(201)
+        .send({ text: "Created" });
     })
     .catch((err) => {
       console.error(err);

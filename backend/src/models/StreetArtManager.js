@@ -29,7 +29,7 @@ class StreetArtManager extends AbstractManager {
   }
 
   checkLocation(location) {
-    // 0.00022
+    // const errorGape = 0.00022;
     const errorGape = 0.05;
     return this.database.query(
       `select id from  ${this.table} where (longitude BETWEEN ? AND ?) AND (latitude BETWEEN ? AND ?)`,

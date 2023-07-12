@@ -16,7 +16,7 @@ const checkToGallery = (req, res, next) => {
     .then(([rows]) => {
       if (rows[0] != null) {
         uploadDelete(req.file.path);
-        res.status(200).send("posséder");
+        res.status(200).send({ text: "posséder" });
       } else {
         next();
       }
@@ -33,7 +33,7 @@ const checkLocation = (req, res, next) => {
     .then(([rows]) => {
       if (rows[0] == null) {
         uploadDelete(req.file.path);
-        res.sendStatus(404);
+        res.status(200).send({ text: "notExist" });
       } else {
         req.body.id_street_art = rows[0].id;
         next();
@@ -64,10 +64,15 @@ const uploadRename = (req, res, next) => {
 };
 
 const checkIdStreeArt = (req, res, next) => {
+  req.body.id = req.payload.sub;
   models.streetArt
     .findEndId()
     .then(([rows]) => {
-      req.body.id_street_art = rows[0].id + 1;
+      if (rows[0]) {
+        req.body.id_street_art = rows[0].id + 1;
+      } else {
+        req.body.id_street_art = 1;
+      }
       next();
     })
     .catch((err) => {

@@ -574,7 +574,6 @@ button {
   display: grid;
   grid-template-rows: 2fr 1fr;
   background-color: #13c7fe;
-  border: 1px solid red;
   border-radius: 1rem;
   position: absolute;
   top: 5%;
@@ -587,7 +586,7 @@ button {
     align-items: center;
     justify-content: space-evenly;
     button {
-      font-size: xx-large;
+      font-size: x-large;
     }
   }
 }
