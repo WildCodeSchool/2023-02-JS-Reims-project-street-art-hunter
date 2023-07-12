@@ -68,6 +68,14 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            <Route
+              path="/gallery/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/gallery">
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
             {role && (
               <Route
                 path="/street-arts"
