@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import MapStreetArt from "./MapStreetArt";
 
 export default function InfoStreetArt() {
   const { token } = useAuth();
@@ -21,6 +22,7 @@ export default function InfoStreetArt() {
       .then((res) => res.json())
       .then((data) => {
         setStreetArt(data);
+        console.info(data);
       });
   }, []);
   return (
@@ -32,14 +34,21 @@ export default function InfoStreetArt() {
           }`}
           alt=""
         />
-        <figcaption>
+        <figcaption className="description-street-art">
           {streetArt.name && <p>{streetArt.name}</p>}
           {streetArt.creation_date}
-          <p>{streetArt.score} point</p>
-          <p>Latitude : {streetArt.latitude}</p>
-          <p>Longitude : {streetArt.longitude}</p>
+          <p>Score : {streetArt.score} point</p>
+          {streetArt.creation_date && (
+            <p>Date de creation : {streetArt.creation_date}</p>
+          )}
+          <p>Géolocalisation :</p>
         </figcaption>
+        <section className="map-container">
+          <MapStreetArt className="map-street-art" />
+        </section>
       </figure>
     </div>
   );
 }
+
+/*  */
