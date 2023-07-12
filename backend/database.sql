@@ -1,7 +1,8 @@
 create table artist (
   id INT(11) unsigned PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(80) NOT NULL UNIQUE,
-  bio VARCHAR(10000) NULL
+  bio TEXT NULL,
+  picture VARCHAR(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 create table user (
@@ -57,19 +58,19 @@ CREATE TABLE message (
   CONSTRAINT `fk_message_user` FOREIGN KEY (id_friendship) REFERENCES `friends`(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into artist (name, bio) VALUES
+insert into artist (name, bio, picture) VALUES
 ('C215', "Christian GUEMY, alias C215 (Artiste peintre), vit et travaille à Ivry-sur-Seine
 Christian Guémy alias C215 est un artiste urbain pochoiriste français né en 1973.
 C215 intervient dans les rues du monde entier depuis le début des années 2000. Il présente ses œuvres peintes sur des objets ou sur toiles dans plusieurs galeries, en France et à l’étranger. Il a exposé dans de nombreux musées nationaux et collabore régulièrement avec des institutions publiques, culturelles ou sociales.
-C215 est considéré aujourd’hui comme l’un des pochoiristes les plus reconnus de la scène Street art mondiale."),
+C215 est considéré aujourd’hui comme l’un des pochoiristes les plus reconnus de la scène Street art mondiale.",'/assets/images/C215.jpg'),
 ('IPIN', "Germain Prévost (alias IPIN) est artiste et sérigraphe. Il fait des études sur l’environnement et la qualité de vie entre La Ciotat et Marseille. C’est dans ce cadre qu’il étudie l’environnement social de la Cité des Arts de la Rue. Déjà graffeur, connu sous le nom de Ipin, cette expérience le conduit à s’interroger sur le statut du street art et du graffiti au sein des arts de la rue. Il s’inspire notamment des œuvres de Vasarely, qui jalonnent les villes depuis les années 80. Ses créations, souvent géométriques et faisant appel à des anamorphoses, puisent également dans l’architecture.
-Il développe le concept d’impactivisme (auto-proclamé) comme forme la plus basique de réappropriation graphique de l’espace public : c’est, en quelque sorte, un graffiti déshabillé de tout apparat décoratif, pour n’en garder que les composantes essentielles : un mouvement, une couleur, une forme et un support.  L’analogie picturale du cri primitif."),
+Il développe le concept d’impactivisme (auto-proclamé) comme forme la plus basique de réappropriation graphique de l’espace public : c’est, en quelque sorte, un graffiti déshabillé de tout apparat décoratif, pour n’en garder que les composantes essentielles : un mouvement, une couleur, une forme et un support.  L’analogie picturale du cri primitif.",'/assets/images/IPIN.jpg' ),
 ('SCAMP80S', "Scamp80s, un artiste probablement local qui se fait aussi appeler N10.
-De ce qu'on peut voir sur internet Scamp80s est avant tout un artiste abstrait qui fait aussi du lettrage (on trouve assez souvent son blase N10 – mais ici on ne le vois pas…)."),
+De ce qu'on peut voir sur internet Scamp80s est avant tout un artiste abstrait qui fait aussi du lettrage (on trouve assez souvent son blase N10 – mais ici on ne le vois pas…).", '/assets/images/SCAMP80S.png'),
 ('JIEM et MARY',"Mary Limonade, artiste Belge originaire de Liège et Jiem artiste Nantais de naissance, travaillent ensemble depuis plusieurs années sur Lille et ailleurs en France ou à l'étranger. Ils occupent aujourd'hui un des ateliers de la galerie Lasécu dans lequel Jiem est arrivé en 2008. Avant de monter ensemble le duo Wanderlust Social Club, chacun d'eux a développé des pratiques personnelles de manière autodidacte.
 Leurs premières connections artistiques se sont faites par le graffiti, de manière libre et sauvage. De cette passion partagée leur vient le goût de la dérive, de l'exploration, du voyage. D'où le choix de ce nom commun, Wanderlust, mot d'origine allemande qui signifie dans la langue anglaise également la soif de voyage, l'attrait de l'inconnu et de l'exotisme.
 L'esprit d'indépendance du graffiti se retrouve dans le travail de Mary et Jiem à travers une grande liberté d'action et un large éventail de pratiques, loin des standards des galeries street art formatées. En plus d'un important travail graphique et illustratif dans leurs dessins et peintures, sur supports ou sur murs, ils pratiquent la photographie argentique, l'édition et l'art textile. Quel que soit le mode d'expression choisi, certains éléments et thèmes sont récurrents chez les deux artistes, le voyage, la ville et ses éléments graphiques, les identités collectives, les cultures underground et leurs pratiques marginales, les interactions sociales, l'amour et le romantisme, entre autres.
-Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.");
+Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.", NULL);
 
 insert into user (username, password, mail, is_admin) VALUES
 ("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),

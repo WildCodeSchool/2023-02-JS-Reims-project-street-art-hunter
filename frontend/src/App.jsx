@@ -12,6 +12,9 @@ import Artist from "./components/Artist";
 import FriendsList from "./components/FriendsList";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
+import InfoStreetArt from "./components/InfoStreetArt";
+
+import Message from "./components/Message";
 
 function App() {
   const { token, role } = useAuth();
@@ -22,6 +25,7 @@ function App() {
         <Route path="/connection" element={<Connection />} />
         {token != null && (
           <>
+            <Route path="/message" element={<Message />} />
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
@@ -30,6 +34,22 @@ function App() {
               element={
                 <GameBoyScreen>
                   <Gallery />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/gallery/:id/:longitude/:latitude"
+              element={
+                <GameBoyScreen returnLink="/gallery">
+                  <InfoStreetArt />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/street-arts"
+              element={
+                <GameBoyScreen>
+                  <StreetArtsList />
                 </GameBoyScreen>
               }
             />
@@ -54,6 +74,14 @@ function App() {
               path="/artists/:id"
               element={
                 <GameBoyScreen>
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/gallery/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/gallery">
                   <Artist />
                 </GameBoyScreen>
               }

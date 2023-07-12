@@ -173,8 +173,8 @@ button {
           background-repeat: no-repeat;
           background-position: center;
           margin: auto;
-          padding: 1rem;
-          padding-inline: 5rem;
+          padding: 0.5rem;
+          padding-inline: 3rem;
         }
       }
       .rightDirection {
@@ -202,8 +202,10 @@ button {
       background-image: url(./assets/cuire.jpg);
       background-size: cover;
       h2 {
-        background-image: url(./assets/title-inventory.png);
         color: white;
+        background-color: black;
+        border: 5px solid gold;
+        border-radius: 10px 100px / 120px;
       }
       figure {
         border-color: black;
@@ -216,8 +218,9 @@ button {
     .menu-Setting {
       background: radial-gradient(cyan, blue);
       h2 {
-        background-image: url(./assets/title-Setting.png);
-        background-repeat: no-repeat;
+        background-color: whitesmoke;
+        border-radius: 10px 100px / 120px;
+        border: 5px solid gold;
       }
       figure {
         border-color: gray;
@@ -355,6 +358,11 @@ button {
   text-align: center;
   height: 100vh;
   position: relative;
+  .return {
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+  }
   h1 {
     margin: 0;
   }
@@ -365,13 +373,18 @@ button {
     font-size: 1.5rem;
   }
   .Screen {
-    background-color: white;
+    background-color: #f2f2f2;
     border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
     text-align: center;
     align-items: center;
     overflow: overlay;
+    background-image: url(./assets/brickwall_beige.png);
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
   table {
     margin: auto;
@@ -536,6 +549,67 @@ button {
   list-style: url("/media/examples/rocket.svg");
 }
 
+.message {
+  text-align: center;
+  border-radius: 1rem;
+  width: 80vw;
+  height: 90vh;
+  max-height: 90vh;
+  display: grid;
+  position: relative;
+  .messages {
+    overflow: overlay;
+    display: flex;
+    flex-direction: column;
+    background-image: url("./assets/mur.png");
+    .allMessage {
+      border-radius: 1rem;
+      margin: 0.1rem;
+      margin-inline: 1rem;
+      padding: 0.5rem;
+    }
+    .myMessage {
+      background-color: deepskyblue;
+    }
+    .yourMessage {
+      background-color: seashell;
+    }
+  }
+  .allMessages {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .myMessages {
+    justify-content: flex-end;
+  }
+  .return {
+    position: absolute;
+    left: 1rem;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    .send {
+      padding-inline: 1px;
+      margin-inline: 0.5rem;
+    }
+  }
+}
+
+.map-container {
+  display: flex;
+  align-items: center;
+}
+
+.description-street-art {
+  p {
+    margin: 2em;
+  }
+}
+.img-info-street-art {
+  max-width: 100%;
+}
+
 @media (orientation: landscape) {
   .home {
     flex-direction: row;
@@ -569,5 +643,15 @@ button {
 
   .friendslist {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.artistCards {
+  img {
+    width: auto;
+    height: 13rem;
+  }
+  .artistCardContent {
+    padding: 1em;
   }
 }
