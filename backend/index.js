@@ -43,11 +43,11 @@ io.on("connect", (socket) => {
 
     models.message.findByIdFriendship(req).then(([rows]) => {
       socket.emit("messages", rows);
+      socket.emit("myUser", req.user_id);
     });
 
     socket.on("newMessage", (newMessage) => {
-      const Message = [];
-      Message.user_id = newMessage;
+      const Message = newMessage;
       Message.user_id = payload.sub;
       models.message.insert(Message).then(() => {
         models.message.findByIdFriendship(req).then(([rows]) => {
