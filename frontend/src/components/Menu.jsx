@@ -24,10 +24,10 @@ export default function Menu() {
   const menu = [
     [
       {
-        name: "Setting",
+        name: "Paramètres",
       },
       {
-        name: "Color",
+        name: "Couleur",
         image: (
           <IoColorFilterSharp
             size="5rem"
@@ -41,14 +41,14 @@ export default function Menu() {
         path: "/gameboycolor",
       },
       {
-        name: "Logout",
+        name: "Déconnexion",
         image: <FiLogOut size="5rem" />,
         path: "/",
       },
     ],
     [
       {
-        name: "inventory",
+        name: "Inventaire",
       },
       {
         name: "Photo",
@@ -56,7 +56,7 @@ export default function Menu() {
         path: "/camera",
       },
       {
-        name: "Gallery",
+        name: "Ma Galerie",
         image: <FcSlrBackSide size="5rem" />,
         path: "/gallery",
       },
@@ -66,8 +66,8 @@ export default function Menu() {
         path: "/score",
       },
       {
-        name: "message",
-        image: <TbMessages size="1rem" />,
+        name: "Messagerie",
+        image: <TbMessages size="5rem" />,
         path: "/message",
       },
     ],
@@ -75,12 +75,17 @@ export default function Menu() {
   if (role) {
     menu.push([
       {
-        name: "inventory admin",
+        name: "Inventaire Admin",
       },
       {
         name: "Street Arts",
         image: <FcGallery size="5rem" />,
         path: "/street-arts",
+      },
+      {
+        name: "Validation",
+        image: <FcGallery size="5rem" />,
+        path: "/street-arts-pending",
       },
     ]);
   }

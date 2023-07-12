@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function StreetArtList() {
+export default function PendingStreetArtList() {
   const [streetArts, setStreetArts] = useState([]);
   useEffect(() => {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
-      }/street-arts`
+      }/street-arts-pending`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -17,8 +17,8 @@ export default function StreetArtList() {
 
   return (
     <>
-      <Link to="/street-arts-pending">
-        Allez aux street arts en attente de validation
+      <Link to="/street-arts" className="validationButton">
+        Allez aux street arts de référence
       </Link>
       <div className="gallery">
         {streetArts.map((streetArt) => (
@@ -27,16 +27,12 @@ export default function StreetArtList() {
               src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
               alt="streetart"
             />
-
-            <figcaption>
-              {streetArt.name && <p>{streetArt.name}</p>}
-              {streetArt.artistName && (
-                <Link to={`/artists/${streetArt.id_artist}`}>
-                  {streetArt.artistName}
-                </Link>
-              )}
-              <p>{streetArt.score} points</p>
-            </figcaption>
+            <button type="button" className="validationButton">
+              Valider ce street art
+            </button>
+            <button type="button" className="validationButton">
+              Refuser ce street art
+            </button>
           </figure>
         ))}
       </div>

@@ -105,7 +105,7 @@ router.post(
 
 const galleryControllers = require("./controllers/galleryControllers");
 
-router.get("/gallery", verifyToken, galleryControllers.browse);
+router.get("/gallery", galleryControllers.browse);
 router.get("/gallery/:id", verifyToken, galleryControllers.read);
 router.put("/gallery/:id", verifyToken, galleryControllers.edit);
 router.post(
@@ -151,4 +151,5 @@ router.delete("/messages/:id", messageControllers.destroy);
 router.get("/messages/friends/:id_friendship", messageControllers.getMessage);
 router.post("/messages/friends/:id_friendship", messageControllers.postMessage);
 
+router.get("/street-arts-pending", galleryControllers.galleryByNotValid);
 module.exports = router;

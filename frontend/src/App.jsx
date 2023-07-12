@@ -14,6 +14,8 @@ import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
 
 import Message from "./components/Message";
+import PendingStreetArtList from "./components/PendingStreetArtsList";
+import GameBoyScreenChoice from "./components/GameBoyScreenChoice";
 
 function App() {
   const { token, role } = useAuth();
@@ -28,6 +30,7 @@ function App() {
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
+
             <Route
               path="/gallery"
               element={
@@ -69,14 +72,24 @@ function App() {
               }
             />
             {role && (
-              <Route
-                path="/street-arts"
-                element={
-                  <GameBoyScreen>
-                    <StreetArtsList />
-                  </GameBoyScreen>
-                }
-              />
+              <>
+                <Route
+                  path="/street-arts"
+                  element={
+                    <GameBoyScreenChoice>
+                      <StreetArtsList />
+                    </GameBoyScreenChoice>
+                  }
+                />
+                <Route
+                  path="/street-arts-pending"
+                  element={
+                    <GameBoyScreenChoice>
+                      <PendingStreetArtList />
+                    </GameBoyScreenChoice>
+                  }
+                />
+              </>
             )}
           </>
         )}

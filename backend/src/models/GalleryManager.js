@@ -7,8 +7,8 @@ class GalleryManager extends AbstractManager {
 
   insert(gallery) {
     return this.database.query(
-      `insert into ${this.table} (id_user, id_street_art, image) values (?, ?, ?)`,
-      [gallery.id, gallery.id_street_art, gallery.imgURL]
+      `insert into ${this.table} (id_user, id_street_art, image, is_valid) values (?, ?, ?, ?)`,
+      [gallery.id, gallery.id_street_art, gallery.imgURL, gallery.is_valid]
     );
   }
 
@@ -23,6 +23,12 @@ class GalleryManager extends AbstractManager {
     return this.database.query(
       `select * from  ${this.table} where id_user = ? AND id_street_art = ?`,
       [info.id, info.id_street_art]
+    );
+  }
+
+  findByNotValid() {
+    return this.database.query(
+      `select * from  ${this.table} where is_valid = 0`
     );
   }
 }
