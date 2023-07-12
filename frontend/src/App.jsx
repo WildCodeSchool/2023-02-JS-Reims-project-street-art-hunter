@@ -13,6 +13,7 @@ import FriendsList from "./components/FriendsList";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
+import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
 
 import Message from "./components/Message";
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
+
             <Route
               path="/gallery"
               element={
@@ -46,6 +48,15 @@ function App() {
               }
             />
             <Route
+              path="/gallery/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/gallery">
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+
+            <Route
               path="/street-arts"
               element={
                 <GameBoyScreen>
@@ -53,6 +64,23 @@ function App() {
                 </GameBoyScreen>
               }
             />
+            <Route
+              path="/street-arts/:id/:longitude/:latitude"
+              element={
+                <GameBoyScreen returnLink="/street-arts">
+                  <InfoAdminStreetArt />
+                </GameBoyScreen>
+              }
+            />
+            <Route
+              path="/street-arts/artists/:id"
+              element={
+                <GameBoyScreen returnLink="/street-arts">
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+
             <Route
               path="/score"
               element={
@@ -70,22 +98,6 @@ function App() {
               }
             />
 
-            <Route
-              path="/artists/:id"
-              element={
-                <GameBoyScreen>
-                  <Artist />
-                </GameBoyScreen>
-              }
-            />
-            <Route
-              path="/gallery/artists/:id"
-              element={
-                <GameBoyScreen returnLink="/gallery">
-                  <Artist />
-                </GameBoyScreen>
-              }
-            />
             {role && (
               <Route
                 path="/street-arts"

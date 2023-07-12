@@ -15,15 +15,16 @@ export default function Score() {
   }, []);
   return (
     <>
-      <h1>Scores</h1>
+      <h1>MEILLEURS SCORES</h1>
       <table>
         <thead>
           <tr>
             <th>Rang</th>
-            <th>Player</th>
+            <th>Joueur</th>
             <th>Point</th>
           </tr>
         </thead>
+
         <tbody>
           {scores.map((score, index) => (
             <tr key={score.id_user}>
