@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import MapStreetArt from "./MapStreetArt";
 
@@ -33,6 +33,7 @@ export default function InfoStreetArt() {
             streetArt.image
           }`}
           alt=""
+          className="img-info-street-art"
         />
         <figcaption className="description-street-art">
           {streetArt.name && <p>{streetArt.name}</p>}
@@ -40,6 +41,14 @@ export default function InfoStreetArt() {
           <p>Score : {streetArt.score} point</p>
           {streetArt.creation_date && (
             <p>Date de creation : {streetArt.creation_date}</p>
+          )}
+          {streetArt.artistName && (
+            <p>
+              Artiste :{" "}
+              <Link to={`/gallery/artists/${streetArt.id_artist}`}>
+                {streetArt.artistName}
+              </Link>
+            </p>
           )}
           <p>Géolocalisation :</p>
         </figcaption>
