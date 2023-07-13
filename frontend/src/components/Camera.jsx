@@ -145,7 +145,7 @@ function Camera() {
               ref={webcamRef}
               screenshotFormat="image/webp"
               videoConstraints={{ facingMode: videoConstraint }}
-              mirrored={videoConstraint === "user"}
+              mirrored
             />
           </div>
         )}
