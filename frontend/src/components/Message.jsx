@@ -14,7 +14,7 @@ export default function Massege() {
   const [socket, setSocket] = useState(null);
   const [myIdUser, setMyIdUser] = useState();
   const id = 1;
-  const FriendshipName = "FriendshipName";
+  const FriendshipName = "Friend's name";
   useEffect(() => {
     const newSocket = socketIOClient(
       `${import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`}`

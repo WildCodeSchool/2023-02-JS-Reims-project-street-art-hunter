@@ -7,9 +7,10 @@ function Valide({ setValide }) {
     <div className="popup">
       <section>
         <h1>
-          Valide <FcApproval />
+          Ok
+          <FcApproval />
         </h1>
-        <p>un admin va voir</p>
+        <p>Un administrateur va vérifier sous peu !</p>
       </section>
       <div className="popupButton">
         <button type="button" onClick={() => setValide(false)}>
@@ -27,11 +28,11 @@ function NewStreetArt({ setNewStreetArt, NewArt }) {
   return (
     <div className="popup">
       <div>
-        <h1>Street Art non trouver</h1>
+        <h1>Street Art non trouvé</h1>
       </div>
       <div className="popupButton">
         <button type="button" onClick={NewArt}>
-          Nouveaux Street Art?
+          Nouveau Street Art ?
         </button>
         <button type="button" onClick={() => setNewStreetArt(false)}>
           Ok
@@ -49,8 +50,8 @@ function Posseder({ setPosseder }) {
   return (
     <div className="popup">
       <section>
-        <h1>Posséder</h1>
-        <p>vous possédez deja ce street art</p>
+        <h1>Possédé</h1>
+        <p>Vous possédez déja ce street art</p>
       </section>
       <div className="popupButton">
         <button type="button" onClick={() => setPosseder(false)}>

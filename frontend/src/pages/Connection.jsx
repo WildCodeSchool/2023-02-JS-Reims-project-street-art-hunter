@@ -9,7 +9,7 @@ function Connection() {
 
   return (
     <div className="connection">
-      <img src={logo} alt="" />
+      <img src={logo} alt="logo" />
       <div className="form-connection">
         <div className="change-menu">
           <button
@@ -17,14 +17,14 @@ function Connection() {
             type="button"
             onClick={() => setIsLogin(true)}
           >
-            Login
+            Connexion
           </button>
           <button
             className={!isLogin ? "selected-button" : "default-button"}
             type="button"
             onClick={() => setIsLogin(false)}
           >
-            Register
+            Enregistrement
           </button>
         </div>
         <div className="form-content">
