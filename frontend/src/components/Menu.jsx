@@ -132,7 +132,7 @@ export default function Menu() {
         navigate("/");
       }}
       buttonLabel1="Entrer"
-      buttonLabel2="Exit"
+      buttonLabel2="Sortir"
       ButtonColor1={numberY === 0 ? "blue" : "yellow"}
       ButtonColor2={numberY === 0 ? "blue" : "yellow"}
     >

@@ -33,7 +33,6 @@ export default function PendingStreetArtList() {
               src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
               alt="streetart"
             />
-            <br />
             <button type="button" className="validationButton">
               Valider ce street art
             </button>
