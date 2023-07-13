@@ -11,7 +11,7 @@ import {
 import { FcGallery, FcOldTimeCamera, FcSlrBackSide } from "react-icons/fc";
 import { GrScorecard } from "react-icons/gr";
 import { IoColorFilterSharp } from "react-icons/io5";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiMap } from "react-icons/fi";
 import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -59,6 +59,11 @@ export default function Menu() {
         name: "Ma Galerie",
         image: <FcSlrBackSide size="5rem" />,
         path: "/gallery",
+      },
+      {
+        name: "Ta carte",
+        image: <FiMap size="5rem" />,
+        path: "/map-global",
       },
       {
         name: "Score",

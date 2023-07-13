@@ -16,6 +16,7 @@ import InfoStreetArt from "./components/InfoStreetArt";
 import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
 
 import Message from "./components/Message";
+import MapGlobal from "./components/MapGlobal";
 import PendingStreetArtList from "./components/PendingStreetArtsList";
 
 function App() {
@@ -31,6 +32,15 @@ function App() {
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
+
+            <Route
+              path="/map-global"
+              element={
+                <GameBoyScreen>
+                  <MapGlobal />
+                </GameBoyScreen>
+              }
+            />
 
             <Route
               path="/gallery"
