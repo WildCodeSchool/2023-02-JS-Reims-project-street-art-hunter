@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function RequestsPendingFriends() {
-  const [friends, setFriends] = useState([]);
+function Resu() {
   const { token } = useAuth();
+  const [friends, setFriends] = useState([]);
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/friends`,
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+      }/users/friends_request`,
       {
         method: "get",
         headers: {
@@ -16,67 +17,20 @@ export default function RequestsPendingFriends() {
       }
     )
       .then((response) => response.json())
-      .then(() => {
-        setFriends([
-          {
-            id: 1,
-            name: "Fred",
-            status: "pending",
-          },
-          { id: 2, name: "Bob", status: "received" },
-          {
-            id: 3,
-            name: "Jean-Eude",
-            status: "pending",
-          },
-          {
-            id: 4,
-            name: "Maurice",
-            status: "pending",
-          },
-          {
-            id: 5,
-            name: "Gilbert",
-            stauts: "received",
-          },
-        ]);
+      .then((res) => {
+        setFriends(res);
       });
   }, []);
 
-  const pendingRequests = friends.filter(
-    (friend) => friend.status === "pending"
-  );
-  const receivedRequests = friends.filter(
-    (friend) => friend.status === "received"
-  );
-
   return (
-    <>
-      <section className="container-request">
-        <h2 className="title-pending"> Demandes en attente</h2>
-        {pendingRequests.length > 0 ? (
-          pendingRequests.map((friend) => (
-            <figure key={friend.id}>
-              <figcaption>
-                <p>{friend.name}</p>
-                <Link to={`/friends/${friend.id}`}>Voir profil</Link>
-              </figcaption>
-            </figure>
-          ))
-        ) : (
-          <p className="no-add"> Aucune demande en attente</p>
-        )}
-      </section>
-
+    <div>
+      <h1 className="title-list"> Demandes reçues </h1>
       <section className="friends">
-        <h2 className="title-received"> Demandes reçues </h2>
-        {receivedRequests.length > 0 ? (
-          receivedRequests.map((friend) => (
+        {friends.length > 0 ? (
+          friends.map((friend) => (
             <figure key={friend.id}>
               <figcaption>
-                <p>{friend.name}</p>
-                <Link to={`/friends/${friend.id}`}>Voir profil</Link>
-                Voir profil
+                <p>{friend.username}</p>
               </figcaption>
             </figure>
           ))
@@ -84,6 +38,48 @@ export default function RequestsPendingFriends() {
           <p className="no-add"> Aucune demande reçue</p>
         )}
       </section>
-    </>
+    </div>
   );
 }
+function Attente() {
+  const { token } = useAuth();
+  const [friends, setFriends] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+      }/users/friends_pending`,
+      {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        setFriends(res);
+      });
+  }, []);
+  return (
+    <div>
+      <h1 className="title-list"> Demandes en attente</h1>
+      <section className="friends">
+        {friends.length > 0 ? (
+          friends.map((friend) => (
+            <figure key={friend.id}>
+              <figcaption>
+                <p>{friend.username}</p>
+              </figcaption>
+            </figure>
+          ))
+        ) : (
+          <p className="no-add"> Aucune demande en attente</p>
+        )}
+      </section>
+    </div>
+  );
+}
+
+export { Resu, Attente };
