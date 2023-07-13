@@ -14,7 +14,7 @@ export default function friends() {
           Demande
         </button>
         <button type="button" onClick={() => setSelect("Attente")}>
-          En att
+          En attente
         </button>
       </div>
       {select === "Friends" && <FriendsList />}
