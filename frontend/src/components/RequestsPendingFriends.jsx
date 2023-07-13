@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function RequestsPendingFriends() {
   const [friends, setFriends] = useState([]);
-
+  const { token } = useAuth();
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/friends`
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/friends`,
+      {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     )
       .then((response) => response.json())
       .then(() => {

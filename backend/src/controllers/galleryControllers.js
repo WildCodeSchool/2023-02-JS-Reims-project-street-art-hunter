@@ -84,11 +84,46 @@ const destroy = (req, res) => {
       res.sendStatus(500);
     });
 };
+const galleryByNotValid = (req, res) => {
+  models.gallery
+    .findByNotValid()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const validate = (req, res) => {
+  const gallery = req.body;
+
+  // TODO validations (length, format...)
+
+  gallery.id = parseInt(req.params.id, 10);
+
+  models.gallery
+    .update(gallery)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
+  validate,
   browse,
   read,
   edit,
   add,
   destroy,
+  galleryByNotValid,
 };

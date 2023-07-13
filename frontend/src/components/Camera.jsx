@@ -10,8 +10,8 @@ import { Valide, NewStreetArt, Posseder } from "./PopUp";
 function Camera() {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
-  const [label1, setLabel1] = useState("Screen");
-  const [label2, setLabel2] = useState("Return");
+  const [label1, setLabel1] = useState("Prendre la photo");
+  const [label2, setLabel2] = useState("Retour");
   const [videoConstraint, setVideoConstraint] = useState("environment");
   const [sovData, setSovData] = useState();
   const [valide, setValide] = useState(false);
@@ -30,8 +30,8 @@ function Camera() {
   const retake = () => {
     if (imgSrc) {
       setImgSrc(null);
-      setLabel1("Screen");
-      setLabel2("Return");
+      setLabel1("Prendre la photo");
+      setLabel2("Retour");
     } else {
       navigate("/menu");
     }
@@ -84,8 +84,8 @@ function Camera() {
         });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
-      setLabel1("Confirm");
-      setLabel2("cancel");
+      setLabel1("Confirmer");
+      setLabel2("Annuler");
     }
   };
   const NewArt = () => {
@@ -117,12 +117,12 @@ function Camera() {
       button2Controller={retake}
       buttonLabel1={label1}
       buttonLabel2={label2}
-      buttonLabelup="Facing-Out camera"
+      buttonLabelup="Caméra arrière"
       ButtonColor1={label1 === "Confirm" ? "green" : "red"}
       upController={() => {
         setVideoConstraint("environment");
       }}
-      buttonLabeldown="forward facing camera"
+      buttonLabeldown="Caméra frontale"
       downController={() => {
         setVideoConstraint("user");
       }}

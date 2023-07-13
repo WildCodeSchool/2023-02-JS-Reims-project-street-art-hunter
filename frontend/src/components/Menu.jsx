@@ -16,7 +16,7 @@ import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Menu() {
-  const { setToken, role } = useAuth();
+  const { setToken, role, setRole } = useAuth();
   const navigate = useNavigate();
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
@@ -24,10 +24,10 @@ export default function Menu() {
   const menu = [
     [
       {
-        name: "Setting",
+        name: "Paramètres",
       },
       {
-        name: "Color",
+        name: "Couleur",
         image: (
           <IoColorFilterSharp
             size="5rem"
@@ -41,14 +41,14 @@ export default function Menu() {
         path: "/gameboycolor",
       },
       {
-        name: "Logout",
+        name: "Déconnexion",
         image: <FiLogOut size="5rem" />,
         path: "/",
       },
     ],
     [
       {
-        name: "inventory",
+        name: "Inventaire",
       },
       {
         name: "Photo",
@@ -56,7 +56,7 @@ export default function Menu() {
         path: "/camera",
       },
       {
-        name: "Gallery",
+        name: "Ma Galerie",
         image: <FcSlrBackSide size="5rem" />,
         path: "/gallery",
       },
@@ -70,7 +70,7 @@ export default function Menu() {
         path: "/friends",
       },
       {
-        name: "message",
+        name: "messagerie",
         image: <TbMessages size="5rem" />,
         path: "/message",
       },
@@ -79,12 +79,17 @@ export default function Menu() {
   if (role) {
     menu.push([
       {
-        name: "inventory admin",
+        name: "Inventaire Admin",
       },
       {
         name: "Street Arts",
         image: <FcGallery size="5rem" />,
         path: "/street-arts",
+      },
+      {
+        name: "Validation",
+        image: <FcGallery size="5rem" />,
+        path: "/street-arts-pending",
       },
     ]);
   }
@@ -107,9 +112,11 @@ export default function Menu() {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
   const button1Controller = () => {
-    if (menu[numberY][numberX].name === "Logout") {
+    if (menu[numberY][numberX].name === "Déconnexion") {
       setToken(null);
+      setRole(null);
       sessionStorage.removeItem("token");
+      sessionStorage.removeItem("role");
     }
     navigate(menu[numberY][numberX].path);
   };
@@ -125,7 +132,7 @@ export default function Menu() {
         navigate("/");
       }}
       buttonLabel1="Entrer"
-      buttonLabel2="Exit"
+      buttonLabel2="Sortir"
       ButtonColor1={numberY === 0 ? "blue" : "yellow"}
       ButtonColor2={numberY === 0 ? "blue" : "yellow"}
     >

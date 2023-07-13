@@ -39,11 +39,11 @@ function Register({ setIsLogin }) {
       }}
     >
       <div className="form-line">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Nom d'utilisateur</label>
         <input ref={usernameRef} type="text" id="username" name="username" />
       </div>
       <div className="form-line">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Mot de passe</label>
         <input
           ref={passwordRef}
           type="password"

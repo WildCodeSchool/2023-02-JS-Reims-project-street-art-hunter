@@ -16,6 +16,7 @@ import InfoStreetArt from "./components/InfoStreetArt";
 import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
 
 import Message from "./components/Message";
+import PendingStreetArtList from "./components/PendingStreetArtsList";
 
 function App() {
   const { token, role } = useAuth();
@@ -90,6 +91,14 @@ function App() {
               }
             />
             <Route
+              path="/artists/:id"
+              element={
+                <GameBoyScreen>
+                  <Artist />
+                </GameBoyScreen>
+              }
+            />
+            <Route
               path="/friends"
               element={
                 <GameBoyScreen>
@@ -99,14 +108,24 @@ function App() {
             />
 
             {role && (
-              <Route
-                path="/street-arts"
-                element={
-                  <GameBoyScreen>
-                    <StreetArtsList />
-                  </GameBoyScreen>
-                }
-              />
+              <>
+                <Route
+                  path="/street-arts"
+                  element={
+                    <GameBoyScreen>
+                      <StreetArtsList />
+                    </GameBoyScreen>
+                  }
+                />
+                <Route
+                  path="/street-arts-pending"
+                  element={
+                    <GameBoyScreen>
+                      <PendingStreetArtList />
+                    </GameBoyScreen>
+                  }
+                />
+              </>
             )}
           </>
         )}
