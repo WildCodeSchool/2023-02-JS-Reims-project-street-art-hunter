@@ -4,7 +4,6 @@ import { useAuth } from "../contexts/AuthContext";
 function Resu() {
   const { token } = useAuth();
   const [friends, setFriends] = useState([]);
-
   useEffect(() => {
     fetch(
       `${

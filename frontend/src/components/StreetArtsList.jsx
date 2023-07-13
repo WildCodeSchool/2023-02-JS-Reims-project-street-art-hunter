@@ -16,26 +16,33 @@ export default function StreetArtList() {
   }, []);
 
   return (
-    <div className="gallery">
-      {streetArts.map((streetArt) => (
-        <Link
-          to={`/street-arts/${streetArt.id}/${streetArt.longitude}/${streetArt.latitude}`}
-        >
-          <figure key={streetArt.id}>
-            <img
-              src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
-              alt="streetart"
-            />
+    <>
+      <Link to="/street-arts-pending">
+        Allez aux street arts en attente de validation
+      </Link>
 
-            <figcaption>
-              {streetArt.name && <p>{streetArt.name}</p>}
-              {streetArt.artistName && <p>{streetArt.artistName}</p>}
+      <div className="gallery">
+        {streetArts.map((streetArt) => (
+          <Link
+            to={`/street-arts/${streetArt.id}/${streetArt.longitude}/${streetArt.latitude}`}
+          >
+            <figure key={streetArt.id}>
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
+                alt="streetart"
+              />
 
-              <p>{streetArt.score} points</p>
-            </figcaption>
-          </figure>
-        </Link>
-      ))}
-    </div>
+              <figcaption>
+                {streetArt.name && <p>{streetArt.name}</p>}
+
+                {streetArt.artistName && <p>{streetArt.artistName}</p>}
+
+                <p>{streetArt.score} points</p>
+              </figcaption>
+            </figure>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }

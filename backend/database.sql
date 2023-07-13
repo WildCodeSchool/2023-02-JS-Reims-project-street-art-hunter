@@ -33,6 +33,7 @@ CREATE TABLE gallery (
   id_street_art int(11) UNSIGNED NOT NULL,
   creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   image varchar(255) NOT NULL,
+  is_valid BOOLEAN DEFAULT FALSE,
   KEY `fk_gallery_user` (`id_user`),
   KEY `fk_gallery_street_art` (`id_street_art`),
   CONSTRAINT `fk_gallery_user` FOREIGN KEY (id_user) REFERENCES `user`(id),
@@ -86,10 +87,10 @@ insert into street_art (image, longitude, latitude, is_valid, score, id_artist, 
 ('/assets/images/rue_de_courcelles.jpg',49.26529,4.01402, true, 100, 1,1),
 ('/assets/images/wild.jpg',49.2652826,4.0168665, true, 100, null,1);
 
-INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VALUES
-(1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg'),
-(1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg'),
-(2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg'),
-(2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg');
+INSERT INTO `gallery` (`id_user`, `id_street_art`,   `creation_date`, `image`, `is_valid` ) VALUES
+(1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg',0),
+(1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
+(2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg',0),
+(2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg',0);
 
 INSERT INTO friends (user_id_1, user_id_2, status) VALUES (1, 2, 'pending'),(3, 2, 'accepted');
