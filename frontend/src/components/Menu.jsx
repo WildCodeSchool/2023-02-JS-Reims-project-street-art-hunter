@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TbMessages } from "react-icons/tb";
 
 import {
   BiChevronsDown,
@@ -11,6 +10,7 @@ import {
 import { FcGallery, FcOldTimeCamera, FcSlrBackSide } from "react-icons/fc";
 import { GrScorecard } from "react-icons/gr";
 import { IoColorFilterSharp } from "react-icons/io5";
+import { FaUserFriends } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
@@ -67,12 +67,17 @@ export default function Menu() {
       },
       {
         name: "Liste d'amis",
+        image: (
+          <FaUserFriends
+            size="5rem"
+            style={
+              Number.isNaN(gameBoyColor)
+                ? { color: `black` }
+                : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
+            }
+          />
+        ),
         path: "/friends",
-      },
-      {
-        name: "message",
-        image: <TbMessages size="5rem" />,
-        path: "/message",
       },
     ],
   ];

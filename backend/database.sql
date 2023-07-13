@@ -74,7 +74,8 @@ Passionnés par les arts naïfs et les différentes formes de peinture populaire
 
 insert into user (username, password, mail, is_admin) VALUES
 ("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
-("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE);
+("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE),
+("Aylin", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "aylin@street.art", FALSE);
 
 insert into street_art (image, longitude, latitude, is_valid, score, id_artist, add_by) VALUES 
 ('/assets/images/rue_libergier.jpg',49.26538,4.01434, true, 50, 1,1),
@@ -91,4 +92,4 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`, `creation_date`, `image`) VAL
 (2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg'),
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg');
 
-INSERT INTO friends (user_id_1, user_id_2) VALUES (1, 2), (2, 1);
+INSERT INTO friends (user_id_1, user_id_2, status) VALUES (1, 2, 'pending'),(3, 2, 'accepted');

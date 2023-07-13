@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import { BiSend } from "react-icons/bi";
+import PropTypes from "prop-types";
 
 import { GiReturnArrow } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function Massege() {
-  const navigate = useNavigate();
+export default function Message({ setMessage, FriendshipName, id }) {
   const { token } = useAuth();
   const [messageList, setMessageList] = useState([]);
   const [newMessageText, setNewMessageText] = useState("");
   const [socket, setSocket] = useState(null);
   const [myIdUser, setMyIdUser] = useState();
-  const id = 1;
-  const FriendshipName = "FriendshipName";
   useEffect(() => {
     const newSocket = socketIOClient(
       `${import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`}`
@@ -61,12 +58,7 @@ export default function Massege() {
       }
     >
       <h2>
-        <GiReturnArrow
-          className="return"
-          onClick={() => {
-            navigate("/menu");
-          }}
-        />
+        <GiReturnArrow className="return" onClick={() => setMessage("")} />
         {FriendshipName}
       </h2>
       <div
@@ -112,3 +104,9 @@ export default function Massege() {
     </div>
   );
 }
+
+Message.propTypes = {
+  setMessage: PropTypes.func.isRequired,
+  FriendshipName: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};

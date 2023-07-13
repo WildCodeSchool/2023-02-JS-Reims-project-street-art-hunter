@@ -541,22 +541,32 @@ button {
 // SCCS pour la liste d'amis
 
 .container-list {
-  background-image: url(./assets/testbis.jpg);
   background-size: cover;
   background-position: bottom;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-rows: repeat(3, 1fr) 30px;
+  grid-template-rows: 1fr 10fr;
+  .buttonlist {
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      background-color: #21afda;
+      border-radius: 1rem;
+      margin-block: 1rem;
+      font-size: large;
+    }
+  }
 }
 
 .title-list {
   font-size: 50px larger;
-  color: #13c7fe;
+  color: #21afda;
   text-align: center;
 }
 
 .friends {
-  background-color: #96ddf3;
+  background-color: #21afda;
   gap: 3px;
   border-radius: 2px;
   display: grid;
@@ -568,11 +578,13 @@ button {
 .message {
   text-align: center;
   border-radius: 1rem;
-  width: 80vw;
-  height: 90vh;
-  max-height: 90vh;
+  top: 3%;
+  bottom: 12%;
+  left: 7%;
+  right: 7%;
   display: grid;
-  position: relative;
+  position: absolute;
+  grid-template-rows: auto 1fr auto;
   .messages {
     overflow: overlay;
     display: flex;
@@ -599,8 +611,9 @@ button {
     justify-content: flex-end;
   }
   .return {
-    position: absolute;
-    left: 1rem;
+    position: relative;
+    left: -2rem;
+    top: 0.3rem;
   }
   form {
     display: flex;

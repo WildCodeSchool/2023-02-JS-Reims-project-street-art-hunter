@@ -134,7 +134,7 @@ const galleryByUser = (req, res) => {
 
 const friends = (req, res) => {
   models.user
-    .findFriends(req.params.id)
+    .findFriends(req.payload.sub)
     .then(([rows]) => {
       res.send(rows);
     })
@@ -146,7 +146,7 @@ const friends = (req, res) => {
 
 const editFriendsRequest = (req, res) => {
   models.user
-    .findFriendsRequest(req.params.id)
+    .findFriendsRequest(req.payload.sub)
     .then(([rows]) => {
       res.send(rows);
     })
@@ -158,7 +158,7 @@ const editFriendsRequest = (req, res) => {
 
 const editFriendsPending = (req, res) => {
   models.user
-    .findFriendsPending(req.params.id)
+    .findFriendsPending(req.payload.sub)
     .then(([rows]) => {
       res.send(rows);
     })
