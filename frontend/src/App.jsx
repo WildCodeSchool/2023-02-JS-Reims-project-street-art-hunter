@@ -9,13 +9,11 @@ import Gallery from "./components/Gallery";
 import StreetArtsList from "./components/StreetArtsList";
 import Connection from "./pages/Connection";
 import Artist from "./components/Artist";
-import FriendsList from "./components/FriendsList";
+import Friends from "./components/Friends";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.scss";
 import InfoStreetArt from "./components/InfoStreetArt";
 import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
-
-import Message from "./components/Message";
 import MapGlobal from "./components/MapGlobal";
 import PendingStreetArtList from "./components/PendingStreetArtsList";
 
@@ -28,7 +26,6 @@ function App() {
         <Route path="/connection" element={<Connection />} />
         {token != null && (
           <>
-            <Route path="/message" element={<Message />} />
             <Route path="/gameboycolor" element={<GameBoyColor />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
@@ -112,7 +109,7 @@ function App() {
               path="/friends"
               element={
                 <GameBoyScreen>
-                  <FriendsList />
+                  <Friends />
                 </GameBoyScreen>
               }
             />
