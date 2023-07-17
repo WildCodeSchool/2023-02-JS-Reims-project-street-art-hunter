@@ -1,4 +1,4 @@
-import { Map, Overlay } from "pigeon-maps";
+import { Map, Overlay, ZoomControl } from "pigeon-maps";
 
 import { stamenToner } from "pigeon-maps/providers";
 import { useEffect, useState } from "react";
@@ -47,13 +47,12 @@ export default function MapGlobal() {
         provider={stamenToner}
         defaultCenter={longitudeLatitude}
         defaultZoom={12}
+        minZoom={8}
       >
+        <ZoomControl />
         {listStreetArt &&
           listStreetArt.map((streetart) => (
-            <Overlay
-              anchor={[streetart.longitude, streetart.latitude]}
-              offset={[120, 79]}
-            >
+            <Overlay anchor={[streetart.longitude, streetart.latitude]}>
               <img
                 src={`${
                   import.meta.env.VITE_BACKEND_URL ?? `http://localhost:5000`
