@@ -8,6 +8,7 @@ export default function FriendsList() {
   const { token } = useAuth();
   const [message, setMessage] = useState("");
   const [friendshipName, setFriendshipName] = useState("");
+  const { gameBoyColor } = useAuth();
 
   useEffect(() => {
     fetch(
@@ -30,9 +31,25 @@ export default function FriendsList() {
   return (
     <>
       <div>
-        <h1 className="title-list"> Liste d'Amis</h1>
+        <h1
+          className="title-list"
+          style={
+            Number.isNaN(gameBoyColor)
+              ? { color: `hsl(93, 10%, 82%)` }
+              : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
+          }
+        >
+          Liste d'Amis
+        </h1>
 
-        <section className="friends">
+        <section
+          className="friends"
+          style={
+            Number.isNaN(gameBoyColor)
+              ? { backgroundColor: `hsl(93, 10%, 82%)` }
+              : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
+          }
+        >
           {friendsList.length > 0 ? (
             friendsList.map((friend) => (
               <figure key={friend.id}>
@@ -44,8 +61,10 @@ export default function FriendsList() {
                       setFriendshipName(friend.username);
                     }}
                   >
-                    {friend.username}
-                    <TbMessages />
+                    <p>
+                      {friend.username}
+                      <TbMessages />
+                    </p>
                   </button>
                 </figcaption>
               </figure>

@@ -50,7 +50,7 @@ export default function GameBoyColor() {
         style={
           Number.isNaN(color)
             ? { backgroundColor: `hsl(93, 10%, 82%)` }
-            : { backgroundColor: `hsl(${color}, 100%, 50%)` }
+            : { backgroundColor: `hsl(${color}, 50%, 50%)` }
         }
       />
     </GameBoy>

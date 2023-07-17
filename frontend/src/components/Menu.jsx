@@ -7,10 +7,15 @@ import {
   BiChevronsLeft,
   BiChevronsRight,
 } from "react-icons/bi";
-import { FcGallery, FcOldTimeCamera, FcSlrBackSide } from "react-icons/fc";
+import {
+  FcGallery,
+  FcOldTimeCamera,
+  FcSlrBackSide,
+  FcContacts,
+  FcLock,
+} from "react-icons/fc";
 import { GrScorecard } from "react-icons/gr";
 import { IoColorFilterSharp } from "react-icons/io5";
-import { FaUserFriends } from "react-icons/fa";
 import { FiLogOut, FiMap } from "react-icons/fi";
 import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
@@ -21,28 +26,30 @@ export default function Menu() {
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
   const { gameBoyColor } = useAuth();
+  const sizeIconMenu = "5rem";
+  const sizeNavMenu = "2rem";
   const menu = [
     [
       {
-        name: "Paramètres",
+        name: "Parametres",
       },
       {
         name: "Couleur",
         image: (
           <IoColorFilterSharp
-            size="5rem"
+            size={sizeIconMenu}
             style={
               Number.isNaN(gameBoyColor)
                 ? { color: `black` }
-                : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
+                : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
             }
           />
         ),
         path: "/gameboycolor",
       },
       {
-        name: "Déconnexion",
-        image: <FiLogOut size="5rem" />,
+        name: "Deconnexion",
+        image: <FiLogOut size={sizeIconMenu} />,
         path: "/",
       },
     ],
@@ -52,53 +59,45 @@ export default function Menu() {
       },
       {
         name: "Photo",
-        image: <FcOldTimeCamera size="5rem" />,
+        image: <FcOldTimeCamera size={sizeIconMenu} />,
         path: "/camera",
       },
       {
         name: "Ma Galerie",
-        image: <FcSlrBackSide size="5rem" />,
+        image: <FcSlrBackSide size={sizeIconMenu} />,
         path: "/gallery",
       },
       {
         name: "Ta carte",
-        image: <FiMap size="5rem" />,
+        image: <FiMap size={sizeIconMenu} />,
         path: "/map-global",
       },
       {
         name: "Score",
-        image: <GrScorecard size="5rem" />,
+        image: <GrScorecard size={sizeIconMenu} />,
         path: "/score",
       },
       {
         name: "Liste d'amis",
-        image: (
-          <FaUserFriends
-            size="5rem"
-            style={
-              Number.isNaN(gameBoyColor)
-                ? { color: `black` }
-                : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
-            }
-          />
-        ),
+        image: <FcContacts size={sizeIconMenu} />,
         path: "/friends",
       },
     ],
   ];
-  if (role) {
+  if (role === 1) {
     menu.push([
       {
         name: "Inventaire Admin",
+        icon: <FcLock />,
       },
       {
         name: "Street Arts",
-        image: <FcGallery size="5rem" />,
+        image: <FcGallery size={sizeIconMenu} />,
         path: "/street-arts",
       },
       {
         name: "Validation",
-        image: <FcGallery size="5rem" />,
+        image: <FcGallery size={sizeIconMenu} />,
         path: "/street-arts-pending",
       },
     ]);
@@ -122,7 +121,7 @@ export default function Menu() {
     if (numberX < menu[numberY].length - 1) setNumberX(numberX + 1);
   };
   const button1Controller = () => {
-    if (menu[numberY][numberX].name === "Déconnexion") {
+    if (menu[numberY][numberX].name === "Deconnexion") {
       setToken(null);
       setRole(null);
       sessionStorage.removeItem("token");
@@ -151,11 +150,13 @@ export default function Menu() {
       >
         {numberY > 0 && (
           <p className="upDirection">
-            <BiChevronsUp onClick={upController} />
+            <BiChevronsUp size={sizeNavMenu} onClick={upController} />
           </p>
         )}
         <div className="cadre">
-          <h2>{menu[numberY][0].name}</h2>
+          <h2>
+            {menu[numberY][0].name} {menu[numberY][0].icon}
+          </h2>
           <figure>
             {typeof menu[numberY][numberX].image === "string" ? (
               <img
@@ -173,17 +174,17 @@ export default function Menu() {
         </div>
         {numberX > 1 && (
           <p className="leftDirection">
-            <BiChevronsLeft onClick={leftController} />
+            <BiChevronsLeft size={sizeNavMenu} onClick={leftController} />
           </p>
         )}
         {numberX < menu[numberY].length - 1 && (
           <p className="rightDirection">
-            <BiChevronsRight onClick={rightController} />
+            <BiChevronsRight size={sizeNavMenu} onClick={rightController} />
           </p>
         )}
         {numberY < menu.length - 1 && (
           <p className="downDirection">
-            <BiChevronsDown onClick={downController} />
+            <BiChevronsDown size={sizeNavMenu} onClick={downController} />
           </p>
         )}
       </div>

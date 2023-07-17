@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { useAuth } from "../contexts/AuthContext";
 
 function Register({ setIsLogin }) {
   const usernameRef = useRef();
@@ -7,6 +8,7 @@ function Register({ setIsLogin }) {
   const mailRef = useRef();
 
   const [isError, setIsError] = useState(false);
+  const { gameBoyColor } = useAuth();
 
   return (
     <form
@@ -56,7 +58,15 @@ function Register({ setIsLogin }) {
         <input ref={mailRef} type="text" id="mail" name="mail" />
       </div>
       {isError && <p className="error-message">Erreur enregistrement</p>}
-      <button type="submit" className="submit-register">
+      <button
+        type="submit"
+        className="submit-register"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { backgroundColor: `hsl(93, 5%, 70%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 20%, 50%)` }
+        }
+      >
         S'enregistrer
       </button>
     </form>

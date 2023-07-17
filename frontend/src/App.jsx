@@ -23,7 +23,14 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/connection" element={<Connection />} />
+        <Route
+          path="/connection"
+          element={
+            <GameBoyScreen returnLink="/">
+              <Connection />
+            </GameBoyScreen>
+          }
+        />
         {token != null && (
           <>
             <Route path="/gameboycolor" element={<GameBoyColor />} />
@@ -114,7 +121,7 @@ function App() {
               }
             />
 
-            {role && (
+            {role === 1 && (
               <>
                 <Route
                   path="/street-arts"

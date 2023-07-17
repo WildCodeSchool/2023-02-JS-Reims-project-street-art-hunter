@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 function Resu() {
-  const { token } = useAuth();
+  const { token, gameBoyColor } = useAuth();
   const [friends, setFriends] = useState([]);
   useEffect(() => {
     fetch(
@@ -24,8 +24,25 @@ function Resu() {
 
   return (
     <div>
-      <h1 className="title-list"> Demandes reçues </h1>
-      <section className="friends">
+      <h1
+        className="title-list"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { color: `hsl(93, 10%, 82%)` }
+            : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
+        }
+      >
+        {" "}
+        Demandes reçues{" "}
+      </h1>
+      <section
+        className="friends"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { backgroundColor: `hsl(93, 10%, 82%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
+        }
+      >
         {friends.length > 0 ? (
           friends.map((friend) => (
             <figure key={friend.id}>
@@ -42,7 +59,7 @@ function Resu() {
   );
 }
 function Attente() {
-  const { token } = useAuth();
+  const { token, gameBoyColor } = useAuth();
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
@@ -64,8 +81,25 @@ function Attente() {
   }, []);
   return (
     <div>
-      <h1 className="title-list"> Demandes en attente</h1>
-      <section className="friends">
+      <h1
+        className="title-list"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { color: `hsl(93, 10%, 82%)` }
+            : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
+        }
+      >
+        {" "}
+        Demandes en attente
+      </h1>
+      <section
+        className="friends"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { backgroundColor: `hsl(93, 10%, 82%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
+        }
+      >
         {friends.length > 0 ? (
           friends.map((friend) => (
             <figure key={friend.id}>
