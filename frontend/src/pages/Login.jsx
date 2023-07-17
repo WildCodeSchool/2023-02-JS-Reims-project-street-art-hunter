@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
-  const { setToken, setRole } = useAuth();
+  const { setToken, setRole, gameBoyColor } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -60,7 +60,15 @@ function Login() {
         />{" "}
       </div>{" "}
       {isError && <p className="error-message">Mauvais identifiants</p>}
-      <button type="submit" className="submit-login">
+      <button
+        type="submit"
+        className="submit-login"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { backgroundColor: `hsl(93, 5%, 70%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 20%, 50%)` }
+        }
+      >
         Jouer
       </button>{" "}
     </form>

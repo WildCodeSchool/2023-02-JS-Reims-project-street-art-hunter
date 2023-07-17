@@ -54,7 +54,7 @@ export default function Message({ setMessage, FriendshipName, id }) {
       style={
         Number.isNaN(gameBoyColor)
           ? { backgroundColor: `hsl(93, 10%, 82%)` }
-          : { backgroundColor: `hsl(${gameBoyColor}, 100%, 50%)` }
+          : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
       }
     >
       <h2>
@@ -66,7 +66,7 @@ export default function Message({ setMessage, FriendshipName, id }) {
         style={
           Number.isNaN(gameBoyColor)
             ? { backgroundColor: `hsl(93, 10%, 92%)` }
-            : { backgroundColor: `hsl(${gameBoyColor}, 100%, 80%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 50%, 80%)` }
         }
       >
         {messageList.map((message) => {

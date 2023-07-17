@@ -3,19 +3,33 @@ import Login from "./Login";
 import Register from "./Register";
 
 import logo from "../assets/logo.png";
+import { useAuth } from "../contexts/AuthContext";
 
 function Connection() {
   const [isLogin, setIsLogin] = useState(true);
+  const { gameBoyColor } = useAuth();
 
   return (
     <div className="connection">
       <img src={logo} alt="logo" />
-      <div className="form-connection">
+      <div
+        className="form-connection"
+        style={
+          Number.isNaN(gameBoyColor)
+            ? { backgroundColor: `hsl(93, 5%, 50%)` }
+            : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
+        }
+      >
         <div className="change-menu">
           <button
             className={isLogin ? "selected-button" : "default-button"}
             type="button"
             onClick={() => setIsLogin(true)}
+            style={
+              Number.isNaN(gameBoyColor)
+                ? { backgroundColor: `hsl(93, 5%, 70%)` }
+                : { backgroundColor: `hsl(${gameBoyColor}, 20%, 50%)` }
+            }
           >
             Connexion
           </button>
@@ -23,6 +37,11 @@ function Connection() {
             className={!isLogin ? "selected-button" : "default-button"}
             type="button"
             onClick={() => setIsLogin(false)}
+            style={
+              Number.isNaN(gameBoyColor)
+                ? { backgroundColor: `hsl(93, 5%, 70%)` }
+                : { backgroundColor: `hsl(${gameBoyColor}, 20%, 50%)` }
+            }
           >
             Enregistrement
           </button>

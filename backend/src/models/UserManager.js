@@ -35,14 +35,14 @@ class UserManager extends AbstractManager {
 
   findFriendsRequest(id) {
     return this.database.query(
-      "SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON user.id = friends.user_id_2 WHERE user_id_2 = ? AND status = 'pending' ",
+      "SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON user.id = friends.user_id_1 WHERE user_id_2 = ? AND status = 'pending' ",
       [id, id, id, id]
     );
   }
 
   findFriendsPending(id) {
     return this.database.query(
-      " SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON user.id = friends.user_id_1 WHERE user_id_1 = ? AND status = 'pending'; ",
+      " SELECT friends.id, user.id AS friend_id, user.username FROM friends JOIN user ON user.id = friends.user_id_2 WHERE user_id_1 = ? AND status = 'pending'; ",
       [id, id, id, id]
     );
   }

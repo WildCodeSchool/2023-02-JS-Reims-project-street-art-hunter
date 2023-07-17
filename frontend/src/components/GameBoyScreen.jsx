@@ -18,7 +18,7 @@ export default function GameBoyScreen({ children, returnLink }) {
               style={
                 Number.isNaN(gameBoyColor)
                   ? { color: `#FFF` }
-                  : { color: `hsl(${gameBoyColor}, 100%, 50%)` }
+                  : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
               }
             />
           </button>

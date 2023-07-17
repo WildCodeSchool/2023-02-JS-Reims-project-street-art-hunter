@@ -23,7 +23,7 @@ export default function GameBoy({
       style={
         Number.isNaN(gameBoyColor)
           ? { backgroundColor: `hsl(93, 10%, 82%)` }
-          : { backgroundColor: `hsl(${gameBoyColor}, 100%, 50%)` }
+          : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
       }
     >
       <div className="display">
