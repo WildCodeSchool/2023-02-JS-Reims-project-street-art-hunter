@@ -12,10 +12,10 @@ class FriendsManager extends AbstractManager {
     );
   }
 
-  update(friends) {
+  update(id) {
     return this.database.query(
-      `UPDATE ${this.table} SET user_id_1 = ?, user_id_2 = ?, WHERE id = ?`,
-      [friends.user_id_1, friends.user_id_2]
+      `UPDATE ${this.table} SET status='accepted' WHERE id = ?`,
+      [id]
     );
   }
 }

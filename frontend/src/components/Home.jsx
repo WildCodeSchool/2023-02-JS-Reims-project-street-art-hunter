@@ -12,8 +12,10 @@ export default function Home() {
     <GameBoy
       button1Controller={() => {
         if (token) {
+          // document.documentElement.webkitRequestFullscreen();
           navigate("/menu");
         } else {
+          // document.documentElement.webkitRequestFullscreen();
           navigate("/connection");
         }
       }}

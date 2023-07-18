@@ -29,14 +29,8 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const friends = req.body;
-
-  // TODO validations (length, format...)
-
-  friends.id = parseInt(req.params.id, 10);
-
   models.friends
-    .update(friends)
+    .update(req.body.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -68,7 +62,7 @@ const add = (req, res) => {
 
 const destroy = (req, res) => {
   models.friends
-    .delete(req.params.id)
+    .delete(req.body.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
