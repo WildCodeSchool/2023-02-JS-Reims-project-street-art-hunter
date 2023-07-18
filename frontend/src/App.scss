@@ -533,6 +533,7 @@ button {
       border-radius: 1rem;
       margin-block: 1rem;
       font-size: large;
+      padding: 0.5rem;
     }
   }
   p {
@@ -553,7 +554,6 @@ button {
   display: grid;
   grid-template-columns: auto;
   height: max-content;
-  list-style: url("/media/examples/rocket.svg");
 }
 
 .message {
@@ -640,12 +640,15 @@ button {
     }
   }
 }
+figcaption {
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr;
+  .marge {
+    margin-inline-start: 2rem;
+  }
+}
 
 @media (orientation: landscape) {
-  .home {
-    flex-direction: row;
-    background-image: url(./assets/bg2.jpg);
-  }
   .gameBoy {
     grid-template-columns: 1fr 2.5fr 1fr;
     grid-template-rows: 1fr;

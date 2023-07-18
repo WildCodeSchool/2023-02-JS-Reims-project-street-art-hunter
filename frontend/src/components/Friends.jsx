@@ -14,7 +14,7 @@ export default function friends() {
           type="button"
           style={
             Number.isNaN(gameBoyColor)
-              ? { backgroundColor: `hsl(93, 10%, 82%)` }
+              ? { backgroundColor: `gray`, color: "#FFF" }
               : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
           }
           onClick={() => setSelect("Friends")}
@@ -25,7 +25,7 @@ export default function friends() {
           type="button"
           style={
             Number.isNaN(gameBoyColor)
-              ? { backgroundColor: `hsl(93, 10%, 82%)` }
+              ? { backgroundColor: `gray`, color: "#FFF" }
               : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
           }
           onClick={() => setSelect("Resu")}
@@ -36,7 +36,7 @@ export default function friends() {
           type="button"
           style={
             Number.isNaN(gameBoyColor)
-              ? { backgroundColor: `hsl(93, 10%, 82%)` }
+              ? { backgroundColor: `gray`, color: "#FFF" }
               : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
           }
           onClick={() => setSelect("Attente")}

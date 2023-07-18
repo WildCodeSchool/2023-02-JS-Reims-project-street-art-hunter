@@ -35,7 +35,7 @@ export default function FriendsList() {
           className="title-list"
           style={
             Number.isNaN(gameBoyColor)
-              ? { color: `hsl(93, 10%, 82%)` }
+              ? { color: `gray` }
               : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
           }
         >
@@ -46,7 +46,7 @@ export default function FriendsList() {
           className="friends"
           style={
             Number.isNaN(gameBoyColor)
-              ? { backgroundColor: `hsl(93, 10%, 82%)` }
+              ? { backgroundColor: `gray`, color: "#FFF" }
               : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
           }
         >
@@ -61,11 +61,9 @@ export default function FriendsList() {
                       setFriendshipName(friend.username);
                     }}
                   >
-                    <p>
-                      {friend.username}
-                      <TbMessages />
-                    </p>
+                    <p>{friend.username}</p>
                   </button>
+                  <TbMessages size="1rem" />
                 </figcaption>
               </figure>
             ))

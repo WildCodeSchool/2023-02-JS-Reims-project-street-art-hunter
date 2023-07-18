@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { FcOk, FcCancel } from "react-icons/fc";
 import { useAuth } from "../contexts/AuthContext";
 
 function Resu() {
   const { token, gameBoyColor } = useAuth();
   const [friends, setFriends] = useState([]);
-  useEffect(() => {
+  const check = () => {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
@@ -20,6 +21,43 @@ function Resu() {
       .then((res) => {
         setFriends(res);
       });
+  };
+  const valide = (id) => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+      }/users/friends_request`,
+      {
+        method: "put",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      }
+    ).then((response) => response.ok && check());
+  };
+  const sup = (id) => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+      }/users/friends_request`,
+      {
+        method: "delete",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      }
+    ).then((response) => response.ok && check());
+  };
+  useEffect(() => {
+    check();
   }, []);
 
   return (
@@ -28,18 +66,17 @@ function Resu() {
         className="title-list"
         style={
           Number.isNaN(gameBoyColor)
-            ? { color: `hsl(93, 10%, 82%)` }
+            ? { color: `gray` }
             : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
         }
       >
-        {" "}
-        Demandes reçues{" "}
+        Demandes reçues
       </h1>
       <section
         className="friends"
         style={
           Number.isNaN(gameBoyColor)
-            ? { backgroundColor: `hsl(93, 10%, 82%)` }
+            ? { backgroundColor: `gray`, color: "#FFF" }
             : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
         }
       >
@@ -48,6 +85,24 @@ function Resu() {
             <figure key={friend.id}>
               <figcaption>
                 <p>{friend.username}</p>
+                <button
+                  type="button"
+                  className="marge"
+                  onClick={() => {
+                    valide(friend.id);
+                  }}
+                >
+                  <FcOk size="1rem" />
+                </button>
+                <button
+                  type="button"
+                  className="marge"
+                  onClick={() => {
+                    sup(friend.id);
+                  }}
+                >
+                  <FcCancel size="1rem" />
+                </button>
               </figcaption>
             </figure>
           ))
@@ -62,7 +117,7 @@ function Attente() {
   const { token, gameBoyColor } = useAuth();
   const [friends, setFriends] = useState([]);
 
-  useEffect(() => {
+  const check = () => {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
@@ -78,6 +133,26 @@ function Attente() {
       .then((res) => {
         setFriends(res);
       });
+  };
+  const sup = (id) => {
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"
+      }/users/friends_request`,
+      {
+        method: "delete",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      }
+    ).then((response) => response.ok && check());
+  };
+  useEffect(() => {
+    check();
   }, []);
   return (
     <div>
@@ -85,7 +160,7 @@ function Attente() {
         className="title-list"
         style={
           Number.isNaN(gameBoyColor)
-            ? { color: `hsl(93, 10%, 82%)` }
+            ? { color: `gray` }
             : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
         }
       >
@@ -96,7 +171,7 @@ function Attente() {
         className="friends"
         style={
           Number.isNaN(gameBoyColor)
-            ? { backgroundColor: `hsl(93, 10%, 82%)` }
+            ? { backgroundColor: `gray`, color: "#FFF" }
             : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
         }
       >
@@ -104,7 +179,16 @@ function Attente() {
           friends.map((friend) => (
             <figure key={friend.id}>
               <figcaption>
-                <p>{friend.username}</p>
+                <p>{friend.username}</p>{" "}
+                <button
+                  type="button"
+                  className="marge"
+                  onClick={() => {
+                    sup(friend.id);
+                  }}
+                >
+                  <FcCancel size="1rem" />
+                </button>
               </figcaption>
             </figure>
           ))

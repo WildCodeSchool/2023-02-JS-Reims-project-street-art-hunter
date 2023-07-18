@@ -74,8 +74,8 @@ router.get(
   verifyToken,
   userControllers.editFriendsRequest
 );
-router.post("/users/:id/friends_request", userControllers.add);
-router.delete("/users/:id/friends_request", userControllers.destroy);
+router.put("/users/friends_request", friendsControllers.edit);
+router.delete("/users/friends_request", friendsControllers.destroy);
 
 router.get(
   "/users/friends_pending",

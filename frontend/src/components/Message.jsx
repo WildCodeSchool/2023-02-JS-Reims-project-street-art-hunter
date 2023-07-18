@@ -96,7 +96,6 @@ export default function Message({ setMessage, FriendshipName, id }) {
           placeholder="message"
           value={newMessageText}
           required
-          onFocus
           onChange={(e) => setNewMessageText(e.target.value)}
         />
         <BiSend size={30} onClick={handleSubmit} className="send" />
