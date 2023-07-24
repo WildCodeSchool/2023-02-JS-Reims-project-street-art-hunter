@@ -146,7 +146,7 @@ router.post(
 router.delete("/street-arts/:id", streetArtControllers.destroy);
 
 router.put("/friends/:id", friendsControllers.edit);
-router.post("/friends", friendsControllers.add);
+router.post("/friends", middleware.checkByUsername, friendsControllers.add);
 router.delete("/friends/:id", friendsControllers.destroy);
 
 router.put("/messages/:id", messageControllers.edit);

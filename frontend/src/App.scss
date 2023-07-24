@@ -26,7 +26,24 @@ button {
 .posTitle {
   color: white;
 }
-
+.divAddFriends {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  input {
+    margin-block: 1rem;
+    border: 3px solid;
+  }
+  .addFriends {
+    font-size: 2rem;
+    background-color: gray;
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+.alllist {
+  overflow: overlay;
+}
 .container {
   max-width: 20em;
   padding: 1rem;
@@ -401,7 +418,7 @@ button {
   }
   .gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     figure {
       margin: 0;
       padding: 1rem;
@@ -409,7 +426,10 @@ button {
         height: 5rem;
       }
       figcaption {
-        p {
+        display: flex;
+        flex-direction: column;
+        font-family: "retropix";
+        .pScore {
           background-color: black;
           color: white;
         }
@@ -518,6 +538,7 @@ button {
 // SCCS pour la liste d'amis
 
 .container-list {
+  color: #fff;
   background-size: cover;
   background-position: bottom;
   height: 100%;
@@ -528,6 +549,7 @@ button {
     display: flex;
     justify-content: space-evenly;
     button {
+      color: #fff;
       font-family: retropix;
       background-color: #21afda;
       border-radius: 1rem;
@@ -537,6 +559,7 @@ button {
     }
   }
   p {
+    color: #fff;
     font-family: Shojumaru;
   }
 }
@@ -557,6 +580,7 @@ button {
 }
 
 .message {
+  color: #000;
   text-align: center;
   border-radius: 1rem;
   top: 3%;
@@ -612,6 +636,8 @@ button {
 }
 
 .description-street-art {
+  display: flex;
+  flex-direction: column;
   p {
     margin: 2em;
   }
@@ -638,13 +664,6 @@ button {
     button {
       font-size: x-large;
     }
-  }
-}
-figcaption {
-  display: grid;
-  grid-template-columns: 10fr 1fr 1fr;
-  .marge {
-    margin-inline-start: 2rem;
   }
 }
 
