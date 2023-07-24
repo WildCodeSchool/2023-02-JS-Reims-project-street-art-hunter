@@ -46,7 +46,7 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const friends = req.body;
-
+  friends.sub = req.payload.sub;
   // TODO validations (length, format...)
 
   models.friends
