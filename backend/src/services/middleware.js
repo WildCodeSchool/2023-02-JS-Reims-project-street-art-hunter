@@ -81,9 +81,17 @@ const checkIdStreeArt = (req, res, next) => {
     });
 };
 
+const checkByUsername = (req, res, next) => {
+  models.user.findUserByUsername(req.body.username).then(([rows]) => {
+    req.body.id = rows[0].id;
+    next();
+  });
+};
+
 module.exports = {
   uploadRename,
   checkLocation,
   checkIdStreeArt,
   checkToGallery,
+  checkByUsername,
 };
