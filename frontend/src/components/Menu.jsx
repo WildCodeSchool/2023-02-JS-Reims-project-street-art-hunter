@@ -26,7 +26,7 @@ export default function Menu() {
   const [numberY, setNumberY] = useState(1);
   const [numberX, setNumberX] = useState(1);
   const { gameBoyColor } = useAuth();
-  const sizeIconMenu = "5rem";
+  const sizeIconMenu = "60%";
   const sizeNavMenu = "2rem";
   const menu = [
     [
