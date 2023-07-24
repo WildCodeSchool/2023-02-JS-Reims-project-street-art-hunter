@@ -115,7 +115,7 @@ const galleryControllers = require("./controllers/galleryControllers");
 
 router.get("/gallery", galleryControllers.browse);
 router.get("/gallery/:id", galleryControllers.read);
-router.put("/gallery/:id", galleryControllers.edit);
+router.put("/gallery/:id", galleryControllers.validate);
 router.post(
   "/gallery",
 

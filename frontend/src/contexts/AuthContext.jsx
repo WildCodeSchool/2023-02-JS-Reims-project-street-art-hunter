@@ -7,7 +7,9 @@ const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [token, setToken] = useState(sessionStorage.getItem("token"));
-  const [role, setRole] = useState(sessionStorage.getItem("role"));
+  const [role, setRole] = useState(
+    parseInt(sessionStorage.getItem("role"), 10)
+  );
   const [gameBoyColor, setGameBoyColor] = useState(
     parseInt(localStorage.getItem("gameBoyColor"), 10)
   );
