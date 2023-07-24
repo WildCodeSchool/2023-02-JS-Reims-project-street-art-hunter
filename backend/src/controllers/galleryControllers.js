@@ -104,7 +104,7 @@ const validate = (req, res) => {
   gallery.id = parseInt(req.params.id, 10);
 
   models.gallery
-    .update(gallery)
+    .validate(gallery)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);

@@ -21,8 +21,8 @@ class GalleryManager extends AbstractManager {
 
   validate(gallery) {
     return this.database.query(
-      `update ${this.table} set is_valid = 1 where id = ?`,
-      [gallery.is_valid, gallery.id]
+      `update ${this.table} set is_valid = true where id = ?`,
+      [gallery.id]
     );
   }
 
@@ -35,7 +35,7 @@ class GalleryManager extends AbstractManager {
 
   findByNotValid() {
     return this.database.query(
-      `select * from  ${this.table} where is_valid = 0`
+      `select gallery.*, street_art.longitude, street_art.latitude from  ${this.table} join street_art on street_art.id = gallery.id_street_art where gallery.is_valid = 0`
     );
   }
 }

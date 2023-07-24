@@ -24,9 +24,10 @@ export default function StreetArtList() {
       <div className="gallery">
         {streetArts.map((streetArt) => (
           <Link
+            key={streetArt.id}
             to={`/street-arts/${streetArt.id}/${streetArt.longitude}/${streetArt.latitude}`}
           >
-            <figure key={streetArt.id}>
+            <figure>
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}${streetArt.image}`}
                 alt="streetart"
