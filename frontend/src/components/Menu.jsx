@@ -87,7 +87,7 @@ export default function Menu() {
   if (role === 1) {
     menu.push([
       {
-        name: "Inventaire Admin",
+        name: "Inventaire Modérateur",
         icon: <FcLock />,
       },
       {
