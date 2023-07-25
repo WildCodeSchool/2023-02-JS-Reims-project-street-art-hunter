@@ -75,7 +75,7 @@ Passionnés par les arts naïfs et les différentes formes de peinture populaire
 
 insert into user (username, password, mail, is_admin) VALUES
 ("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
-("flavien", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "flav@street.art", TRUE),
+("Flavien", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "flav@street.art", TRUE),
 ("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE),
 ("Aurel", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "aurel@street.art", FALSE),
 ("Aylin", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "aylin@street.art", FALSE);
