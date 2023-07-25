@@ -394,8 +394,6 @@ button {
 
     td {
       padding: 1em;
-      padding-left: 2em;
-      padding-right: 2em;
     }
     th {
       font-size: larger;
@@ -596,6 +594,7 @@ button {
     flex-direction: column;
     background-image: url("./assets/mur.png");
     .allMessage {
+      color: #000;
       border-radius: 1rem;
       margin: 0.1rem;
       margin-inline: 1rem;

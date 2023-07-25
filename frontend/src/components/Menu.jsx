@@ -68,7 +68,7 @@ export default function Menu() {
         path: "/gallery",
       },
       {
-        name: "Ta carte",
+        name: "Ma carte",
         image: <FiMap size={sizeIconMenu} />,
         path: "/map-global",
       },
