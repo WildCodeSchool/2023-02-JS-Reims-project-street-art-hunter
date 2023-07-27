@@ -74,10 +74,12 @@ L'esprit d'indépendance du graffiti se retrouve dans le travail de Mary et Jiem
 Passionnés par les arts naïfs et les différentes formes de peinture populaire, la manière de travailler en duo de Mary et Jiem est très instinctive et spontanée, toutes leurs oeuvres gardent une grande fraicheur, affranchies des règles académiques et des standards de représentation. Ils sont également constamment dans la remise en cause et à la recherche de nouveaux terrains d'exploration, ce qui fait de leur travail artistique quotidien une aventure infinie et particulièrement excitante.", NULL);
 
 insert into user (username, password, mail, is_admin) VALUES
-("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
-("Flavien", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "flav@street.art", TRUE),
-("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE),
 ("Aurel", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "aurel@street.art", FALSE),
+("Flavien", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "flav@street.art", TRUE),
+("admin", "$argon2id$v=19$m=65536,t=5,p=1$LiOUxKuxGlqllBS/orpihg$ztzttCi1WClTHAGgKSZF9xYa579t7gf2P3aqHP1NJZ0", "admin@street.art", TRUE),
+("user", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "user@street.art", FALSE),
+("Nils", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "nils@street.art", FALSE),
+("okami", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "okami@street.art", FALSE),
 ("Aylin", "$argon2id$v=19$m=65536,t=5,p=1$RplfnZnP/TmoEpfK0ranvg$nlSGwC0krCG6Di+7Mu/8N8JgwL0Or3vzP2kBDNDr86s", "aylin@street.art", FALSE);
 
 insert into street_art (image, longitude, latitude, is_valid, score, id_artist, add_by) VALUES 
@@ -92,7 +94,10 @@ insert into street_art (image, longitude, latitude, is_valid, score, id_artist, 
 INSERT INTO `gallery` (`id_user`, `id_street_art`,   `creation_date`, `image`, `is_valid` ) VALUES
 (1, 1, '2023-06-06 17:23:02', '/assets/images/rue_libergier.jpg',0),
 (1, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
+(6, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
+(7, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
+(5, 3, '2023-06-06 17:23:25', '/assets/images/boulevard_wilson_1.jpg',0),
 (2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg',0),
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg',0);
 
-INSERT INTO friends (user_id_1, user_id_2, status) VALUES (2, 1, 'pending'),(4, 2, 'pending');
+INSERT INTO friends (user_id_1, user_id_2, status) VALUES (2, 3, 'pending'),(1, 2, 'pending');
