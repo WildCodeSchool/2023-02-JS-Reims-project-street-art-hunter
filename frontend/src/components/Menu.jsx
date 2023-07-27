@@ -66,7 +66,7 @@ export default function Menu() {
         path: "/gallery",
       },
       {
-        name: "Ta carte",
+        name: "Ma Carte",
         image: <FiMap size={sizeIconMenu} />,
         path: "/map-global",
       },
@@ -85,7 +85,7 @@ export default function Menu() {
   if (role === 1) {
     menu.push([
       {
-        name: "Inventaire Admin",
+        name: "Inventaire Modérateur",
         icon: <FcLock />,
       },
       {
