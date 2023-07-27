@@ -100,4 +100,4 @@ INSERT INTO `gallery` (`id_user`, `id_street_art`,   `creation_date`, `image`, `
 (2, 2, '2023-06-06 17:23:42', '/assets/images/avenue_paul_marchandeau.jpg',0),
 (2, 4, '2023-06-06 17:24:04', '/assets/images/boulevard_wilson_2.jpg',0);
 
-INSERT INTO friends (user_id_1, user_id_2, status) VALUES (2, 3, 'pending'),(1, 2, 'pending');
+INSERT INTO friends (user_id_1, user_id_2, status) VALUES (2, 6, 'accepted'),(2, 7, 'accepted'),(1, 2, 'pending');

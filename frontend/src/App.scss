@@ -45,13 +45,12 @@ button {
   overflow: overlay;
 }
 .container {
-  max-width: 20em;
   padding: 1rem;
   position: relative;
   .video-container {
     margin-top: 10em;
-    height: 50vh;
-    width: auto;
+    height: 40vh;
+    width: 100%;
     margin-top: 0em;
     border-radius: 1em;
     display: flex;
