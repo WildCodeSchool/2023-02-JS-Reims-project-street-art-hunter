@@ -24,7 +24,7 @@ export default function Gallery() {
   }, []);
   return (
     <>
-      <h1>Gallery</h1>
+      <h1>Ma galerie</h1>
       <div className="gallery">
         {gallery.map((picture) => {
           const newdate = picture.creation_date.split("T");
