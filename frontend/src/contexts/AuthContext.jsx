@@ -13,10 +13,23 @@ export function AuthContextProvider({ children }) {
   const [gameBoyColor, setGameBoyColor] = useState(
     parseInt(localStorage.getItem("gameBoyColor"), 10)
   );
+  const [numberY, setNumberY] = useState(1);
+  const [numberX, setNumberX] = useState(1);
 
   return (
     <AuthContext.Provider
-      value={{ token, setToken, role, setRole, gameBoyColor, setGameBoyColor }}
+      value={{
+        token,
+        setToken,
+        role,
+        setRole,
+        gameBoyColor,
+        setGameBoyColor,
+        numberY,
+        setNumberY,
+        numberX,
+        setNumberX,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
-  const { setToken, setRole, gameBoyColor } = useAuth();
+  const { setToken, setRole, gameBoyColor, setNumberX, setNumberY } = useAuth();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -36,6 +36,8 @@ function Login() {
               sessionStorage.setItem("role", data.role);
               sessionStorage.setItem("token", data.token);
               setIsError(false);
+              setNumberX(1);
+              setNumberY(1);
               navigate("/menu");
             } else {
               setIsError(true);

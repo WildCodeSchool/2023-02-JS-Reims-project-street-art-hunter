@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -21,10 +20,9 @@ import GameBoy from "./GameBoy";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Menu() {
-  const { setToken, role, setRole } = useAuth();
+  const { setToken, role, setRole, numberY, setNumberY, numberX, setNumberX } =
+    useAuth();
   const navigate = useNavigate();
-  const [numberY, setNumberY] = useState(1);
-  const [numberX, setNumberX] = useState(1);
   const { gameBoyColor } = useAuth();
   const sizeIconMenu = "60%";
   const sizeNavMenu = "2rem";
@@ -68,7 +66,7 @@ export default function Menu() {
         path: "/gallery",
       },
       {
-        name: "Ma carte",
+        name: "Ta carte",
         image: <FiMap size={sizeIconMenu} />,
         path: "/map-global",
       },
@@ -87,7 +85,7 @@ export default function Menu() {
   if (role === 1) {
     menu.push([
       {
-        name: "Inventaire Modérateur",
+        name: "Inventaire Admin",
         icon: <FcLock />,
       },
       {
