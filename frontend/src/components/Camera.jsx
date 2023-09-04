@@ -4,7 +4,7 @@ import { useGeolocated } from "react-geolocated";
 import Webcam from "react-webcam";
 import { useAuth } from "../contexts/AuthContext";
 
-import GameBoy from "./GameBoy";
+import GameBoy from "./GameBoy2";
 import { Valide, NewStreetArt, Posseder } from "./PopUp";
 
 function Camera() {
