@@ -11,7 +11,7 @@ function Connection() {
 
   return (
     <div className="connection">
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="Logo" />
       <div
         className="form-connection"
         style={
