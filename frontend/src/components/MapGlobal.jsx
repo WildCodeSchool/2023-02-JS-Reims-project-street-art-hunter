@@ -3,9 +3,11 @@ import { Map, Overlay, ZoomControl } from "pigeon-maps";
 import { stamenToner } from "pigeon-maps/providers";
 import { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function MapGlobal() {
+  const nav = useNavigate();
   const { token } = useAuth();
   const [listStreetArt, setListStreetArt] = useState([]);
   const [longitudeLatitude, setLongitudeLatitude] = useState([
@@ -64,6 +66,9 @@ export default function MapGlobal() {
             </Overlay>
           ))}
       </Map>
+      <button type="button" className="retoure" onClick={() => nav("/menu")}>
+        retoure au menu
+      </button>
     </div>
   );
 }

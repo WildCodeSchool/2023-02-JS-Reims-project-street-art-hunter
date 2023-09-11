@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Score() {
+  const nav = useNavigate();
   const [scores, setScores] = useState([]);
   useEffect(() => {
     fetch(
@@ -14,8 +16,8 @@ export default function Score() {
       });
   }, []);
   return (
-    <>
-      <h1>MEILLEURS SCORES</h1>
+    <div className="score">
+      <h1>Classement</h1>
       <table>
         <thead>
           <tr>
@@ -35,6 +37,9 @@ export default function Score() {
           ))}
         </tbody>
       </table>
-    </>
+      <button type="button" className="retoure" onClick={() => nav("/menu")}>
+        retoure au menu
+      </button>
+    </div>
   );
 }
