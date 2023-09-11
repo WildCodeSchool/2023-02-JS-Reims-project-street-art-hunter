@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Gallery() {
+  const nav = useNavigate();
   const { token } = useAuth();
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Gallery() {
       });
   }, []);
   return (
-    <>
+    <div className="galerie">
       <h1>Ma galerie</h1>
       <div className="gallery">
         {gallery.map((picture) => {
@@ -53,6 +54,9 @@ export default function Gallery() {
           );
         })}
       </div>
-    </>
+      <button type="button" className="retoure" onClick={() => nav("/menu")}>
+        retoure au menu
+      </button>
+    </div>
   );
 }
