@@ -1,9 +1,12 @@
 body {
   padding: 0;
   margin: 0;
-  cursor: url(./assets/main.png), auto;
-  font-family: Shojumaru;
-  font-size: small;
+  background-color: #d1d6cd;
+  background-image: url(./assets/bgmur.png);
+  background-image: url(./assets/mur.png);
+  background-size: contain;
+  // font-family: Shojumaru;
+  // font-size: small;
 }
 @font-face {
   font-family: "retropix";
@@ -18,8 +21,6 @@ p {
   margin: 0;
 }
 button {
-  cursor: pointer;
-  cursor: url(./assets/point.png), pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -28,10 +29,15 @@ button {
 }
 .divAddFriends {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: auto 1fr auto;
   input {
     margin-block: 1rem;
     border: 3px solid;
+    height: 1rem;
+  }
+  button[type="submit"] {
+    padding: initial;
+    width: 5rem;
   }
   .addFriends {
     font-size: 2rem;
@@ -43,6 +49,7 @@ button {
 }
 .alllist {
   overflow: overlay;
+  text-align: center;
 }
 .container {
   padding: 1rem;
@@ -56,6 +63,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    img {
+      width: 5rem;
+      position: absolute;
+      bottom: 0rem;
+    }
   }
   .video-container:first-child {
     overflow: hidden;
@@ -69,6 +81,20 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    button.left {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0.5rem;
+      width: 45%;
+      border-radius: 0 0 0 1rem;
+    }
+    button.right {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      width: 45%;
+      border-radius: 0 0 1rem 0;
+    }
   }
   .img-container:first-child {
     overflow: hidden;
@@ -76,14 +102,11 @@ button {
 }
 
 .home {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   img {
     width: 90%;
     height: fit-content;
+    margin-block: 2rem;
   }
 }
 @keyframes start {
@@ -100,6 +123,108 @@ button {
   }
   100% {
     top: 0rem;
+  }
+}
+.menu {
+  text-align: center;
+  align-items: center;
+  // display: grid;
+  grid-template-rows: 1fr 4fr 2fr;
+  header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    align-items: center;
+  }
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    a {
+      color: #fff;
+      background-image: url(./assets/graf.png);
+      background-size: 100% 100%;
+      padding-top: 8%;
+      padding-bottom: 10%;
+      -webkit-tap-highlight-color: transparent;
+      &:active {
+        filter: invert(1);
+      }
+    }
+  }
+  img[alt="logo"] {
+    height: 10rem;
+    margin: auto;
+  }
+}
+.setting {
+  text-align: center;
+}
+button {
+  color: #fff;
+  background-color: #545f71;
+  font-size: large;
+  padding: 1rem;
+  width: 90%;
+  margin: 0.5rem;
+}
+h1 {
+  color: #fff;
+  background-image: url(./assets/bgh1.png);
+  background-size: 100% 100%;
+  margin: 0rem;
+  padding: 1rem;
+}
+button.retoure {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  margin: 0;
+  width: 50%;
+}
+button.deconnexion {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  margin: 0;
+  width: 50%;
+}
+.score {
+  text-align: center;
+  table {
+    margin: 1rem auto;
+    font-size: x-large;
+    width: 80%;
+    background-color: #000000a1;
+    border-radius: 1rem 2rem 3rem 4rem;
+    color: #fff;
+    border-collapse: collapse;
+    td {
+      border-top: 1px solid;
+      padding: 10px;
+    }
+  }
+}
+.galerie {
+  text-align: center;
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    figure {
+      margin: 0;
+      padding: 1rem;
+      img {
+        height: 5rem;
+      }
+      figcaption {
+        display: flex;
+        flex-direction: column;
+        font-family: "retropix";
+        .pScore {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
   }
 }
 .gameBoy {
@@ -751,20 +876,22 @@ button {
 
 .container-list {
   color: #fff;
-  background-size: cover;
+  background-image: url(./assets/mur.png);
+  background-size: contain;
   background-position: bottom;
-  height: 100%;
+  // height: 100vh;
+  position: fixed;
+  top: 0rem;
+  bottom: 0rem;
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: auto 1fr auto;
   .buttonlist {
     display: flex;
     justify-content: space-evenly;
     button {
-      color: #fff;
-      font-family: retropix;
-      background-color: #21afda;
-      border-radius: 1rem;
+      color: #000;
+      background-color: #fff;
       margin-block: 1rem;
       font-size: large;
       padding: 0.5rem;
@@ -777,18 +904,21 @@ button {
 }
 
 .title-list {
-  font-size: 50px larger;
-  color: #21afda;
   text-align: center;
 }
 
 .friends {
-  background-color: #21afda;
-  gap: 3px;
-  border-radius: 2px;
-  display: grid;
-  grid-template-columns: auto;
-  height: max-content;
+  background-color: #fff;
+  color: #000;
+  width: 90%;
+  margin-inline: auto;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
+  border-collapse: collapse;
+  font-size: large;
+  td {
+    border-top: #000 1px solid;
+    padding-block: 0.5rem;
+  }
 }
 
 .message {
@@ -881,6 +1011,11 @@ button {
 }
 
 @media (orientation: landscape) {
+  .menu {
+    section {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
   .gameBoy {
     grid-template-columns: 1fr 2.5fr 1fr;
     grid-template-rows: 1fr;
@@ -923,7 +1058,7 @@ button {
 }
 
 .map-global-container {
-  height: 100%;
+  height: 100vh;
 }
 .validationButton {
   border: 0;
