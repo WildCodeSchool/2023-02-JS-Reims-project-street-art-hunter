@@ -8,8 +8,6 @@ export default function FriendsList() {
   const { token } = useAuth();
   const [message, setMessage] = useState("");
   const [friendshipName, setFriendshipName] = useState("");
-  const { gameBoyColor } = useAuth();
-
   useEffect(() => {
     fetch(
       `${
@@ -31,46 +29,33 @@ export default function FriendsList() {
   return (
     <>
       <div>
-        <h1
-          className="title-list"
-          style={
-            Number.isNaN(gameBoyColor)
-              ? { color: `gray` }
-              : { color: `hsl(${gameBoyColor}, 50%, 50%)` }
-          }
-        >
-          Liste d'Amis
-        </h1>
+        <h1 className="title-list">Liste d'Amis</h1>
 
-        <section
-          className="friends"
-          style={
-            Number.isNaN(gameBoyColor)
-              ? { backgroundColor: `gray`, color: "#FFF" }
-              : { backgroundColor: `hsl(${gameBoyColor}, 50%, 50%)` }
-          }
-        >
+        <table className="friends">
+          <tr>
+            <th>#</th>
+            <th>username</th>
+          </tr>
           {friendsList.length > 0 ? (
-            friendsList.map((friend) => (
-              <figure key={friend.id}>
-                <figcaption>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setMessage(friend.id);
-                      setFriendshipName(friend.username);
-                    }}
-                  >
-                    <p>{friend.username}</p>
-                  </button>
+            friendsList.map((friend, index) => (
+              <tr
+                key={friend.id}
+                onClick={() => {
+                  setMessage(friend.id);
+                  setFriendshipName(friend.username);
+                }}
+              >
+                <td>{index + 1}</td>
+                <td>{friend.username}</td>
+                <td>
                   <TbMessages size="1rem" />
-                </figcaption>
-              </figure>
+                </td>
+              </tr>
             ))
           ) : (
             <p className="no-add"> Aucun ami accepté</p>
           )}
-        </section>
+        </table>
       </div>
       {message && (
         <Message

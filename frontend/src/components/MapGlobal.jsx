@@ -1,11 +1,13 @@
 import { Map, Overlay, ZoomControl } from "pigeon-maps";
 
-import { stamenToner } from "pigeon-maps/providers";
+import { osm } from "pigeon-maps/providers";
 import { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function MapGlobal() {
+  const nav = useNavigate();
   const { token } = useAuth();
   const [listStreetArt, setListStreetArt] = useState([]);
   const [longitudeLatitude, setLongitudeLatitude] = useState([
@@ -44,7 +46,7 @@ export default function MapGlobal() {
   return (
     <div className="map-global-container">
       <Map
-        provider={stamenToner}
+        provider={osm}
         defaultCenter={longitudeLatitude}
         defaultZoom={12}
         minZoom={8}
@@ -64,6 +66,9 @@ export default function MapGlobal() {
             </Overlay>
           ))}
       </Map>
+      <button type="button" className="retoure" onClick={() => nav("/menu")}>
+        retoure au menu
+      </button>
     </div>
   );
 }

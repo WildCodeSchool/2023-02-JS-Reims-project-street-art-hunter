@@ -16,6 +16,7 @@ import InfoStreetArt from "./components/InfoStreetArt";
 import InfoAdminStreetArt from "./components/InfoAdminStreetArt";
 import MapGlobal from "./components/MapGlobal";
 import PendingStreetArtList from "./components/PendingStreetArtsList";
+import Setting from "./components/Setting";
 
 function App() {
   const { token, role } = useAuth();
@@ -37,23 +38,9 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/camera" element={<Camera />} />
 
-            <Route
-              path="/map-global"
-              element={
-                <GameBoyScreen>
-                  <MapGlobal />
-                </GameBoyScreen>
-              }
-            />
-
-            <Route
-              path="/gallery"
-              element={
-                <GameBoyScreen>
-                  <Gallery />
-                </GameBoyScreen>
-              }
-            />
+            <Route path="/map-global" element={<MapGlobal />} />
+            <Route path="setting" element={<Setting />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route
               path="/gallery/:id/:longitude/:latitude"
               element={
@@ -96,14 +83,7 @@ function App() {
               }
             />
 
-            <Route
-              path="/score"
-              element={
-                <GameBoyScreen>
-                  <Score />
-                </GameBoyScreen>
-              }
-            />
+            <Route path="/score" element={<Score />} />
             <Route
               path="/artists/:id"
               element={
@@ -112,14 +92,7 @@ function App() {
                 </GameBoyScreen>
               }
             />
-            <Route
-              path="/friends"
-              element={
-                <GameBoyScreen>
-                  <Friends />
-                </GameBoyScreen>
-              }
-            />
+            <Route path="/friends" element={<Friends />} />
 
             {role === 1 && (
               <>

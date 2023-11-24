@@ -4,15 +4,14 @@ import { useGeolocated } from "react-geolocated";
 import Webcam from "react-webcam";
 import { useAuth } from "../contexts/AuthContext";
 
-import GameBoy from "./GameBoy";
 import { Valide, NewStreetArt, Posseder } from "./PopUp";
 
 function Camera() {
+  const nav = useNavigate();
+  const { setToken, setRole } = useAuth();
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
-  const [label1, setLabel1] = useState("Prendre la photo");
-  const [label2, setLabel2] = useState("Retour");
-  const [videoConstraint, setVideoConstraint] = useState("environment");
+  const [videoConstraint] = useState("environment");
   const [sovData, setSovData] = useState();
   const [valide, setValide] = useState(false);
   const [newStreetArt, setNewStreetArt] = useState(false);
@@ -30,8 +29,6 @@ function Camera() {
   const retake = () => {
     if (imgSrc) {
       setImgSrc(null);
-      setLabel1("Prendre la photo");
-      setLabel2("Retour");
     } else {
       navigate("/menu");
     }
@@ -84,8 +81,6 @@ function Camera() {
         });
     } else {
       setImgSrc(webcamRef.current.getScreenshot());
-      setLabel1("Confirmer");
-      setLabel2("Annuler");
     }
   };
   const NewArt = () => {
@@ -112,21 +107,7 @@ function Camera() {
       });
   };
   return (
-    <GameBoy
-      button1Controller={capture}
-      button2Controller={retake}
-      buttonLabel1={label1}
-      buttonLabel2={label2}
-      buttonLabelup="Caméra arrière"
-      ButtonColor1={label1 === "Confirm" ? "green" : "red"}
-      upController={() => {
-        setVideoConstraint("environment");
-      }}
-      buttonLabeldown="Caméra frontale"
-      downController={() => {
-        setVideoConstraint("user");
-      }}
-    >
+    <div>
       {valide && <Valide setValide={setValide} />}
       {newStreetArt && (
         <NewStreetArt setNewStreetArt={setNewStreetArt} NewArt={NewArt} />
@@ -136,6 +117,12 @@ function Camera() {
         {imgSrc ? (
           <div className="img-container">
             <img src={imgSrc} alt="webcam" />
+            <button type="button" className="left" onClick={capture}>
+              valider
+            </button>
+            <button type="button" className="right" onClick={retake}>
+              refu
+            </button>
           </div>
         ) : (
           <div className="video-container">
@@ -145,12 +132,32 @@ function Camera() {
               ref={webcamRef}
               screenshotFormat="image/webp"
               videoConstraints={{ facingMode: videoConstraint }}
-              mirrored
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Red_round_button.svg/1200px-Red_round_button.svg.png"
+              alt=""
+              // onClick={capture}
             />
           </div>
         )}
       </div>
-    </GameBoy>
+      <button type="button" className="retoure" onClick={() => nav("/menu")}>
+        Menu
+      </button>
+      <button
+        type="button"
+        className="deconnexion"
+        onClick={() => {
+          sessionStorage.removeItem("token");
+          setToken(null);
+          sessionStorage.removeItem("role");
+          setRole(null);
+          nav("/");
+        }}
+      >
+        Deconnexion
+      </button>
+    </div>
   );
 }
 
