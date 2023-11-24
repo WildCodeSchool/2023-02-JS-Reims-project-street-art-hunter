@@ -1,6 +1,6 @@
 import { Map, Overlay, ZoomControl } from "pigeon-maps";
 
-import { stamenToner } from "pigeon-maps/providers";
+import { osm } from "pigeon-maps/providers";
 import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -46,7 +46,7 @@ export default function MapGlobal() {
   return (
     <div className="map-global-container">
       <Map
-        provider={stamenToner}
+        provider={osm}
         defaultCenter={longitudeLatitude}
         defaultZoom={12}
         minZoom={8}

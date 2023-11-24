@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Map, Marker, ZoomControl } from "pigeon-maps";
 
-import { stamenToner } from "pigeon-maps/providers";
+import { osm } from "pigeon-maps/providers";
 
 export default function MapStreetArt() {
   const { longitude, latitude } = useParams();
@@ -10,7 +10,7 @@ export default function MapStreetArt() {
 
   return (
     <Map
-      provider={stamenToner}
+      provider={osm}
       height={400}
       defaultCenter={longitudeLatitude}
       defaultZoom={14}
